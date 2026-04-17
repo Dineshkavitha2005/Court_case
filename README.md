@@ -198,4 +198,3 @@ Built as a prototype for AI-powered land litigation search.
 
 ---
 
-**Version:** 1.0 | **Type:** Functional Prototype | **Last Updated:** March 19, 2026
