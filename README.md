@@ -190,11 +190,3 @@ This is a **prototype/demo** version. In production:
 
 For questions about the interface or functionality, check the Help section within the app or review the code comments in `script.js`.
 
-## 📄 License
-
-© 2026 TRIVORA - PPG Institute of Technology, Coimbatore
-
-Built as a prototype for AI-powered land litigation search.
-
----
-
