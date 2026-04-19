@@ -186,7 +186,3 @@ This is a **prototype/demo** version. In production:
 - Property valuation tools
 - Transaction history
 
-## 🤝 Support
-
-For questions about the interface or functionality, check the Help section within the app or review the code comments in `script.js`.
-
