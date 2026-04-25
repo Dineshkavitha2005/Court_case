@@ -166,14 +166,7 @@ Ready to deploy to:
 - Firebase Hosting
 - Any static hosting service
 
-## 🔐 Data Privacy Note
 
-This is a **prototype/demo** version. In production:
-- Integrate with actual government databases
-- Implement user authentication
-- Add secure payment processing
-- Comply with data protection regulations
-- Use HTTPS encryption
 
 ## 📝 Future Enhancements
 
