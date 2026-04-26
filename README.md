@@ -157,15 +157,6 @@ Edit header in `index.html`:
 - Optimized forms for mobile
 - Voice search on mobile devices
 
-## 🚀 Deployment
-
-Ready to deploy to:
-- GitHub Pages
-- Netlify
-- Vercel
-- Firebase Hosting
-- Any static hosting service
-
 
 
 ## 📝 Future Enhancements
