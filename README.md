@@ -108,40 +108,6 @@ The system includes sample cases for testing:
 - **Modal Popup** - Detailed case view
 - **Responsive Design** - Works on desktop, tablet, mobile
 
-## 🔧 Customization
-
-### Add More Cases
-Edit `script.js` around line 3-32:
-```javascript
-const mockCasesDatabase = {
-    'village-surveynum': [
-        {
-            id: 1,
-            caseNumber: 'CIL-2024-001',
-            type: 'Dispute Type',
-            parties: 'Party A vs. Party B',
-            status: 'Active',
-            filedDate: 'YYYY-MM-DD',
-            nextHearing: 'YYYY-MM-DD'
-        }
-    ]
-};
-```
-
-### Change Colors
-Edit `:root` variables in `styles.css` (lines 7-16):
-```css
---primary: #2563eb;
---success: #10b981;
---warning: #f59e0b;
---danger: #ef4444;
-```
-
-### Update Branding
-Edit header in `index.html`:
-- Logo text
-- Institute name in footer
-
 ## 💻 Browser Support
 
 ✅ Chrome 90+
