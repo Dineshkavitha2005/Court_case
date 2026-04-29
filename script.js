@@ -1,4 +1,4 @@
-// Mock database of land cases
+
 const mockCasesDatabase = {
     'coimbatore-123/A': [
         {
