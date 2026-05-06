@@ -124,7 +124,6 @@ The system includes sample cases for testing:
 - Voice search on mobile devices
 
 
-
 ## 📝 Future Enhancements
 
 - Real government database integration via APIs
