@@ -108,13 +108,6 @@ The system includes sample cases for testing:
 - **Modal Popup** - Detailed case view
 - **Responsive Design** - Works on desktop, tablet, mobile
 
-## 💻 Browser Support
-
-✅ Chrome 90+
-✅ Firefox 88+
-✅ Safari 14+
-✅ Edge 90+
-✅ Mobile browsers
 
 ## 📱 Mobile Responsive
 
