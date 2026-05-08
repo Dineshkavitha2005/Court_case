@@ -127,8 +127,6 @@ function performSearch() {
     // Display results
     displayResults(village, survey, cases);
 }
-
-// Display results
 function displayResults(village, survey, cases) {
     document.getElementById('resultVillage').textContent = village;
     document.getElementById('resultSurvey').textContent = survey;
