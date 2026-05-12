@@ -84,21 +84,6 @@ Then visit: `http://localhost:8000`
 - Total searches conducted
 - Statistics tracking
 
-## 📊 Mock Case Data
-
-The system includes sample cases for testing:
-
-**Coimbatore 123/A (2 cases):**
-- Property Boundary Dispute (Active)
-- Land Ownership Claim (Active)
-
-**Salem 456/B (1 case):**
-- Encroachment Case (Closed)
-
-**Erode 789/C (3 cases):**
-- Inheritance Dispute (Active)
-- Tax Dispute (Active)
-- Mortgage Claim (Active)
 
 ## 🎨 User Interface
 
