@@ -1,8 +1,6 @@
 # TRIVORA - Functional Land Litigation Search Portal
-
 A working prototype of TRIVORA's AI-powered land litigation search tool with interactive features and real-time case lookups.
 ## 🚀 What This Website Does
-
 This is a **functional product website** (not just marketing), featuring:
 - **Search Interface** - Enter village name and survey number to find court cases
 - **Risk Assessment** - AI-calculated litigation risk indicator  
