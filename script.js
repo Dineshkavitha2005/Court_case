@@ -1,4 +1,3 @@
-
 const mockCasesDatabase = {
     'coimbatore-123/A': [
         {
