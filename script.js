@@ -60,12 +60,9 @@ const mockCasesDatabase = {
         }
     ]
 };
-
 let searchHistory = [];
 let searchCount = 0;
 let savedCount = 0;
-
-// Initialize navigation
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
