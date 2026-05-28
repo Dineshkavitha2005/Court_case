@@ -9,7 +9,6 @@ This is a **functional product website** (not just marketing), featuring:
 - **Voice Search** - Hands-free searching (Chrome, Edge, Safari)
 - **Case Details Modal** - View full case information
 - **User Profile** - Track search statistics
-
 ## 📁 Files
 
 - `index.html` - Complete application interface
@@ -18,7 +17,6 @@ This is a **functional product website** (not just marketing), featuring:
 - `README.md` - This file
 
 ## 🎯 How to Use
-
 ### Open the Website
 **Option 1 - Direct:**
 Double-click `index.html`
