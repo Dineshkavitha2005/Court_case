@@ -76,8 +76,6 @@ document.getElementById('searchForm').addEventListener('submit', (e) => {
     e.preventDefault();
     performSearch();
 });
-
-// Voice search button
 document.getElementById('voiceBtn').addEventListener('click', () => {
     if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
