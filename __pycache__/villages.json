@@ -1,0 +1,3715 @@
+{
+  "state": "Tamil Nadu",
+  "source": "https://vlist.in/state/33.html",
+  "total_districts": 38,
+  "total_sub_districts": 62,
+  "total_villages": 611,
+  "districts": [
+    "Ariyalur",
+    "Chengalpattu",
+    "Chennai",
+    "Coimbatore",
+    "Cuddalore",
+    "Dharmapuri",
+    "Dindigul",
+    "Erode",
+    "Kallakurichi",
+    "Kanchipuram",
+    "Kanyakumari",
+    "Karur",
+    "Krishnagiri",
+    "Madurai",
+    "Mayiladuthurai",
+    "Nagapattinam",
+    "Namakkal",
+    "Nilgiris",
+    "Perambalur",
+    "Pudukkottai",
+    "Ramanathapuram",
+    "Ranipet",
+    "Salem",
+    "Sivaganga",
+    "Tenkasi",
+    "Thanjavur",
+    "Theni",
+    "Thiruvallur",
+    "Thiruvarur",
+    "Thoothukudi",
+    "Tiruchirappalli",
+    "Tirunelveli",
+    "Tirupathur",
+    "Tiruppur",
+    "Tiruvannamalai",
+    "Vellore",
+    "Viluppuram",
+    "Virudhunagar"
+  ],
+  "villages": [
+    {
+      "name": "Alagiyamanavalam",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#alagiyamanavalam"
+    },
+    {
+      "name": "Alanduraiyarkattalai",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#alanduraiyarkattalai"
+    },
+    {
+      "name": "Ammenabath",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#ammenabath"
+    },
+    {
+      "name": "Andipattakkadu",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#andipattakkadu"
+    },
+    {
+      "name": "Annimangalam",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#annimangalam"
+    },
+    {
+      "name": "Ariyalur (North)",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#ariyalur-(north)"
+    },
+    {
+      "name": "Arungal",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#arungal"
+    },
+    {
+      "name": "Avansuthamalli",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#avansuthamalli"
+    },
+    {
+      "name": "Ayanathur",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#ayanathur"
+    },
+    {
+      "name": "Chinnapattakadu",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#chinnapattakadu"
+    },
+    {
+      "name": "Edayathankudi",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#edayathankudi"
+    },
+    {
+      "name": "Elakurichi",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#elakurichi"
+    },
+    {
+      "name": "Govindapuram",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#govindapuram"
+    },
+    {
+      "name": "Kallankurichi",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#kallankurichi"
+    },
+    {
+      "name": "Manabayachanallur",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#manabayachanallur"
+    },
+    {
+      "name": "Melur",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#melur"
+    },
+    {
+      "name": "Nagamangalam",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#nagamangalam"
+    },
+    {
+      "name": "Ottakoil",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#ottakoil"
+    },
+    {
+      "name": "Periyagalankotti",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#periyagalankotti"
+    },
+    {
+      "name": "Poyyur",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#poyyur"
+    },
+    {
+      "name": "Rayampuram",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#rayampuram"
+    },
+    {
+      "name": "Sennivanam",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#sennivanam"
+    },
+    {
+      "name": "Sirugudi",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#sirugudi"
+    },
+    {
+      "name": "Thatchankurichi",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#thatchankurichi"
+    },
+    {
+      "name": "Thirumanur",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#thirumanur"
+    },
+    {
+      "name": "Valajanagaram",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#valajanagaram"
+    },
+    {
+      "name": "Varanavasi",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#varanavasi"
+    },
+    {
+      "name": "Vennankuzhi",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#vennankuzhi"
+    },
+    {
+      "name": "Vilandai",
+      "district": "Ariyalur",
+      "sub_district": "Ariyalur",
+      "url": "https://vlist.in/district/616.html#vilandai"
+    },
+    {
+      "name": "Adanakottai",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#adanakottai"
+    },
+    {
+      "name": "Alathiyur",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#alathiyur"
+    },
+    {
+      "name": "Anandavadi",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#anandavadi"
+    },
+    {
+      "name": "Asaveerankudikadu",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#asaveerankudikadu"
+    },
+    {
+      "name": "Chinnaparangani",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#chinnaparangani"
+    },
+    {
+      "name": "Manapathur",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#manapathur"
+    },
+    {
+      "name": "Mudikandan",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#mudikandan"
+    },
+    {
+      "name": "Nakkambadi",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#nakkambadi"
+    },
+    {
+      "name": "Nallampalayam",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#nallampalayam"
+    },
+    {
+      "name": "Palayasiruvangur",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#palayasiruvangur"
+    },
+    {
+      "name": "Periyakurichi",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#periyakurichi"
+    },
+    {
+      "name": "Pilakurichi",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#pilakurichi"
+    },
+    {
+      "name": "Ponparappi",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#ponparappi"
+    },
+    {
+      "name": "Sathanpadi",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#sathanpadi"
+    },
+    {
+      "name": "Sendurai",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#sendurai"
+    },
+    {
+      "name": "Sirukadambur",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#sirukadambur"
+    },
+    {
+      "name": "Thaluthaimedu",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#thaluthaimedu"
+    },
+    {
+      "name": "Unjini",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#unjini"
+    },
+    {
+      "name": "Vanjenagaram",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#vanjenagaram"
+    },
+    {
+      "name": "Veerakkan",
+      "district": "Ariyalur",
+      "sub_district": "Sendurai",
+      "url": "https://vlist.in/district/616.html#veerakkan"
+    },
+    {
+      "name": "Ambapur",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#ambapur"
+    },
+    {
+      "name": "Andimadam",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#andimadam"
+    },
+    {
+      "name": "Anikadhichan",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#anikadhichan"
+    },
+    {
+      "name": "Ayanathathanur",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#ayanathathanur"
+    },
+    {
+      "name": "Devaranjayampettai",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#devaranjayampettai"
+    },
+    {
+      "name": "Gangaikondacholapuram",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#gangaikondacholapuram"
+    },
+    {
+      "name": "Jayankondam",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#jayankondam"
+    },
+    {
+      "name": "Kadalangudi",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#kadalangudi"
+    },
+    {
+      "name": "Kulumor",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#kulumor"
+    },
+    {
+      "name": "Kundavai",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#kundavai"
+    },
+    {
+      "name": "Mathur",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#mathur"
+    },
+    {
+      "name": "Natesampettai",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#natesampettai"
+    },
+    {
+      "name": "Paluvoor",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#paluvoor"
+    },
+    {
+      "name": "Pyree",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#pyree"
+    },
+    {
+      "name": "Srimushnam",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#srimushnam"
+    },
+    {
+      "name": "T.Palur",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#t.palur"
+    },
+    {
+      "name": "Udayarpalayam",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#udayarpalayam"
+    },
+    {
+      "name": "Varanavasi",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#varanavasi"
+    },
+    {
+      "name": "Vembukudi",
+      "district": "Ariyalur",
+      "sub_district": "Udayarpalayam",
+      "url": "https://vlist.in/district/616.html#vembukudi"
+    },
+    {
+      "name": "Alapakkam",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#alapakkam"
+    },
+    {
+      "name": "Anur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#anur"
+    },
+    {
+      "name": "Athur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#athur"
+    },
+    {
+      "name": "Chengalpattu (M)",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#chengalpattu-(m)"
+    },
+    {
+      "name": "Guduvancheri",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#guduvancheri"
+    },
+    {
+      "name": "Hanumanthatheru",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#hanumanthatheru"
+    },
+    {
+      "name": "Kattankulathur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#kattankulathur"
+    },
+    {
+      "name": "Kayar",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#kayar"
+    },
+    {
+      "name": "Kolathur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#kolathur"
+    },
+    {
+      "name": "Kovalam",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#kovalam"
+    },
+    {
+      "name": "Melamaiyur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#melamaiyur"
+    },
+    {
+      "name": "Maraimalai Nagar",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#maraimalai-nagar"
+    },
+    {
+      "name": "Nethapakkam",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#nethapakkam"
+    },
+    {
+      "name": "Nellikuppam",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#nellikuppam"
+    },
+    {
+      "name": "Ozhalur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#ozhalur"
+    },
+    {
+      "name": "Padalam",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#padalam"
+    },
+    {
+      "name": "Paranur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#paranur"
+    },
+    {
+      "name": "Singaperumal Koil",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#singaperumal-koil"
+    },
+    {
+      "name": "Thiruporur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#thiruporur"
+    },
+    {
+      "name": "Vandalur",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#vandalur"
+    },
+    {
+      "name": "Veerapuram",
+      "district": "Chengalpattu",
+      "sub_district": "Chengalpattu",
+      "url": "https://vlist.in/district/604.html#veerapuram"
+    },
+    {
+      "name": "Chromepet",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#chromepet"
+    },
+    {
+      "name": "Chitlapakkam",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#chitlapakkam"
+    },
+    {
+      "name": "Hasthinapuram",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#hasthinapuram"
+    },
+    {
+      "name": "Kadaperi",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#kadaperi"
+    },
+    {
+      "name": "Madambakkam",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#madambakkam"
+    },
+    {
+      "name": "Mudichur",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#mudichur"
+    },
+    {
+      "name": "Peerkankaranai",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#peerkankaranai"
+    },
+    {
+      "name": "Perungalathur",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#perungalathur"
+    },
+    {
+      "name": "Rajakilpakkam",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#rajakilpakkam"
+    },
+    {
+      "name": "Selaiyur",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#selaiyur"
+    },
+    {
+      "name": "Sembakkam",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#sembakkam"
+    },
+    {
+      "name": "Tambaram (M)",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#tambaram-(m)"
+    },
+    {
+      "name": "Tiruniromalai",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#tiruniromalai"
+    },
+    {
+      "name": "Vengaivasal",
+      "district": "Chengalpattu",
+      "sub_district": "Tambaram",
+      "url": "https://vlist.in/district/604.html#vengaivasal"
+    },
+    {
+      "name": "Illalur",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#illalur"
+    },
+    {
+      "name": "Kelambakkam",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#kelambakkam"
+    },
+    {
+      "name": "Kovalam",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#kovalam"
+    },
+    {
+      "name": "Muttukadu",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#muttukadu"
+    },
+    {
+      "name": "Navalur",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#navalur"
+    },
+    {
+      "name": "Padur",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#padur"
+    },
+    {
+      "name": "Pudupakkam",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#pudupakkam"
+    },
+    {
+      "name": "Siruseri",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#siruseri"
+    },
+    {
+      "name": "Thaiyur",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#thaiyur"
+    },
+    {
+      "name": "Thiruporur",
+      "district": "Chengalpattu",
+      "sub_district": "Thiruporur",
+      "url": "https://vlist.in/district/604.html#thiruporur"
+    },
+    {
+      "name": "Adyar",
+      "district": "Chennai",
+      "sub_district": "Adyar",
+      "url": "https://vlist.in/district/603.html#adyar"
+    },
+    {
+      "name": "Besant Nagar",
+      "district": "Chennai",
+      "sub_district": "Adyar",
+      "url": "https://vlist.in/district/603.html#besant-nagar"
+    },
+    {
+      "name": "Guindy",
+      "district": "Chennai",
+      "sub_district": "Adyar",
+      "url": "https://vlist.in/district/603.html#guindy"
+    },
+    {
+      "name": "Kotturpuram",
+      "district": "Chennai",
+      "sub_district": "Adyar",
+      "url": "https://vlist.in/district/603.html#kotturpuram"
+    },
+    {
+      "name": "Mylapore",
+      "district": "Chennai",
+      "sub_district": "Adyar",
+      "url": "https://vlist.in/district/603.html#mylapore"
+    },
+    {
+      "name": "Thiruvanmiyur",
+      "district": "Chennai",
+      "sub_district": "Adyar",
+      "url": "https://vlist.in/district/603.html#thiruvanmiyur"
+    },
+    {
+      "name": "Velachery",
+      "district": "Chennai",
+      "sub_district": "Adyar",
+      "url": "https://vlist.in/district/603.html#velachery"
+    },
+    {
+      "name": "Chetpet",
+      "district": "Chennai",
+      "sub_district": "Egmore",
+      "url": "https://vlist.in/district/603.html#chetpet"
+    },
+    {
+      "name": "Egmore",
+      "district": "Chennai",
+      "sub_district": "Egmore",
+      "url": "https://vlist.in/district/603.html#egmore"
+    },
+    {
+      "name": "Kilpauk",
+      "district": "Chennai",
+      "sub_district": "Egmore",
+      "url": "https://vlist.in/district/603.html#kilpauk"
+    },
+    {
+      "name": "Nungambakkam",
+      "district": "Chennai",
+      "sub_district": "Egmore",
+      "url": "https://vlist.in/district/603.html#nungambakkam"
+    },
+    {
+      "name": "Purasawalkam",
+      "district": "Chennai",
+      "sub_district": "Egmore",
+      "url": "https://vlist.in/district/603.html#purasawalkam"
+    },
+    {
+      "name": "Ashok Nagar",
+      "district": "Chennai",
+      "sub_district": "Mambalam",
+      "url": "https://vlist.in/district/603.html#ashok-nagar"
+    },
+    {
+      "name": "KK Nagar",
+      "district": "Chennai",
+      "sub_district": "Mambalam",
+      "url": "https://vlist.in/district/603.html#kk-nagar"
+    },
+    {
+      "name": "Kodambakkam",
+      "district": "Chennai",
+      "sub_district": "Mambalam",
+      "url": "https://vlist.in/district/603.html#kodambakkam"
+    },
+    {
+      "name": "T. Nagar",
+      "district": "Chennai",
+      "sub_district": "Mambalam",
+      "url": "https://vlist.in/district/603.html#t.-nagar"
+    },
+    {
+      "name": "Vadapalani",
+      "district": "Chennai",
+      "sub_district": "Mambalam",
+      "url": "https://vlist.in/district/603.html#vadapalani"
+    },
+    {
+      "name": "Alwarpet",
+      "district": "Chennai",
+      "sub_district": "Mylapore",
+      "url": "https://vlist.in/district/603.html#alwarpet"
+    },
+    {
+      "name": "Mylapore",
+      "district": "Chennai",
+      "sub_district": "Mylapore",
+      "url": "https://vlist.in/district/603.html#mylapore"
+    },
+    {
+      "name": "R.A. Puram",
+      "district": "Chennai",
+      "sub_district": "Mylapore",
+      "url": "https://vlist.in/district/603.html#r.a.-puram"
+    },
+    {
+      "name": "Royapettah",
+      "district": "Chennai",
+      "sub_district": "Mylapore",
+      "url": "https://vlist.in/district/603.html#royapettah"
+    },
+    {
+      "name": "Santhome",
+      "district": "Chennai",
+      "sub_district": "Mylapore",
+      "url": "https://vlist.in/district/603.html#santhome"
+    },
+    {
+      "name": "Ayanavaram",
+      "district": "Chennai",
+      "sub_district": "Perambur",
+      "url": "https://vlist.in/district/603.html#ayanavaram"
+    },
+    {
+      "name": "Kolathur",
+      "district": "Chennai",
+      "sub_district": "Perambur",
+      "url": "https://vlist.in/district/603.html#kolathur"
+    },
+    {
+      "name": "Perambur",
+      "district": "Chennai",
+      "sub_district": "Perambur",
+      "url": "https://vlist.in/district/603.html#perambur"
+    },
+    {
+      "name": "Purasawalkam",
+      "district": "Chennai",
+      "sub_district": "Perambur",
+      "url": "https://vlist.in/district/603.html#purasawalkam"
+    },
+    {
+      "name": "Vyasarpadi",
+      "district": "Chennai",
+      "sub_district": "Perambur",
+      "url": "https://vlist.in/district/603.html#vyasarpadi"
+    },
+    {
+      "name": "Madipakkam",
+      "district": "Chennai",
+      "sub_district": "Velachery",
+      "url": "https://vlist.in/district/603.html#madipakkam"
+    },
+    {
+      "name": "Pallikaranai",
+      "district": "Chennai",
+      "sub_district": "Velachery",
+      "url": "https://vlist.in/district/603.html#pallikaranai"
+    },
+    {
+      "name": "Taramani",
+      "district": "Chennai",
+      "sub_district": "Velachery",
+      "url": "https://vlist.in/district/603.html#taramani"
+    },
+    {
+      "name": "Velachery",
+      "district": "Chennai",
+      "sub_district": "Velachery",
+      "url": "https://vlist.in/district/603.html#velachery"
+    },
+    {
+      "name": "Athipalayam",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#athipalayam"
+    },
+    {
+      "name": "Chinnavedampatti",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#chinnavedampatti"
+    },
+    {
+      "name": "Ganapathy",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#ganapathy"
+    },
+    {
+      "name": "Idikarai",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#idikarai"
+    },
+    {
+      "name": "Kavundampalayam",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#kavundampalayam"
+    },
+    {
+      "name": "Kurudampalayam",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#kurudampalayam"
+    },
+    {
+      "name": "Narasimhanaickenpalayam",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#narasimhanaickenpalayam"
+    },
+    {
+      "name": "Periyanaickenpalayam",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#periyanaickenpalayam"
+    },
+    {
+      "name": "Saravanampatti",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#saravanampatti"
+    },
+    {
+      "name": "Sarcarsamakulam",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#sarcarsamakulam"
+    },
+    {
+      "name": "Thudiyalur",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#thudiyalur"
+    },
+    {
+      "name": "Veerapandi",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore North",
+      "url": "https://vlist.in/district/632.html#veerapandi"
+    },
+    {
+      "name": "Chettipalayam",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#chettipalayam"
+    },
+    {
+      "name": "Ettimadai",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#ettimadai"
+    },
+    {
+      "name": "Kuniyamuthur",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#kuniyamuthur"
+    },
+    {
+      "name": "Kovaipudur",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#kovaipudur"
+    },
+    {
+      "name": "Madukkarai",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#madukkarai"
+    },
+    {
+      "name": "Malumichampatti",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#malumichampatti"
+    },
+    {
+      "name": "Othakalmandapam",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#othakalmandapam"
+    },
+    {
+      "name": "Perur",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#perur"
+    },
+    {
+      "name": "Sundarapuram",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#sundarapuram"
+    },
+    {
+      "name": "Thondamuthur",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#thondamuthur"
+    },
+    {
+      "name": "Vadavalli",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#vadavalli"
+    },
+    {
+      "name": "Vellalore",
+      "district": "Coimbatore",
+      "sub_district": "Coimbatore South",
+      "url": "https://vlist.in/district/632.html#vellalore"
+    },
+    {
+      "name": "Anaimalai",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#anaimalai"
+    },
+    {
+      "name": "Achipatti",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#achipatti"
+    },
+    {
+      "name": "Gomangalampudur",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#gomangalampudur"
+    },
+    {
+      "name": "Kollampatti",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#kollampatti"
+    },
+    {
+      "name": "Kottur",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#kottur"
+    },
+    {
+      "name": "Negamam",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#negamam"
+    },
+    {
+      "name": "Pollachi (M)",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#pollachi-(m)"
+    },
+    {
+      "name": "Samathur",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#samathur"
+    },
+    {
+      "name": "Suleeswaranpatti",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#suleeswaranpatti"
+    },
+    {
+      "name": "Vettaikaranpudur",
+      "district": "Coimbatore",
+      "sub_district": "Pollachi",
+      "url": "https://vlist.in/district/632.html#vettaikaranpudur"
+    },
+    {
+      "name": "Bhavani Sagar",
+      "district": "Coimbatore",
+      "sub_district": "Mettupalayam",
+      "url": "https://vlist.in/district/632.html#bhavani-sagar"
+    },
+    {
+      "name": "Jothipuram",
+      "district": "Coimbatore",
+      "sub_district": "Mettupalayam",
+      "url": "https://vlist.in/district/632.html#jothipuram"
+    },
+    {
+      "name": "Karamadai",
+      "district": "Coimbatore",
+      "sub_district": "Mettupalayam",
+      "url": "https://vlist.in/district/632.html#karamadai"
+    },
+    {
+      "name": "Mettupalayam (M)",
+      "district": "Coimbatore",
+      "sub_district": "Mettupalayam",
+      "url": "https://vlist.in/district/632.html#mettupalayam-(m)"
+    },
+    {
+      "name": "Odanthurai",
+      "district": "Coimbatore",
+      "sub_district": "Mettupalayam",
+      "url": "https://vlist.in/district/632.html#odanthurai"
+    },
+    {
+      "name": "Sirumugai",
+      "district": "Coimbatore",
+      "sub_district": "Mettupalayam",
+      "url": "https://vlist.in/district/632.html#sirumugai"
+    },
+    {
+      "name": "Velliangadu",
+      "district": "Coimbatore",
+      "sub_district": "Mettupalayam",
+      "url": "https://vlist.in/district/632.html#velliangadu"
+    },
+    {
+      "name": "Alapakkam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#alapakkam"
+    },
+    {
+      "name": "Bandipalayam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#bandipalayam"
+    },
+    {
+      "name": "Cuddalore (M)",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#cuddalore-(m)"
+    },
+    {
+      "name": "Gundu Uppalavadi",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#gundu-uppalavadi"
+    },
+    {
+      "name": "Kapiyampuliyur",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#kapiyampuliyur"
+    },
+    {
+      "name": "Kottakuppam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#kottakuppam"
+    },
+    {
+      "name": "Manjakuppam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#manjakuppam"
+    },
+    {
+      "name": "Nellikuppam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#nellikuppam"
+    },
+    {
+      "name": "Pachayankuppam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#pachayankuppam"
+    },
+    {
+      "name": "Pathirikuppam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#pathirikuppam"
+    },
+    {
+      "name": "Reddiyarapalayam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#reddiyarapalayam"
+    },
+    {
+      "name": "Thirupapuliyur",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#thirupapuliyur"
+    },
+    {
+      "name": "Vandipalayam",
+      "district": "Cuddalore",
+      "sub_district": "Cuddalore",
+      "url": "https://vlist.in/district/617.html#vandipalayam"
+    },
+    {
+      "name": "Annamalai Nagar",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#annamalai-nagar"
+    },
+    {
+      "name": "Bhuvanagiri",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#bhuvanagiri"
+    },
+    {
+      "name": "Chidambaram (M)",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#chidambaram-(m)"
+    },
+    {
+      "name": "Killai",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#killai"
+    },
+    {
+      "name": "Kothattai",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#kothattai"
+    },
+    {
+      "name": "Lalpettai",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#lalpettai"
+    },
+    {
+      "name": "Parangipettai",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#parangipettai"
+    },
+    {
+      "name": "Pichavaram",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#pichavaram"
+    },
+    {
+      "name": "Porto Novo",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#porto-novo"
+    },
+    {
+      "name": "Sethiathoppu",
+      "district": "Cuddalore",
+      "sub_district": "Chidambaram",
+      "url": "https://vlist.in/district/617.html#sethiathoppu"
+    },
+    {
+      "name": "Anguchettipalayam",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#anguchettipalayam"
+    },
+    {
+      "name": "Elamangalam",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#elamangalam"
+    },
+    {
+      "name": "Kadampuliyur",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#kadampuliyur"
+    },
+    {
+      "name": "Karunguzhi",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#karunguzhi"
+    },
+    {
+      "name": "Kondamur",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#kondamur"
+    },
+    {
+      "name": "Marungur",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#marungur"
+    },
+    {
+      "name": "Nellikuppam",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#nellikuppam"
+    },
+    {
+      "name": "Panruti (M)",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#panruti-(m)"
+    },
+    {
+      "name": "Pudupet",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#pudupet"
+    },
+    {
+      "name": "Thorapadi",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#thorapadi"
+    },
+    {
+      "name": "Visoor",
+      "district": "Cuddalore",
+      "sub_district": "Panruti",
+      "url": "https://vlist.in/district/617.html#visoor"
+    },
+    {
+      "name": "Aladi",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#aladi"
+    },
+    {
+      "name": "Asanur",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#asanur"
+    },
+    {
+      "name": "Elavanasur",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#elavanasur"
+    },
+    {
+      "name": "Mangalampet",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#mangalampet"
+    },
+    {
+      "name": "Pennadam",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#pennadam"
+    },
+    {
+      "name": "Sitheri",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#sitheri"
+    },
+    {
+      "name": "T.V. Nallur",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#t.v.-nallur"
+    },
+    {
+      "name": "Veepur",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#veepur"
+    },
+    {
+      "name": "Vriddhachalam (M)",
+      "district": "Cuddalore",
+      "sub_district": "Vriddhachalam",
+      "url": "https://vlist.in/district/617.html#vriddhachalam-(m)"
+    },
+    {
+      "name": "Adagapadi",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#adagapadi"
+    },
+    {
+      "name": "Adiyamankottai",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#adiyamankottai"
+    },
+    {
+      "name": "Bharathipuram",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#bharathipuram"
+    },
+    {
+      "name": "Dharmapuri (M)",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#dharmapuri-(m)"
+    },
+    {
+      "name": "Hogenakkal",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#hogenakkal"
+    },
+    {
+      "name": "Indur",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#indur"
+    },
+    {
+      "name": "Kadagathur",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#kadagathur"
+    },
+    {
+      "name": "Kariyamangalam",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#kariyamangalam"
+    },
+    {
+      "name": "Nallampalli",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#nallampalli"
+    },
+    {
+      "name": "Pennagaram",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#pennagaram"
+    },
+    {
+      "name": "Sogathur",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#sogathur"
+    },
+    {
+      "name": "Vennampatti",
+      "district": "Dharmapuri",
+      "sub_district": "Dharmapuri",
+      "url": "https://vlist.in/district/630.html#vennampatti"
+    },
+    {
+      "name": "Achalwadi",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#achalwadi"
+    },
+    {
+      "name": "Bairnayakanpatti",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#bairnayakanpatti"
+    },
+    {
+      "name": "Harur (M)",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#harur-(m)"
+    },
+    {
+      "name": "Kambainallur",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#kambainallur"
+    },
+    {
+      "name": "Kokkarapatti",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#kokkarapatti"
+    },
+    {
+      "name": "Kottapatti",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#kottapatti"
+    },
+    {
+      "name": "Morappur",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#morappur"
+    },
+    {
+      "name": "Pappireddipatti",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#pappireddipatti"
+    },
+    {
+      "name": "Tenkaraikottai",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#tenkaraikottai"
+    },
+    {
+      "name": "Theerthamalai",
+      "district": "Dharmapuri",
+      "sub_district": "Harur",
+      "url": "https://vlist.in/district/630.html#theerthamalai"
+    },
+    {
+      "name": "Agaram",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#agaram"
+    },
+    {
+      "name": "Adiyanuthu",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#adiyanuthu"
+    },
+    {
+      "name": "Balakrishnapuram",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#balakrishnapuram"
+    },
+    {
+      "name": "Chettinaickenpatti",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#chettinaickenpatti"
+    },
+    {
+      "name": "Dindigul (M)",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#dindigul-(m)"
+    },
+    {
+      "name": "Kannivadi",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#kannivadi"
+    },
+    {
+      "name": "Moolanur",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#moolanur"
+    },
+    {
+      "name": "Reddiarchatram",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#reddiarchatram"
+    },
+    {
+      "name": "Sirumalai",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#sirumalai"
+    },
+    {
+      "name": "Thadicombu",
+      "district": "Dindigul",
+      "sub_district": "Dindigul West",
+      "url": "https://vlist.in/district/612.html#thadicombu"
+    },
+    {
+      "name": "Attuvampatti",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#attuvampatti"
+    },
+    {
+      "name": "Kodaikanal (M)",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#kodaikanal-(m)"
+    },
+    {
+      "name": "Kookal",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#kookal"
+    },
+    {
+      "name": "Mannavanur",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#mannavanur"
+    },
+    {
+      "name": "Poombarai",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#poombarai"
+    },
+    {
+      "name": "Pannaikadu",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#pannaikadu"
+    },
+    {
+      "name": "Shenbaganur",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#shenbaganur"
+    },
+    {
+      "name": "Vattavada",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#vattavada"
+    },
+    {
+      "name": "Vilpatti",
+      "district": "Dindigul",
+      "sub_district": "Kodaikanal",
+      "url": "https://vlist.in/district/612.html#vilpatti"
+    },
+    {
+      "name": "Ayakudi",
+      "district": "Dindigul",
+      "sub_district": "Palani",
+      "url": "https://vlist.in/district/612.html#ayakudi"
+    },
+    {
+      "name": "Balasamudram",
+      "district": "Dindigul",
+      "sub_district": "Palani",
+      "url": "https://vlist.in/district/612.html#balasamudram"
+    },
+    {
+      "name": "Neikarapatti",
+      "district": "Dindigul",
+      "sub_district": "Palani",
+      "url": "https://vlist.in/district/612.html#neikarapatti"
+    },
+    {
+      "name": "Oddanchatram",
+      "district": "Dindigul",
+      "sub_district": "Palani",
+      "url": "https://vlist.in/district/612.html#oddanchatram"
+    },
+    {
+      "name": "Palani (M)",
+      "district": "Dindigul",
+      "sub_district": "Palani",
+      "url": "https://vlist.in/district/612.html#palani-(m)"
+    },
+    {
+      "name": "Pappampatti",
+      "district": "Dindigul",
+      "sub_district": "Palani",
+      "url": "https://vlist.in/district/612.html#pappampatti"
+    },
+    {
+      "name": "Swaminathapuram",
+      "district": "Dindigul",
+      "sub_district": "Palani",
+      "url": "https://vlist.in/district/612.html#swaminathapuram"
+    },
+    {
+      "name": "Thoppampatti",
+      "district": "Dindigul",
+      "sub_district": "Palani",
+      "url": "https://vlist.in/district/612.html#thoppampatti"
+    },
+    {
+      "name": "Avalpoondurai",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#avalpoondurai"
+    },
+    {
+      "name": "Bhavani",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#bhavani"
+    },
+    {
+      "name": "Chithode",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#chithode"
+    },
+    {
+      "name": "Erode (M)",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#erode-(m)"
+    },
+    {
+      "name": "Kanjikoil",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#kanjikoil"
+    },
+    {
+      "name": "Kasipalayam",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#kasipalayam"
+    },
+    {
+      "name": "Kollankoil",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#kollankoil"
+    },
+    {
+      "name": "Modakurichi",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#modakurichi"
+    },
+    {
+      "name": "Perundurai",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#perundurai"
+    },
+    {
+      "name": "Solar",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#solar"
+    },
+    {
+      "name": "Surampatti",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#surampatti"
+    },
+    {
+      "name": "Vellode",
+      "district": "Erode",
+      "sub_district": "Erode",
+      "url": "https://vlist.in/district/610.html#vellode"
+    },
+    {
+      "name": "Anthiyur",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#anthiyur"
+    },
+    {
+      "name": "Bhavanisagar",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#bhavanisagar"
+    },
+    {
+      "name": "Elathur",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#elathur"
+    },
+    {
+      "name": "Gobichettipalayam (M)",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#gobichettipalayam-(m)"
+    },
+    {
+      "name": "Kavindapadi",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#kavindapadi"
+    },
+    {
+      "name": "Kullampalayam",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#kullampalayam"
+    },
+    {
+      "name": "Lakkampatti",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#lakkampatti"
+    },
+    {
+      "name": "Nambiyur",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#nambiyur"
+    },
+    {
+      "name": "Pariyur",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#pariyur"
+    },
+    {
+      "name": "Sathyamangalam (M)",
+      "district": "Erode",
+      "sub_district": "Gobichettipalayam",
+      "url": "https://vlist.in/district/610.html#sathyamangalam-(m)"
+    },
+    {
+      "name": "Chinnasalem",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#chinnasalem"
+    },
+    {
+      "name": "Emaper",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#emaper"
+    },
+    {
+      "name": "Kachirapalayam",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#kachirapalayam"
+    },
+    {
+      "name": "Kallakurichi (M)",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#kallakurichi-(m)"
+    },
+    {
+      "name": "Kalrayan Hills",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#kalrayan-hills"
+    },
+    {
+      "name": "Manalurpet",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#manalurpet"
+    },
+    {
+      "name": "Rishivandiyam",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#rishivandiyam"
+    },
+    {
+      "name": "Sankarapuram",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#sankarapuram"
+    },
+    {
+      "name": "Tirukoilur",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#tirukoilur"
+    },
+    {
+      "name": "Ulundurpet",
+      "district": "Kallakurichi",
+      "sub_district": "Kallakurichi",
+      "url": "https://vlist.in/district/607.html#ulundurpet"
+    },
+    {
+      "name": "Damal",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#damal"
+    },
+    {
+      "name": "Enathur",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#enathur"
+    },
+    {
+      "name": "Kanchipuram (M)",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#kanchipuram-(m)"
+    },
+    {
+      "name": "Nathapettai",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#nathapettai"
+    },
+    {
+      "name": "Orikkai",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#orikkai"
+    },
+    {
+      "name": "Periya Kanchipuram",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#periya-kanchipuram"
+    },
+    {
+      "name": "Salavakkam",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#salavakkam"
+    },
+    {
+      "name": "Sevilimedu",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#sevilimedu"
+    },
+    {
+      "name": "Tirupukuzhi",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#tirupukuzhi"
+    },
+    {
+      "name": "Walajabad",
+      "district": "Kanchipuram",
+      "sub_district": "Kanchipuram",
+      "url": "https://vlist.in/district/604.html#walajabad"
+    },
+    {
+      "name": "Irunattukottai",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#irunattukottai"
+    },
+    {
+      "name": "Katrambakkam",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#katrambakkam"
+    },
+    {
+      "name": "Mambakkam",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#mambakkam"
+    },
+    {
+      "name": "Mathur",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#mathur"
+    },
+    {
+      "name": "Nemili",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#nemili"
+    },
+    {
+      "name": "Oragadam",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#oragadam"
+    },
+    {
+      "name": "Pillaipakkam",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#pillaipakkam"
+    },
+    {
+      "name": "Sriperumbudur (M)",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#sriperumbudur-(m)"
+    },
+    {
+      "name": "Sunguvarchatram",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#sunguvarchatram"
+    },
+    {
+      "name": "Vallam",
+      "district": "Kanchipuram",
+      "sub_district": "Sriperumbudur",
+      "url": "https://vlist.in/district/604.html#vallam"
+    },
+    {
+      "name": "Agasteeswaram",
+      "district": "Kanyakumari",
+      "sub_district": "Agasteeswaram",
+      "url": "https://vlist.in/district/629.html#agasteeswaram"
+    },
+    {
+      "name": "Kanyakumari (M)",
+      "district": "Kanyakumari",
+      "sub_district": "Agasteeswaram",
+      "url": "https://vlist.in/district/629.html#kanyakumari-(m)"
+    },
+    {
+      "name": "Kottaram",
+      "district": "Kanyakumari",
+      "sub_district": "Agasteeswaram",
+      "url": "https://vlist.in/district/629.html#kottaram"
+    },
+    {
+      "name": "Nagercoil (M)",
+      "district": "Kanyakumari",
+      "sub_district": "Agasteeswaram",
+      "url": "https://vlist.in/district/629.html#nagercoil-(m)"
+    },
+    {
+      "name": "Suchindram",
+      "district": "Kanyakumari",
+      "sub_district": "Agasteeswaram",
+      "url": "https://vlist.in/district/629.html#suchindram"
+    },
+    {
+      "name": "Theroor",
+      "district": "Kanyakumari",
+      "sub_district": "Agasteeswaram",
+      "url": "https://vlist.in/district/629.html#theroor"
+    },
+    {
+      "name": "Vadasery",
+      "district": "Kanyakumari",
+      "sub_district": "Agasteeswaram",
+      "url": "https://vlist.in/district/629.html#vadasery"
+    },
+    {
+      "name": "Colachel",
+      "district": "Kanyakumari",
+      "sub_district": "Thuckalay",
+      "url": "https://vlist.in/district/629.html#colachel"
+    },
+    {
+      "name": "Eraniel",
+      "district": "Kanyakumari",
+      "sub_district": "Thuckalay",
+      "url": "https://vlist.in/district/629.html#eraniel"
+    },
+    {
+      "name": "Kalkulam",
+      "district": "Kanyakumari",
+      "sub_district": "Thuckalay",
+      "url": "https://vlist.in/district/629.html#kalkulam"
+    },
+    {
+      "name": "Padmanabhapuram",
+      "district": "Kanyakumari",
+      "sub_district": "Thuckalay",
+      "url": "https://vlist.in/district/629.html#padmanabhapuram"
+    },
+    {
+      "name": "Thuckalay (M)",
+      "district": "Kanyakumari",
+      "sub_district": "Thuckalay",
+      "url": "https://vlist.in/district/629.html#thuckalay-(m)"
+    },
+    {
+      "name": "Villukuri",
+      "district": "Kanyakumari",
+      "sub_district": "Thuckalay",
+      "url": "https://vlist.in/district/629.html#villukuri"
+    },
+    {
+      "name": "Andankoil",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#andankoil"
+    },
+    {
+      "name": "Aravakurichi",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#aravakurichi"
+    },
+    {
+      "name": "Inam Karur",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#inam-karur"
+    },
+    {
+      "name": "Karur (M)",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#karur-(m)"
+    },
+    {
+      "name": "Krishnarayapuram",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#krishnarayapuram"
+    },
+    {
+      "name": "Kulithalai",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#kulithalai"
+    },
+    {
+      "name": "Nangavaram",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#nangavaram"
+    },
+    {
+      "name": "Pasupathipalayam",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#pasupathipalayam"
+    },
+    {
+      "name": "Punjaipugalur",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#punjaipugalur"
+    },
+    {
+      "name": "Thanthoni",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#thanthoni"
+    },
+    {
+      "name": "Vellianai",
+      "district": "Karur",
+      "sub_district": "Karur",
+      "url": "https://vlist.in/district/613.html#vellianai"
+    },
+    {
+      "name": "Bagalur",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#bagalur"
+    },
+    {
+      "name": "Bargur",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#bargur"
+    },
+    {
+      "name": "Denkanikottai",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#denkanikottai"
+    },
+    {
+      "name": "Hosur (M)",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#hosur-(m)"
+    },
+    {
+      "name": "Juzuvadi",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#juzuvadi"
+    },
+    {
+      "name": "Mathigiri",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#mathigiri"
+    },
+    {
+      "name": "Mornapalli",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#mornapalli"
+    },
+    {
+      "name": "Nallur",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#nallur"
+    },
+    {
+      "name": "SIPCOT Industrial Complex",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#sipcot-industrial-complex"
+    },
+    {
+      "name": "Zuzuvadi",
+      "district": "Krishnagiri",
+      "sub_district": "Hosur",
+      "url": "https://vlist.in/district/631.html#zuzuvadi"
+    },
+    {
+      "name": "Bargur",
+      "district": "Krishnagiri",
+      "sub_district": "Krishnagiri",
+      "url": "https://vlist.in/district/631.html#bargur"
+    },
+    {
+      "name": "Kaveripattinam",
+      "district": "Krishnagiri",
+      "sub_district": "Krishnagiri",
+      "url": "https://vlist.in/district/631.html#kaveripattinam"
+    },
+    {
+      "name": "Kelamangalam",
+      "district": "Krishnagiri",
+      "sub_district": "Krishnagiri",
+      "url": "https://vlist.in/district/631.html#kelamangalam"
+    },
+    {
+      "name": "Krishnagiri (M)",
+      "district": "Krishnagiri",
+      "sub_district": "Krishnagiri",
+      "url": "https://vlist.in/district/631.html#krishnagiri-(m)"
+    },
+    {
+      "name": "Maharajakadai",
+      "district": "Krishnagiri",
+      "sub_district": "Krishnagiri",
+      "url": "https://vlist.in/district/631.html#maharajakadai"
+    },
+    {
+      "name": "Pochampalli",
+      "district": "Krishnagiri",
+      "sub_district": "Krishnagiri",
+      "url": "https://vlist.in/district/631.html#pochampalli"
+    },
+    {
+      "name": "Rayakottai",
+      "district": "Krishnagiri",
+      "sub_district": "Krishnagiri",
+      "url": "https://vlist.in/district/631.html#rayakottai"
+    },
+    {
+      "name": "Uthangarai",
+      "district": "Krishnagiri",
+      "sub_district": "Krishnagiri",
+      "url": "https://vlist.in/district/631.html#uthangarai"
+    },
+    {
+      "name": "Alanganallur",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#alanganallur"
+    },
+    {
+      "name": "Anaiyur",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#anaiyur"
+    },
+    {
+      "name": "Koodal Nagar",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#koodal-nagar"
+    },
+    {
+      "name": "Othakadai",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#othakadai"
+    },
+    {
+      "name": "Paravai",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#paravai"
+    },
+    {
+      "name": "Samayanallur",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#samayanallur"
+    },
+    {
+      "name": "Sikkandar Chavadi",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#sikkandar-chavadi"
+    },
+    {
+      "name": "Tallakulam",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#tallakulam"
+    },
+    {
+      "name": "Thirupalai",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#thirupalai"
+    },
+    {
+      "name": "Vadipatti",
+      "district": "Madurai",
+      "sub_district": "Madurai North",
+      "url": "https://vlist.in/district/623.html#vadipatti"
+    },
+    {
+      "name": "Avaniyapuram",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#avaniyapuram"
+    },
+    {
+      "name": "Harveypatti",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#harveypatti"
+    },
+    {
+      "name": "K.Pudur",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#k.pudur"
+    },
+    {
+      "name": "Madurai (M)",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#madurai-(m)"
+    },
+    {
+      "name": "Melur",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#melur"
+    },
+    {
+      "name": "Palanganatham",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#palanganatham"
+    },
+    {
+      "name": "Thiruparankundram",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#thiruparankundram"
+    },
+    {
+      "name": "Tirumangalam",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#tirumangalam"
+    },
+    {
+      "name": "Usilampatti",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#usilampatti"
+    },
+    {
+      "name": "Villaripatti",
+      "district": "Madurai",
+      "sub_district": "Madurai South",
+      "url": "https://vlist.in/district/623.html#villaripatti"
+    },
+    {
+      "name": "Kollidam",
+      "district": "Mayiladuthurai",
+      "sub_district": "Mayiladuthurai",
+      "url": "https://vlist.in/district/618.html#kollidam"
+    },
+    {
+      "name": "Kuttalam",
+      "district": "Mayiladuthurai",
+      "sub_district": "Mayiladuthurai",
+      "url": "https://vlist.in/district/618.html#kuttalam"
+    },
+    {
+      "name": "Manalmedu",
+      "district": "Mayiladuthurai",
+      "sub_district": "Mayiladuthurai",
+      "url": "https://vlist.in/district/618.html#manalmedu"
+    },
+    {
+      "name": "Mayiladuthurai (M)",
+      "district": "Mayiladuthurai",
+      "sub_district": "Mayiladuthurai",
+      "url": "https://vlist.in/district/618.html#mayiladuthurai-(m)"
+    },
+    {
+      "name": "Poompuhar",
+      "district": "Mayiladuthurai",
+      "sub_district": "Mayiladuthurai",
+      "url": "https://vlist.in/district/618.html#poompuhar"
+    },
+    {
+      "name": "Sirkali",
+      "district": "Mayiladuthurai",
+      "sub_district": "Mayiladuthurai",
+      "url": "https://vlist.in/district/618.html#sirkali"
+    },
+    {
+      "name": "Tharangambadi",
+      "district": "Mayiladuthurai",
+      "sub_district": "Mayiladuthurai",
+      "url": "https://vlist.in/district/618.html#tharangambadi"
+    },
+    {
+      "name": "Tranquebar",
+      "district": "Mayiladuthurai",
+      "sub_district": "Mayiladuthurai",
+      "url": "https://vlist.in/district/618.html#tranquebar"
+    },
+    {
+      "name": "Kilvelur",
+      "district": "Nagapattinam",
+      "sub_district": "Nagapattinam",
+      "url": "https://vlist.in/district/618.html#kilvelur"
+    },
+    {
+      "name": "Nagore",
+      "district": "Nagapattinam",
+      "sub_district": "Nagapattinam",
+      "url": "https://vlist.in/district/618.html#nagore"
+    },
+    {
+      "name": "Nagapattinam (M)",
+      "district": "Nagapattinam",
+      "sub_district": "Nagapattinam",
+      "url": "https://vlist.in/district/618.html#nagapattinam-(m)"
+    },
+    {
+      "name": "Orathur",
+      "district": "Nagapattinam",
+      "sub_district": "Nagapattinam",
+      "url": "https://vlist.in/district/618.html#orathur"
+    },
+    {
+      "name": "Velankanni",
+      "district": "Nagapattinam",
+      "sub_district": "Nagapattinam",
+      "url": "https://vlist.in/district/618.html#velankanni"
+    },
+    {
+      "name": "Vedaranyam",
+      "district": "Nagapattinam",
+      "sub_district": "Nagapattinam",
+      "url": "https://vlist.in/district/618.html#vedaranyam"
+    },
+    {
+      "name": "Voimedu",
+      "district": "Nagapattinam",
+      "sub_district": "Nagapattinam",
+      "url": "https://vlist.in/district/618.html#voimedu"
+    },
+    {
+      "name": "Erumaipatti",
+      "district": "Namakkal",
+      "sub_district": "Namakkal",
+      "url": "https://vlist.in/district/609.html#erumaipatti"
+    },
+    {
+      "name": "Kolli Hills",
+      "district": "Namakkal",
+      "sub_district": "Namakkal",
+      "url": "https://vlist.in/district/609.html#kolli-hills"
+    },
+    {
+      "name": "Mohanur",
+      "district": "Namakkal",
+      "sub_district": "Namakkal",
+      "url": "https://vlist.in/district/609.html#mohanur"
+    },
+    {
+      "name": "Namakkal (M)",
+      "district": "Namakkal",
+      "sub_district": "Namakkal",
+      "url": "https://vlist.in/district/609.html#namakkal-(m)"
+    },
+    {
+      "name": "Puduchatram",
+      "district": "Namakkal",
+      "sub_district": "Namakkal",
+      "url": "https://vlist.in/district/609.html#puduchatram"
+    },
+    {
+      "name": "Rasipuram",
+      "district": "Namakkal",
+      "sub_district": "Namakkal",
+      "url": "https://vlist.in/district/609.html#rasipuram"
+    },
+    {
+      "name": "Sendamangalam",
+      "district": "Namakkal",
+      "sub_district": "Namakkal",
+      "url": "https://vlist.in/district/609.html#sendamangalam"
+    },
+    {
+      "name": "Valavanthi",
+      "district": "Namakkal",
+      "sub_district": "Namakkal",
+      "url": "https://vlist.in/district/609.html#valavanthi"
+    },
+    {
+      "name": "Elachipalayam",
+      "district": "Namakkal",
+      "sub_district": "Tiruchengodu",
+      "url": "https://vlist.in/district/609.html#elachipalayam"
+    },
+    {
+      "name": "Komarapalayam",
+      "district": "Namakkal",
+      "sub_district": "Tiruchengodu",
+      "url": "https://vlist.in/district/609.html#komarapalayam"
+    },
+    {
+      "name": "Mallasamudram",
+      "district": "Namakkal",
+      "sub_district": "Tiruchengodu",
+      "url": "https://vlist.in/district/609.html#mallasamudram"
+    },
+    {
+      "name": "Pallipalayam",
+      "district": "Namakkal",
+      "sub_district": "Tiruchengodu",
+      "url": "https://vlist.in/district/609.html#pallipalayam"
+    },
+    {
+      "name": "Paramathi-Velur",
+      "district": "Namakkal",
+      "sub_district": "Tiruchengodu",
+      "url": "https://vlist.in/district/609.html#paramathi-velur"
+    },
+    {
+      "name": "Tiruchengodu (M)",
+      "district": "Namakkal",
+      "sub_district": "Tiruchengodu",
+      "url": "https://vlist.in/district/609.html#tiruchengodu-(m)"
+    },
+    {
+      "name": "Coonoor (M)",
+      "district": "Nilgiris",
+      "sub_district": "Udhagamandalam (Ooty)",
+      "url": "https://vlist.in/district/611.html#coonoor-(m)"
+    },
+    {
+      "name": "Gudalur (M)",
+      "district": "Nilgiris",
+      "sub_district": "Udhagamandalam (Ooty)",
+      "url": "https://vlist.in/district/611.html#gudalur-(m)"
+    },
+    {
+      "name": "Kotagiri",
+      "district": "Nilgiris",
+      "sub_district": "Udhagamandalam (Ooty)",
+      "url": "https://vlist.in/district/611.html#kotagiri"
+    },
+    {
+      "name": "Ketti",
+      "district": "Nilgiris",
+      "sub_district": "Udhagamandalam (Ooty)",
+      "url": "https://vlist.in/district/611.html#ketti"
+    },
+    {
+      "name": "Lovedale",
+      "district": "Nilgiris",
+      "sub_district": "Udhagamandalam (Ooty)",
+      "url": "https://vlist.in/district/611.html#lovedale"
+    },
+    {
+      "name": "Manjoor",
+      "district": "Nilgiris",
+      "sub_district": "Udhagamandalam (Ooty)",
+      "url": "https://vlist.in/district/611.html#manjoor"
+    },
+    {
+      "name": "Ooty (M)",
+      "district": "Nilgiris",
+      "sub_district": "Udhagamandalam (Ooty)",
+      "url": "https://vlist.in/district/611.html#ooty-(m)"
+    },
+    {
+      "name": "Wellington",
+      "district": "Nilgiris",
+      "sub_district": "Udhagamandalam (Ooty)",
+      "url": "https://vlist.in/district/611.html#wellington"
+    },
+    {
+      "name": "Alathur",
+      "district": "Perambalur",
+      "sub_district": "Perambalur",
+      "url": "https://vlist.in/district/615.html#alathur"
+    },
+    {
+      "name": "Chettikulam",
+      "district": "Perambalur",
+      "sub_district": "Perambalur",
+      "url": "https://vlist.in/district/615.html#chettikulam"
+    },
+    {
+      "name": "Kurumbalur",
+      "district": "Perambalur",
+      "sub_district": "Perambalur",
+      "url": "https://vlist.in/district/615.html#kurumbalur"
+    },
+    {
+      "name": "Labbaikudikadu",
+      "district": "Perambalur",
+      "sub_district": "Perambalur",
+      "url": "https://vlist.in/district/615.html#labbaikudikadu"
+    },
+    {
+      "name": "Perambalur (M)",
+      "district": "Perambalur",
+      "sub_district": "Perambalur",
+      "url": "https://vlist.in/district/615.html#perambalur-(m)"
+    },
+    {
+      "name": "Poolambadi",
+      "district": "Perambalur",
+      "sub_district": "Perambalur",
+      "url": "https://vlist.in/district/615.html#poolambadi"
+    },
+    {
+      "name": "Veppanthattai",
+      "district": "Perambalur",
+      "sub_district": "Perambalur",
+      "url": "https://vlist.in/district/615.html#veppanthattai"
+    },
+    {
+      "name": "Alangudi",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#alangudi"
+    },
+    {
+      "name": "Aranthangi (M)",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#aranthangi-(m)"
+    },
+    {
+      "name": "Avudaiyarkoil",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#avudaiyarkoil"
+    },
+    {
+      "name": "Gandarvakottai",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#gandarvakottai"
+    },
+    {
+      "name": "Illuppur",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#illuppur"
+    },
+    {
+      "name": "Karambakudi",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#karambakudi"
+    },
+    {
+      "name": "Keeranur",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#keeranur"
+    },
+    {
+      "name": "Manamelkudi",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#manamelkudi"
+    },
+    {
+      "name": "Ponnamaravathi",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#ponnamaravathi"
+    },
+    {
+      "name": "Pudukkottai (M)",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#pudukkottai-(m)"
+    },
+    {
+      "name": "Thirumayam",
+      "district": "Pudukkottai",
+      "sub_district": "Pudukkottai",
+      "url": "https://vlist.in/district/621.html#thirumayam"
+    },
+    {
+      "name": "Abiramam",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#abiramam"
+    },
+    {
+      "name": "Kamuthi",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#kamuthi"
+    },
+    {
+      "name": "Kilakarai",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#kilakarai"
+    },
+    {
+      "name": "Mudukulathur",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#mudukulathur"
+    },
+    {
+      "name": "Paramakudi (M)",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#paramakudi-(m)"
+    },
+    {
+      "name": "Ramanathapuram (M)",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#ramanathapuram-(m)"
+    },
+    {
+      "name": "Rameswaram (M)",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#rameswaram-(m)"
+    },
+    {
+      "name": "Sayalgudi",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#sayalgudi"
+    },
+    {
+      "name": "Tiruvadanai",
+      "district": "Ramanathapuram",
+      "sub_district": "Ramanathapuram",
+      "url": "https://vlist.in/district/626.html#tiruvadanai"
+    },
+    {
+      "name": "Arakkonam (M)",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#arakkonam-(m)"
+    },
+    {
+      "name": "Arcot (M)",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#arcot-(m)"
+    },
+    {
+      "name": "Kaveripakkam",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#kaveripakkam"
+    },
+    {
+      "name": "Nemili",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#nemili"
+    },
+    {
+      "name": "Panapakkam",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#panapakkam"
+    },
+    {
+      "name": "Ranipet (M)",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#ranipet-(m)"
+    },
+    {
+      "name": "SIPCOT Ranipet",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#sipcot-ranipet"
+    },
+    {
+      "name": "Sholinghur",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#sholinghur"
+    },
+    {
+      "name": "Walajah (M)",
+      "district": "Ranipet",
+      "sub_district": "Ranipet",
+      "url": "https://vlist.in/district/605.html#walajah-(m)"
+    },
+    {
+      "name": "Attur (M)",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#attur-(m)"
+    },
+    {
+      "name": "Gangavalli",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#gangavalli"
+    },
+    {
+      "name": "Idappadi (M)",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#idappadi-(m)"
+    },
+    {
+      "name": "Jalarpet",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#jalarpet"
+    },
+    {
+      "name": "Kadayampatti",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#kadayampatti"
+    },
+    {
+      "name": "Kannankurichi",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#kannankurichi"
+    },
+    {
+      "name": "Karuppur",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#karuppur"
+    },
+    {
+      "name": "Mettur (M)",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#mettur-(m)"
+    },
+    {
+      "name": "Omalur",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#omalur"
+    },
+    {
+      "name": "Salem (M)",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#salem-(m)"
+    },
+    {
+      "name": "Sankari",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#sankari"
+    },
+    {
+      "name": "Thammampatti",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#thammampatti"
+    },
+    {
+      "name": "Valapady",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#valapady"
+    },
+    {
+      "name": "Yercaud",
+      "district": "Salem",
+      "sub_district": "Salem",
+      "url": "https://vlist.in/district/608.html#yercaud"
+    },
+    {
+      "name": "Devakottai (M)",
+      "district": "Sivaganga",
+      "sub_district": "Sivaganga",
+      "url": "https://vlist.in/district/622.html#devakottai-(m)"
+    },
+    {
+      "name": "Ilayangudi",
+      "district": "Sivaganga",
+      "sub_district": "Sivaganga",
+      "url": "https://vlist.in/district/622.html#ilayangudi"
+    },
+    {
+      "name": "Kalaiyarkoil",
+      "district": "Sivaganga",
+      "sub_district": "Sivaganga",
+      "url": "https://vlist.in/district/622.html#kalaiyarkoil"
+    },
+    {
+      "name": "Karaikudi (M)",
+      "district": "Sivaganga",
+      "sub_district": "Sivaganga",
+      "url": "https://vlist.in/district/622.html#karaikudi-(m)"
+    },
+    {
+      "name": "Manamadurai",
+      "district": "Sivaganga",
+      "sub_district": "Sivaganga",
+      "url": "https://vlist.in/district/622.html#manamadurai"
+    },
+    {
+      "name": "Sivaganga (M)",
+      "district": "Sivaganga",
+      "sub_district": "Sivaganga",
+      "url": "https://vlist.in/district/622.html#sivaganga-(m)"
+    },
+    {
+      "name": "Singampunari",
+      "district": "Sivaganga",
+      "sub_district": "Sivaganga",
+      "url": "https://vlist.in/district/622.html#singampunari"
+    },
+    {
+      "name": "Thirupuvanam",
+      "district": "Sivaganga",
+      "sub_district": "Sivaganga",
+      "url": "https://vlist.in/district/622.html#thirupuvanam"
+    },
+    {
+      "name": "Alangulam",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#alangulam"
+    },
+    {
+      "name": "Kadayanallur (M)",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#kadayanallur-(m)"
+    },
+    {
+      "name": "Peraiyur",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#peraiyur"
+    },
+    {
+      "name": "Sankarankovil (M)",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#sankarankovil-(m)"
+    },
+    {
+      "name": "Shenkottai (M)",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#shenkottai-(m)"
+    },
+    {
+      "name": "Surandai",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#surandai"
+    },
+    {
+      "name": "Tenkasi (M)",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#tenkasi-(m)"
+    },
+    {
+      "name": "Vasudevanallur",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#vasudevanallur"
+    },
+    {
+      "name": "Veeravanallur",
+      "district": "Tenkasi",
+      "sub_district": "Tenkasi",
+      "url": "https://vlist.in/district/628.html#veeravanallur"
+    },
+    {
+      "name": "Budalur",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#budalur"
+    },
+    {
+      "name": "Kumbakonam (M)",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#kumbakonam-(m)"
+    },
+    {
+      "name": "Orathanadu",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#orathanadu"
+    },
+    {
+      "name": "Papanasam",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#papanasam"
+    },
+    {
+      "name": "Pattukkottai (M)",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#pattukkottai-(m)"
+    },
+    {
+      "name": "Peravurani",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#peravurani"
+    },
+    {
+      "name": "Thanjavur (M)",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#thanjavur-(m)"
+    },
+    {
+      "name": "Thiruvaiyaru",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#thiruvaiyaru"
+    },
+    {
+      "name": "Thiruvidaimarudur",
+      "district": "Thanjavur",
+      "sub_district": "Thanjavur",
+      "url": "https://vlist.in/district/620.html#thiruvidaimarudur"
+    },
+    {
+      "name": "Andipatti",
+      "district": "Theni",
+      "sub_district": "Theni",
+      "url": "https://vlist.in/district/624.html#andipatti"
+    },
+    {
+      "name": "Bodinayakanur (M)",
+      "district": "Theni",
+      "sub_district": "Theni",
+      "url": "https://vlist.in/district/624.html#bodinayakanur-(m)"
+    },
+    {
+      "name": "Cumbum (M)",
+      "district": "Theni",
+      "sub_district": "Theni",
+      "url": "https://vlist.in/district/624.html#cumbum-(m)"
+    },
+    {
+      "name": "Devadanapatti",
+      "district": "Theni",
+      "sub_district": "Theni",
+      "url": "https://vlist.in/district/624.html#devadanapatti"
+    },
+    {
+      "name": "Periyakulam (M)",
+      "district": "Theni",
+      "sub_district": "Theni",
+      "url": "https://vlist.in/district/624.html#periyakulam-(m)"
+    },
+    {
+      "name": "Theni Allinagaram (M)",
+      "district": "Theni",
+      "sub_district": "Theni",
+      "url": "https://vlist.in/district/624.html#theni-allinagaram-(m)"
+    },
+    {
+      "name": "Uthamapalayam",
+      "district": "Theni",
+      "sub_district": "Theni",
+      "url": "https://vlist.in/district/624.html#uthamapalayam"
+    },
+    {
+      "name": "Veerapandi",
+      "district": "Theni",
+      "sub_district": "Theni",
+      "url": "https://vlist.in/district/624.html#veerapandi"
+    },
+    {
+      "name": "Ambattur",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#ambattur"
+    },
+    {
+      "name": "Avadi (M)",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#avadi-(m)"
+    },
+    {
+      "name": "Gummidipoondi",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#gummidipoondi"
+    },
+    {
+      "name": "Kadambathur",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#kadambathur"
+    },
+    {
+      "name": "Minjur",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#minjur"
+    },
+    {
+      "name": "Poonamallee (M)",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#poonamallee-(m)"
+    },
+    {
+      "name": "Ponneri",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#ponneri"
+    },
+    {
+      "name": "Rk Pet",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#rk-pet"
+    },
+    {
+      "name": "Sholinghur",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#sholinghur"
+    },
+    {
+      "name": "Thiruthani (M)",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#thiruthani-(m)"
+    },
+    {
+      "name": "Thiruvallur (M)",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#thiruvallur-(m)"
+    },
+    {
+      "name": "Uthukottai",
+      "district": "Thiruvallur",
+      "sub_district": "Thiruvallur",
+      "url": "https://vlist.in/district/602.html#uthukottai"
+    },
+    {
+      "name": "Kudavasal",
+      "district": "Thiruvarur",
+      "sub_district": "Thiruvarur",
+      "url": "https://vlist.in/district/619.html#kudavasal"
+    },
+    {
+      "name": "Mannargudi (M)",
+      "district": "Thiruvarur",
+      "sub_district": "Thiruvarur",
+      "url": "https://vlist.in/district/619.html#mannargudi-(m)"
+    },
+    {
+      "name": "Nannilam",
+      "district": "Thiruvarur",
+      "sub_district": "Thiruvarur",
+      "url": "https://vlist.in/district/619.html#nannilam"
+    },
+    {
+      "name": "Needamangalam",
+      "district": "Thiruvarur",
+      "sub_district": "Thiruvarur",
+      "url": "https://vlist.in/district/619.html#needamangalam"
+    },
+    {
+      "name": "Thiruthuraipoondi (M)",
+      "district": "Thiruvarur",
+      "sub_district": "Thiruvarur",
+      "url": "https://vlist.in/district/619.html#thiruthuraipoondi-(m)"
+    },
+    {
+      "name": "Thiruvarur (M)",
+      "district": "Thiruvarur",
+      "sub_district": "Thiruvarur",
+      "url": "https://vlist.in/district/619.html#thiruvarur-(m)"
+    },
+    {
+      "name": "Valangaiman",
+      "district": "Thiruvarur",
+      "sub_district": "Thiruvarur",
+      "url": "https://vlist.in/district/619.html#valangaiman"
+    },
+    {
+      "name": "Eral",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#eral"
+    },
+    {
+      "name": "Ettayapuram",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#ettayapuram"
+    },
+    {
+      "name": "Kayathar",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#kayathar"
+    },
+    {
+      "name": "Kovilpatti (M)",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#kovilpatti-(m)"
+    },
+    {
+      "name": "Ottapidaram",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#ottapidaram"
+    },
+    {
+      "name": "Sathankulam",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#sathankulam"
+    },
+    {
+      "name": "Srivaikuntam",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#srivaikuntam"
+    },
+    {
+      "name": "Thoothukudi (M)",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#thoothukudi-(m)"
+    },
+    {
+      "name": "Tiruchendur",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#tiruchendur"
+    },
+    {
+      "name": "Vilathikulam",
+      "district": "Thoothukudi",
+      "sub_district": "Thoothukudi",
+      "url": "https://vlist.in/district/627.html#vilathikulam"
+    },
+    {
+      "name": "Kattuputhur",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#kattuputhur"
+    },
+    {
+      "name": "Lalgudi",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#lalgudi"
+    },
+    {
+      "name": "Manachanallur",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#manachanallur"
+    },
+    {
+      "name": "Manapparai (M)",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#manapparai-(m)"
+    },
+    {
+      "name": "Musiri",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#musiri"
+    },
+    {
+      "name": "Navalpattu",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#navalpattu"
+    },
+    {
+      "name": "Srirangam",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#srirangam"
+    },
+    {
+      "name": "Thottiyam",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#thottiyam"
+    },
+    {
+      "name": "Thuraiyur (M)",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#thuraiyur-(m)"
+    },
+    {
+      "name": "Tiruchirappalli (M)",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#tiruchirappalli-(m)"
+    },
+    {
+      "name": "Tiruverumbur",
+      "district": "Tiruchirappalli",
+      "sub_district": "Tiruchirappalli",
+      "url": "https://vlist.in/district/614.html#tiruverumbur"
+    },
+    {
+      "name": "Ambasamudram (M)",
+      "district": "Tirunelveli",
+      "sub_district": "Tirunelveli",
+      "url": "https://vlist.in/district/628.html#ambasamudram-(m)"
+    },
+    {
+      "name": "Cheranmahadevi",
+      "district": "Tirunelveli",
+      "sub_district": "Tirunelveli",
+      "url": "https://vlist.in/district/628.html#cheranmahadevi"
+    },
+    {
+      "name": "Manur",
+      "district": "Tirunelveli",
+      "sub_district": "Tirunelveli",
+      "url": "https://vlist.in/district/628.html#manur"
+    },
+    {
+      "name": "Nanguneri",
+      "district": "Tirunelveli",
+      "sub_district": "Tirunelveli",
+      "url": "https://vlist.in/district/628.html#nanguneri"
+    },
+    {
+      "name": "Palayamkottai",
+      "district": "Tirunelveli",
+      "sub_district": "Tirunelveli",
+      "url": "https://vlist.in/district/628.html#palayamkottai"
+    },
+    {
+      "name": "Radhapuram",
+      "district": "Tirunelveli",
+      "sub_district": "Tirunelveli",
+      "url": "https://vlist.in/district/628.html#radhapuram"
+    },
+    {
+      "name": "Tirunelveli (M)",
+      "district": "Tirunelveli",
+      "sub_district": "Tirunelveli",
+      "url": "https://vlist.in/district/628.html#tirunelveli-(m)"
+    },
+    {
+      "name": "Vikramasingapuram",
+      "district": "Tirunelveli",
+      "sub_district": "Tirunelveli",
+      "url": "https://vlist.in/district/628.html#vikramasingapuram"
+    },
+    {
+      "name": "Ambur (M)",
+      "district": "Tirupathur",
+      "sub_district": "Tirupathur",
+      "url": "https://vlist.in/district/605.html#ambur-(m)"
+    },
+    {
+      "name": "Jolarpettai",
+      "district": "Tirupathur",
+      "sub_district": "Tirupathur",
+      "url": "https://vlist.in/district/605.html#jolarpettai"
+    },
+    {
+      "name": "Natrampalli",
+      "district": "Tirupathur",
+      "sub_district": "Tirupathur",
+      "url": "https://vlist.in/district/605.html#natrampalli"
+    },
+    {
+      "name": "Tirupathur (M)",
+      "district": "Tirupathur",
+      "sub_district": "Tirupathur",
+      "url": "https://vlist.in/district/605.html#tirupathur-(m)"
+    },
+    {
+      "name": "Vaniyambadi (M)",
+      "district": "Tirupathur",
+      "sub_district": "Tirupathur",
+      "url": "https://vlist.in/district/605.html#vaniyambadi-(m)"
+    },
+    {
+      "name": "Yelagiri",
+      "district": "Tirupathur",
+      "sub_district": "Tirupathur",
+      "url": "https://vlist.in/district/605.html#yelagiri"
+    },
+    {
+      "name": "Avinashi",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#avinashi"
+    },
+    {
+      "name": "Dharapuram (M)",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#dharapuram-(m)"
+    },
+    {
+      "name": "Kangeyam (M)",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#kangeyam-(m)"
+    },
+    {
+      "name": "Madathukulam",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#madathukulam"
+    },
+    {
+      "name": "Palladam (M)",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#palladam-(m)"
+    },
+    {
+      "name": "Tiruppur North",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#tiruppur-north"
+    },
+    {
+      "name": "Tiruppur South",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#tiruppur-south"
+    },
+    {
+      "name": "Udumalaipettai (M)",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#udumalaipettai-(m)"
+    },
+    {
+      "name": "Uthukuli",
+      "district": "Tiruppur",
+      "sub_district": "Tiruppur",
+      "url": "https://vlist.in/district/633.html#uthukuli"
+    },
+    {
+      "name": "Arani (M)",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#arani-(m)"
+    },
+    {
+      "name": "Chengam",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#chengam"
+    },
+    {
+      "name": "Chetpet",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#chetpet"
+    },
+    {
+      "name": "Cheyyar (M)",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#cheyyar-(m)"
+    },
+    {
+      "name": "Jamunamarathoor",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#jamunamarathoor"
+    },
+    {
+      "name": "Kalasapakkam",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#kalasapakkam"
+    },
+    {
+      "name": "Kilpennathur",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#kilpennathur"
+    },
+    {
+      "name": "Polur",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#polur"
+    },
+    {
+      "name": "Thandarampattu",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#thandarampattu"
+    },
+    {
+      "name": "Tiruvannamalai (M)",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#tiruvannamalai-(m)"
+    },
+    {
+      "name": "Vandavasi (M)",
+      "district": "Tiruvannamalai",
+      "sub_district": "Tiruvannamalai",
+      "url": "https://vlist.in/district/606.html#vandavasi-(m)"
+    },
+    {
+      "name": "Anaicut",
+      "district": "Vellore",
+      "sub_district": "Vellore",
+      "url": "https://vlist.in/district/605.html#anaicut"
+    },
+    {
+      "name": "Gudiyatham (M)",
+      "district": "Vellore",
+      "sub_district": "Vellore",
+      "url": "https://vlist.in/district/605.html#gudiyatham-(m)"
+    },
+    {
+      "name": "K V Kuppam",
+      "district": "Vellore",
+      "sub_district": "Vellore",
+      "url": "https://vlist.in/district/605.html#k-v-kuppam"
+    },
+    {
+      "name": "Katpadi",
+      "district": "Vellore",
+      "sub_district": "Vellore",
+      "url": "https://vlist.in/district/605.html#katpadi"
+    },
+    {
+      "name": "Pernambut (M)",
+      "district": "Vellore",
+      "sub_district": "Vellore",
+      "url": "https://vlist.in/district/605.html#pernambut-(m)"
+    },
+    {
+      "name": "Sathuvachari",
+      "district": "Vellore",
+      "sub_district": "Vellore",
+      "url": "https://vlist.in/district/605.html#sathuvachari"
+    },
+    {
+      "name": "Thorapadi",
+      "district": "Vellore",
+      "sub_district": "Vellore",
+      "url": "https://vlist.in/district/605.html#thorapadi"
+    },
+    {
+      "name": "Vellore (M)",
+      "district": "Vellore",
+      "sub_district": "Vellore",
+      "url": "https://vlist.in/district/605.html#vellore-(m)"
+    },
+    {
+      "name": "Gingee",
+      "district": "Viluppuram",
+      "sub_district": "Viluppuram",
+      "url": "https://vlist.in/district/607.html#gingee"
+    },
+    {
+      "name": "Kandamangalam",
+      "district": "Viluppuram",
+      "sub_district": "Viluppuram",
+      "url": "https://vlist.in/district/607.html#kandamangalam"
+    },
+    {
+      "name": "Kottakuppam",
+      "district": "Viluppuram",
+      "sub_district": "Viluppuram",
+      "url": "https://vlist.in/district/607.html#kottakuppam"
+    },
+    {
+      "name": "Marakkanam",
+      "district": "Viluppuram",
+      "sub_district": "Viluppuram",
+      "url": "https://vlist.in/district/607.html#marakkanam"
+    },
+    {
+      "name": "Tindivanam (M)",
+      "district": "Viluppuram",
+      "sub_district": "Viluppuram",
+      "url": "https://vlist.in/district/607.html#tindivanam-(m)"
+    },
+    {
+      "name": "Vanur",
+      "district": "Viluppuram",
+      "sub_district": "Viluppuram",
+      "url": "https://vlist.in/district/607.html#vanur"
+    },
+    {
+      "name": "Vikravandi",
+      "district": "Viluppuram",
+      "sub_district": "Viluppuram",
+      "url": "https://vlist.in/district/607.html#vikravandi"
+    },
+    {
+      "name": "Viluppuram (M)",
+      "district": "Viluppuram",
+      "sub_district": "Viluppuram",
+      "url": "https://vlist.in/district/607.html#viluppuram-(m)"
+    },
+    {
+      "name": "Aruppukkottai (M)",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#aruppukkottai-(m)"
+    },
+    {
+      "name": "Kariapatti",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#kariapatti"
+    },
+    {
+      "name": "Rajapalayam (M)",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#rajapalayam-(m)"
+    },
+    {
+      "name": "Sattur (M)",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#sattur-(m)"
+    },
+    {
+      "name": "Sivakasi (M)",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#sivakasi-(m)"
+    },
+    {
+      "name": "Srivilliputhur (M)",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#srivilliputhur-(m)"
+    },
+    {
+      "name": "Tiruchuli",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#tiruchuli"
+    },
+    {
+      "name": "Vembakottai",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#vembakottai"
+    },
+    {
+      "name": "Virudhunagar (M)",
+      "district": "Virudhunagar",
+      "sub_district": "Virudhunagar",
+      "url": "https://vlist.in/district/625.html#virudhunagar-(m)"
+    }
+  ]
+}
