@@ -5,4 +5,5 @@
 - [x] Ensure legend + fallback behavior is consistent
 - [x] Re-run `node server.js`, test multiple searches, confirm map shows without errors
 
-TO RUN SERVER : node server.js
+TO RUN SERVER : cd Court_case
+node server.js

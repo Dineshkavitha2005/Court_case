@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandGuard — Tamil Nadu Land Litigation Due Diligence</title>
+    <meta name="description"
+        content="Verify land litigation risks, pending court cases, and encumbrances across Tamil Nadu by District, Taluk, Village, and Survey Number.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet GIS Map Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js" crossorigin="anonymous"></script>
+    <!-- ldrs Quantum Loading Spinner -->
+    <script type="module">
+        import { quantum } from 'https://cdn.jsdelivr.net/npm/ldrs/+esm';
+        quantum.register();
+    </script>
+</head>
+
+<body>
+    <!-- Background glow particles -->
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <!-- Top Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                </div>
+                <span>LandGuard</span>
+            </a>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-i18n="nav_home">Home</a>
+                <a href="#search-section" class="nav-link" data-i18n="nav_search">Search</a>
+                <a href="#features" class="nav-link" data-i18n="nav_features">Features</a>
+                <a href="#about" class="nav-link" data-i18n="nav_about">About</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle Theme" title="Toggle Theme">
+                    <svg class="theme-icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                    </svg>
+                    <svg class="theme-icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <span class="theme-label" id="themeLabel">Light</span>
+                </button>
+                <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language">
+                    தமிழ்
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span data-i18n="hero_badge">Tamil Nadu Land Due Diligence Platform</span>
+            </div>
+            <h1 class="hero-title">
+                <span data-i18n="hero_title_1">Verify Land</span> <span class="gradient-text" data-i18n="hero_title_2">Litigation Risk</span> <span data-i18n="hero_title_3">Before You Invest</span>
+            </h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
+                Systematic statutory due diligence across Tamil Nadu. Search by District, Taluk, Village, and Survey Number to uncover recorded court suits, interim stay orders, and encumbrances.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#search-section" class="hero-cta" id="heroCta">
+                    <span data-i18n="btn_start_search">Start Verification Search</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">38</span>
+                    <span class="stat-label" data-i18n="stat_districts">Districts Covered</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">178+</span>
+                    <span class="stat-label" data-i18n="stat_taluks">Taluks Indexed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">14,500+</span>
+                    <span class="stat-label" data-i18n="stat_villages">Revenue Villages</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="floating-card card-1">
+                <div class="fc-icon green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                </div>
+                <div class="fc-text">
+                    <span class="fc-title" data-i18n="fc_clear">Clear Title</span>
+                    <span class="fc-sub" data-i18n="fc_clear_sub">No adverse suits found</span>
+                </div>
+            </div>
+            <div class="floating-card card-2">
+                <div class="fc-icon amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                        <line x1="12" y1="9" x2="12" y2="13" />
+                        <line x1="12" y1="17" x2="12.01" y2="17" />
+                    </svg>
+                </div>
+                <div class="fc-text">
+                    <span class="fc-title" data-i18n="fc_medium">Medium Risk</span>
+                    <span class="fc-sub" data-i18n="fc_medium_sub">Active mortgage recorded</span>
+                </div>
+            </div>
+            <div class="floating-card card-3">
+                <div class="fc-icon red">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="15" y1="9" x2="9" y2="15" />
+                        <line x1="9" y1="9" x2="15" y2="15" />
+                    </svg>
+                </div>
+                <div class="fc-text">
+                    <span class="fc-title" data-i18n="fc_high">High Risk</span>
+                    <span class="fc-sub" data-i18n="fc_high_sub">Active suit & stay order</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section (4-Level Hierarchy) -->
+    <section class="search-section" id="search-section">
+        <div class="search-container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="search_title">Search Land Records</h2>
+                <p class="section-subtitle" data-i18n="search_subtitle">
+                    Select District &rarr; Taluk &rarr; Village and enter Survey Number to perform due diligence.
+                </p>
+            </div>
+
+            <!-- Voice Control Status Banner -->
+            <div class="voice-status-banner" id="voiceStatusBanner" style="display: none;">
+                <div class="voice-pulse-ring"></div>
+                <span class="voice-status-text" id="voiceStatusText">Listening for Tamil or English search details...</span>
+                <button type="button" class="voice-cancel-btn" id="voiceCancelBtn" aria-label="Cancel Voice">✕</button>
+            </div>
+
+            <!-- Validation Error Alert Container -->
+            <div class="validation-alert" id="validationAlert" style="display: none;" role="alert">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span id="validationAlertMsg"></span>
+            </div>
+
+            <form class="search-form" id="searchForm" novalidate>
+                <div class="form-grid-4">
+                    <!-- 1. District Selection -->
+                    <div class="form-group">
+                        <label for="districtSelect" class="form-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+                            </svg>
+                            <span data-i18n="label_district">District</span> *
+                        </label>
+                        <div class="select-wrapper">
+                            <select id="districtSelect" required>
+                                <option value="" disabled selected data-i18n="opt_select_district">Select District...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 2. Taluk Selection -->
+                    <div class="form-group">
+                        <label for="talukSelect" class="form-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                                <polyline points="9 22 9 12 15 12 15 22" />
+                            </svg>
+                            <span data-i18n="label_taluk">Taluk</span> *
+                        </label>
+                        <div class="select-wrapper">
+                            <select id="talukSelect" disabled required>
+                                <option value="" disabled selected data-i18n="opt_select_taluk">Select District First...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 3. Village Autocomplete -->
+                    <div class="form-group">
+                        <label for="villageInput" class="form-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <circle cx="12" cy="10" r="3" />
+                                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z" />
+                            </svg>
+                            <span data-i18n="label_village">Village</span> *
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="villageInput" placeholder="Type village name..." autocomplete="off" disabled required>
+                            <div class="input-glow"></div>
+                        </div>
+                        <div class="suggestions-dropdown" id="villageSuggestions"></div>
+                    </div>
+
+                    <!-- 4. Survey Number -->
+                    <div class="form-group">
+                        <label for="surveyInput" class="form-label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                <line x1="3" y1="9" x2="21" y2="9" />
+                                <line x1="9" y1="21" x2="9" y2="9" />
+                            </svg>
+                            <span data-i18n="label_survey">Survey Number</span> *
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="surveyInput" placeholder="e.g., 142/1, 88/2A..." autocomplete="off" required>
+                            <div class="input-glow"></div>
+                        </div>
+                        <div class="suggestions-dropdown" id="surveySuggestions"></div>
+                    </div>
+                </div>
+
+                <div class="form-actions-row">
+                    <!-- Voice Input Button -->
+                    <button type="button" class="voice-btn" id="voiceBtn" title="Voice Search (Tamil / English)">
+                        <svg class="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                            <line x1="12" y1="19" x2="12" y2="23" />
+                            <line x1="8" y1="23" x2="16" y2="23" />
+                        </svg>
+                        <span id="voiceBtnLabel" data-i18n="btn_voice">Voice Search</span>
+                    </button>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="search-btn" id="searchBtn">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <span data-i18n="btn_check_risk">Check Litigation Risk</span>
+                        <div class="btn-shimmer"></div>
+                    </button>
+                </div>
+
+                <!-- Tamil Nadu Example Quick Chips -->
+                <div class="search-examples">
+                    <span class="examples-title" data-i18n="sample_cases">Documented Reference Cases:</span>
+                    <button type="button" class="example-chip chip-high" data-dist="Coimbatore" data-taluk="Coimbatore South" data-village="Alanthurai (TP)" data-survey="142/1">
+                        Coimbatore &bull; Alanthurai (142/1) &bull; Active Suit
+                    </button>
+                    <button type="button" class="example-chip chip-med" data-dist="Kancheepuram" data-taluk="Sriperumbudur" data-village="Nemili" data-survey="88/2A">
+                        Kancheepuram &bull; Nemili (88/2A) &bull; Bank Mortgage
+                    </button>
+                    <button type="button" class="example-chip chip-low" data-dist="Chennai" data-taluk="Velachery" data-village="Velachery" data-survey="45/1">
+                        Chennai &bull; Velachery (45/1) &bull; Clear Title
+                    </button>
+                    <button type="button" class="example-chip chip-high" data-dist="Madurai" data-taluk="Madurai North" data-village="Othakadai" data-survey="72/3">
+                        Madurai &bull; Othakadai (72/3) &bull; Multiple Suits
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner">
+                <l-quantum size="50" speed="1.75" color="#a78bfa"></l-quantum>
+            </div>
+            <h3 class="loading-title" data-i18n="loading_title">Querying Registry Records</h3>
+            <p class="loading-text" id="loadingText" data-i18n="loading_step_1">Querying Tamil Nadu revenue and court databases...</p>
+            <div class="loading-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <section class="results-section" id="resultsSection" style="display: none;">
+        <div class="results-container">
+            <!-- Demo Notice Banner (Shown only when record is a demonstration/sample) -->
+            <div class="demo-banner" id="demoBanner" style="display: none;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+                <div>
+                    <strong>DEMO RECORD — SAMPLE DUE DILIGENCE AUDIT DATA</strong>
+                    <p>This report illustrates a documented benchmark case for testing and UI evaluation. It is explicitly labeled as demo data and does not represent live uncertified title advice.</p>
+                </div>
+            </div>
+
+            <!-- "No Record Found" View Container -->
+            <div class="no-record-card" id="noRecordCard" style="display: none;">
+                <div class="no-record-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="48" height="48">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        <line x1="8" y1="11" x2="14" y2="11" />
+                    </svg>
+                </div>
+                <h3 data-i18n="no_record_title">No Verified Record Found in Public Registries</h3>
+                <p class="no-record-desc" id="noRecordDesc">
+                    No verified court case, caveat, or encumbrance entry is currently registered in our index for this survey number.
+                </p>
+                <div class="no-record-guidance">
+                    <h4>Next Due Diligence Steps:</h4>
+                    <ul id="noRecordStepsList">
+                        <li>Verify Patta / Chitta extracts on <a href="https://eservices.tn.gov.in" target="_blank" rel="noopener">Tamil Nadu e-Services</a>.</li>
+                        <li>Apply for an official 30-year Encumbrance Certificate (EC) at <a href="https://tnreginet.gov.in" target="_blank" rel="noopener">TNREGINET</a>.</li>
+                        <li>Request a certified Field Measurement Book (FMB) survey sketch from the Taluk Revenue Office.</li>
+                        <li>Engage an enrolled advocate to conduct a manual search of register books at the Sub-Registrar Office (SRO).</li>
+                    </ul>
+                </div>
+                <button class="new-search-btn" type="button" id="noRecordNewSearchBtn">New Search</button>
+            </div>
+
+            <!-- Main Results Content Container (Shown when record exists) -->
+            <div id="verifiedResultsContainer">
+                <!-- Result Header -->
+                <div class="result-header">
+                    <div class="result-header-left">
+                        <h2 class="result-title" data-i18n="report_title">Land Due Diligence Report</h2>
+                        <p class="result-meta" id="resultMeta"></p>
+                    </div>
+                    <div class="result-actions">
+                        <button class="pdf-btn" id="pdfBtn" type="button">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                            <span data-i18n="btn_pdf">Download Summary</span>
+                        </button>
+                        <button class="new-search-btn" id="newSearchBtn" type="button">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                            <span data-i18n="btn_new_search">New Search</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Deterministic Risk Overview Card -->
+                <div class="risk-card" id="riskCard">
+                    <div class="risk-card-inner">
+                        <div class="risk-gauge-area">
+                            <div class="risk-gauge" id="riskGauge">
+                                <svg viewBox="0 0 200 120" class="gauge-svg">
+                                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="rgba(255,255,255,0.1)"
+                                        stroke-width="14" stroke-linecap="round" />
+                                    <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gaugeGradient)"
+                                        stroke-width="14" stroke-linecap="round" id="gaugeArc" stroke-dasharray="251.2"
+                                        stroke-dashoffset="251.2" />
+                                    <defs>
+                                        <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%">
+                                            <stop offset="0%" style="stop-color:#10b981" />
+                                            <stop offset="50%" style="stop-color:#f59e0b" />
+                                            <stop offset="100%" style="stop-color:#ef4444" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                                <div class="gauge-label">
+                                    <span class="gauge-value" id="gaugeValue">0</span>
+                                    <span class="gauge-unit">/100</span>
+                                </div>
+                            </div>
+                            <div class="risk-level" id="riskLevel">Calculating...</div>
+                            <div class="risk-description" id="riskDescription"></div>
+                        </div>
+                        <div class="risk-factors" id="riskFactors">
+                            <!-- Populated with transparent deterministic factors -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Grid -->
+                <div class="info-grid">
+                    <!-- Owner Details Card -->
+                    <div class="info-card owner-card" id="ownerCard">
+                        <div class="card-header">
+                            <div class="card-icon owner-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    <circle cx="12" cy="7" r="4" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="card_owner">Recorded Ownership</h3>
+                        </div>
+                        <div class="card-body" id="ownerDetails">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Land Details Card -->
+                    <div class="info-card land-card" id="landCard">
+                        <div class="card-header">
+                            <div class="card-icon land-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                                    <path d="M3 9h18" />
+                                    <path d="M9 21V9" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="card_land">Revenue & Land Details</h3>
+                        </div>
+                        <div class="card-body" id="landDetails">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Map Card (Approximate Location Notice) -->
+                    <div class="info-card map-card" id="mapCard">
+                        <div class="card-header">
+                            <div class="card-icon map-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                                    <line x1="9" y1="3" x2="9" y2="18" />
+                                    <line x1="15" y1="6" x2="15" y2="21" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="card_map">Approximate Village Location</h3>
+                        </div>
+                        <div class="card-body" style="padding: 0; min-height: 250px; position: relative;">
+                            <div id="gisMap" style="width: 100%; height: 260px; border-radius: var(--radius-sm); border: 1px solid var(--border-glass); background: #070913; position: relative; overflow: hidden;"></div>
+                            <div class="map-overlay-legend">
+                                <span class="legend-dot" id="legendDot"></span>
+                                <span id="legendText">General Village Centroid</span>
+                            </div>
+                        </div>
+                        <div class="map-cadastral-note">
+                            <strong>Note:</strong> Official cadastral parcel boundaries are not published via open GIS layers. For certified sub-division boundaries, verify the Field Measurement Book (FMB) sketch via <a href="https://eservices.tn.gov.in" target="_blank" rel="noopener">eservices.tn.gov.in</a>.
+                        </div>
+                    </div>
+
+                    <!-- Verified Court Cases Card -->
+                    <div class="info-card court-card" id="courtCard">
+                        <div class="card-header">
+                            <div class="card-icon court-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                    <path d="M2 17l10 5 10-5" />
+                                    <path d="M2 12l10 5 10-5" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="card_court">Verified Court Proceedings</h3>
+                        </div>
+                        <div class="card-body" id="courtCases">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Encumbrance Card -->
+                    <div class="info-card enc-card" id="encCard">
+                        <div class="card-header">
+                            <div class="card-icon enc-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                    <line x1="16" y1="13" x2="8" y2="13" />
+                                    <line x1="16" y1="17" x2="8" y2="17" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="card_encumbrance">Registered Encumbrances</h3>
+                        </div>
+                        <div class="card-body" id="encDetails">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- AI Legal Analyst Insights Card -->
+                    <div class="info-card ai-analyst-card" id="aiAnalystCard" style="grid-column: span 2;">
+                        <div class="card-header">
+                            <div class="card-icon ai-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                                    <line x1="12" y1="22.08" x2="12" y2="12" />
+                                </svg>
+                            </div>
+                            <h3 data-i18n="card_ai">AI Legal Analyst Due Diligence Notes</h3>
+                            <span class="ai-badge" id="aiModelBadge">Verified Reasoning Mode</span>
+                        </div>
+                        <div class="card-body" id="aiAnalystDetails">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verified Data Sources & Reference Section -->
+                <div class="sources-card" id="sourcesCard">
+                    <div class="card-header">
+                        <div class="card-icon source-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 11 12 14 22 4" />
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                            </svg>
+                        </div>
+                        <h3 data-i18n="card_sources">Data Sources & Document Audit Trail</h3>
+                    </div>
+                    <div class="card-body" id="sourcesList">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Legal Disclaimer -->
+                <div class="disclaimer">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" y1="16" x2="12" y2="12" />
+                        <line x1="12" y1="8" x2="12.01" y2="8" />
+                    </svg>
+                    <p>
+                        <strong>Statutory Disclaimer:</strong> This application provides information for preliminary due diligence and is not legal advice. Absence of a result does not guarantee that a property is free from litigation, family partition claims, or unrecorded encumbrances. Always verify official certified documents with an enrolled advocate before entering any transaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="feat_title">Statutory Verification Principles</h2>
+                <p class="section-subtitle" data-i18n="feat_subtitle">Reliable, explainable, and zero-hallucination land intelligence</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon fi-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="feat_1_title">Tamil Nadu Hierarchy</h3>
+                    <p data-i18n="feat_1_desc">Rigorous 4-level navigation across all 38 districts, 178+ taluks, and 14,500+ revenue villages.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon fi-2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="feat_2_title">Deterministic Risk Scoring</h3>
+                    <p data-i18n="feat_2_desc">Rule-based scoring with 100% explainability. Active suits, stay orders, and mortgages contribute exact weighted points.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon fi-3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg>
+                    </div>
+                    <h3 data-i18n="feat_3_title">Zero Fabrication Guarantee</h3>
+                    <p data-i18n="feat_3_desc">We never invent court cases, owners, or risk values. When unindexed, we return an honest 'No verified record found' status.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2 class="section-title" data-i18n="about_title">About LandGuard</h2>
+                <p data-i18n="about_desc_1">
+                    LandGuard is developed for Tamil Nadu property buyers, advocates, and lending institutions seeking verifiable preliminary due diligence. By organizing judicial cause lists, eCourts records, and land registry information into an explainable framework, LandGuard shields buyers from fraudulent transactions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating AI Legal Assistant Chat -->
+    <div class="ai-chat-widget" id="aiChatWidget">
+        <button class="chat-toggle-btn" id="chatToggleBtn" aria-label="Open AI Legal Assistant">
+            <svg class="chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+            <svg class="chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24" style="display: none;">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+            <span class="chat-badge-pulse"></span>
+        </button>
+
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 data-i18n="chat_title">AI Legal Analyst</h4>
+                        <span class="chat-status"><span class="status-dot"></span>Context-Bound Verified</span>
+                    </div>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn" aria-label="Close Chat">✕</button>
+            </div>
+
+            <div class="chat-body" id="chatBody">
+                <div class="chat-msg bot-msg">
+                    <div class="msg-bubble" data-i18n="chat_welcome">
+                        Welcome to LandGuard Legal Analyst. Select a village and survey number above, and I can explain the legal terminology, stay orders, and verified facts grounded strictly in the report.
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-suggestions" id="chatSuggestions" style="display: none;">
+                <button type="button" class="chat-chip" data-query="Explain the litigation risk score and contributing factors">Explain Risk Score</button>
+                <button type="button" class="chat-chip" data-query="Are there any interim stay or injunction orders on this land?">Check Stay Orders</button>
+                <button type="button" class="chat-chip" data-query="Are there any mortgages or bank loans registered?">Check Mortgages</button>
+                <button type="button" class="chat-chip" data-query="What legal due diligence steps should I take next?">Next Steps</button>
+            </div>
+
+            <form class="chat-input-area" id="chatInputArea">
+                <input type="text" id="chatInput" placeholder="Ask a question about this report..." autocomplete="off" disabled>
+                <button type="submit" id="chatSendBtn" class="chat-send-btn" disabled aria-label="Send">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <line x1="22" y1="2" x2="11" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <span>LandGuard</span>
+                    </div>
+                    <p>Due diligence platform for preliminary land litigation verification in Tamil Nadu.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LandGuard. All rights reserved. Data indexed from public statutory sources.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts (No data.js loaded: clean API-based client) -->
+    <script src="app.js"></script>
+</body>
+
+</html>

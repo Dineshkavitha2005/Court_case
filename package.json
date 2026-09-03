@@ -1,0 +1,28 @@
+{
+  "name": "landguard",
+  "version": "1.0.0",
+  "description": "Land Litigation Risk Due Diligence Platform for Tamil Nadu",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "init:db": "node database/init_db.js",
+    "test": "node --test tests/unit/*.test.js && npx playwright test",
+    "test:unit": "node --test tests/unit/*.test.js",
+    "test:e2e": "npx playwright test"
+  },
+  "keywords": [
+    "land-records",
+    "tamil-nadu",
+    "litigation-risk",
+    "due-diligence",
+    "ecourts",
+    "survey-number"
+  ],
+  "author": "LandGuard Team",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}
