@@ -12,7 +12,7 @@ const url = require('url');
 // Services & Middleware
 const { applySecurityHeaders, resolveSafeStaticPath } = require('./src/middleware/security');
 const { checkRateLimit } = require('./src/middleware/rateLimiter');
-const { getDistricts, getTaluks, getVillages, getSurveyNumbers, searchLandParcel } = require('./src/services/legalDataService');
+const { getDistricts, getTaluks, getVillages, getSurveyNumbers, searchLandParcel, getDataSourceStatus, RecordClassification } = require('./src/services/legalDataService');
 const { analyzeQuery } = require('./src/services/aiService');
 
 // Configuration
@@ -220,14 +220,26 @@ const server = http.createServer(async (req, res) => {
                 district: district.trim(),
                 taluk: taluk.trim(),
                 village: village.trim(),
-                surveyNumber: cleanSurvey
+                surveyNumber: cleanSurvey,
+                mode: payload.mode || null,
+                checkLive: Boolean(payload.checkLive)
             });
 
             sendJson(res, 200, result);
             return;
         }
 
-        // 6. POST /api/ai/chat
+        // 6. GET /api/sources/status (and alias /api/sources)
+        if ((pathname === '/api/sources/status' || pathname === '/api/sources') && req.method === 'GET') {
+            const status = getDataSourceStatus();
+            sendJson(res, 200, {
+                status: "success",
+                data: status
+            });
+            return;
+        }
+
+        // 7. POST /api/ai/chat
         if (pathname === '/api/ai/chat') {
             if (req.method !== 'POST') {
                 sendJson(res, 405, { status: "error", error: "Method Not Allowed. Use POST." });
@@ -256,14 +268,20 @@ const server = http.createServer(async (req, res) => {
             return;
         }
 
-        // 7. GET /api/stats
+        // 8. GET /api/stats
         if (pathname === '/api/stats' && req.method === 'GET') {
             const districts = getDistricts();
+            const sourceStatus = getDataSourceStatus();
             sendJson(res, 200, {
                 status: "success",
                 state: "Tamil Nadu",
                 total_districts: districts.length,
                 total_villages: 14551,
+                source_verification: {
+                    system_status: sourceStatus.system_status,
+                    live_gateways_active: sourceStatus.live_gateways_active,
+                    compliance: sourceStatus.compliance_policy
+                },
                 data_sources: [
                     "eCourts Services (National Judicial Data Grid)",
                     "Tamil Nadu e-Services (eservices.tn.gov.in)",
@@ -274,7 +292,7 @@ const server = http.createServer(async (req, res) => {
             return;
         }
 
-        // 8. GET /api/health
+        // 9. GET /api/health
         if (pathname === '/api/health' && req.method === 'GET') {
             sendJson(res, 200, { status: "ok", uptime: process.uptime() });
             return;

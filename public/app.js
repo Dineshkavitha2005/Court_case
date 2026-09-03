@@ -543,12 +543,35 @@ function renderReport(record) {
     resultsSection.style.display = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // CASE 1: No record found
-    if (record.status === 'no_record') {
+    // CASE 0: Official Source Unavailable
+    if (record.status === 'source_unavailable' || record.record_classification === 'SOURCE_UNAVAILABLE') {
         verifiedContainer.style.display = 'none';
         demoBanner.style.display = 'none';
         noRecordCard.style.display = 'block';
 
+        const title = noRecordCard.querySelector('h3');
+        if (title) {
+            title.textContent = currentLanguage === 'ta'
+                ? 'அதிகாரப்பூர்வ அரசு இணையதளம் தற்போது கிடைக்கவில்லை'
+                : 'Official Source Currently Unavailable';
+        }
+        const desc = document.getElementById('noRecordDesc');
+        desc.textContent = record.message || (currentLanguage === 'ta'
+            ? 'அதிகாரப்பூர்வ அரசு தரவுத்தளம் தற்போது கிடைக்கவில்லை. சரிபார்ப்பை நிறைவு செய்ய முடியவில்லை.'
+            : 'Official source currently unavailable. Verification could not be completed.');
+        return;
+    }
+
+    // CASE 1: No record found in index
+    if (record.status === 'no_record' || record.record_classification === 'NO_RECORD') {
+        verifiedContainer.style.display = 'none';
+        demoBanner.style.display = 'none';
+        noRecordCard.style.display = 'block';
+
+        const title = noRecordCard.querySelector('h3');
+        if (title) {
+            title.textContent = t('no_record_title');
+        }
         const desc = document.getElementById('noRecordDesc');
         desc.textContent = currentLanguage === 'ta'
             ? `சர்வே எண் ${record.location.surveyNumber} (${record.location.village}, ${record.location.district}) குறித்து அதிகாரப்பூர்வ நீதிமன்ற வழக்குகள் அல்லது வில்லங்கப் பதிவுகள் எதுவும் தற்போது குறியிடப்படவில்லை.`
