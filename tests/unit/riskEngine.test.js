@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert');
-const { calculateRisk } = require('../../src/services/riskEngine');
+const { calculateRisk } = require('../../backend/services/riskEngine');
 
 test('Risk Engine: Null parcel returns Unknown / No Record with 0 score', () => {
     const result = calculateRisk(null);

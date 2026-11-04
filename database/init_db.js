@@ -107,8 +107,12 @@ function getOrCreateTaluk(districtId, talukName, talukNameTa = null) {
 // 1. Load taluks and villages from generate_tn_database hierarchy
 console.log('Loading administrative data from generate_tn_database.py definitions...');
 try {
-    const genPyPath = path.join(rootDir, 'generate_tn_database.py');
-    if (fs.existsSync(genPyPath)) {
+    const candidatePaths = [
+        path.join(rootDir, 'scripts', 'generate_tn_database.py'),
+        path.join(rootDir, 'generate_tn_database.py')
+    ];
+    const genPyPath = candidatePaths.find(p => fs.existsSync(p));
+    if (genPyPath) {
         const content = fs.readFileSync(genPyPath, 'utf8');
         // Extract TAMIL_NADU_DATA structure via JSON or regex
         // generate_tn_database has 38 districts with their taluks and sample villages
@@ -149,8 +153,13 @@ try {
 }
 
 // 2. Load all 13,981 villages from villages.db
-const oldDbPath = path.join(rootDir, 'villages.db');
-if (fs.existsSync(oldDbPath)) {
+const candidateDbPaths = [
+    path.join(__dirname, 'data', 'villages.db'),
+    path.join(rootDir, 'data', 'villages.db'),
+    path.join(rootDir, 'villages.db')
+];
+const oldDbPath = candidateDbPaths.find(p => fs.existsSync(p));
+if (oldDbPath) {
     console.log('Ingesting villages from villages.db...');
     const oldDb = new DatabaseSync(oldDbPath);
     const rows = oldDb.prepare(`

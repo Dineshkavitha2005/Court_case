@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert');
 const http = require('http');
-const server = require('../../server');
+const server = require('../../backend/server');
 
 const SEC_TEST_PORT = 8791;
 let secServer = null;

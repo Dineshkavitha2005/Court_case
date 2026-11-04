@@ -54,6 +54,90 @@ LandGuard is a secure, reliable web application designed to facilitate prelimina
 
 ---
 
+## Project Structure
+
+The codebase is organized into cleanly separated domains:
+
+```
+Court_case/
+│
+├── frontend/                     # Client application (HTML, CSS, JS, Assets)
+│   ├── app.js                   # Client logic, UI controllers, bilingual translations
+│   ├── index.html               # Main single-page interface
+│   ├── styles.css               # Responsive design system & glassmorphism theme
+│   ├── favicon.ico              # Web application icon
+│   └── land_verification_dashboard.png # Architecture & dashboard preview
+│
+├── backend/                      # Server, API routing, middleware, and business services
+│   ├── server.js                # Core HTTP server & route handler
+│   ├── middleware/              # Security and traffic control
+│   │   ├── rateLimiter.js       # Sliding-window IP rate limiter
+│   │   └── security.js          # CSP headers, traversal sanitization
+│   └── services/                # Backend domain services
+│       ├── aiService.js         # Context-bound AI legal analyst (Gemini API)
+│       ├── dataSourceStatus.js  # Statutory registry statuses & classifications
+│       ├── legalDataService.js  # SQLite data access & queries
+│       └── riskEngine.js        # Deterministic litigation risk calculation
+│
+├── database/                     # Database schemas, compiler & seed data
+│   ├── init_db.js               # Database compiler & benchmark seeder
+│   ├── schema.sql               # Relational SQL schema
+│   ├── landguard.db             # Primary compiled SQLite database
+│   └── data/                    # Raw village, subdistrict & survey data
+│       ├── all_subdistricts.json
+│       ├── survey_numbers.json
+│       ├── tamilnadu_synthetic_survey_numbers_10000.csv
+│       ├── villages.db
+│       ├── villages.json
+│       ├── village_database.db
+│       └── village_database.json
+│
+├── scripts/                      # Data ingestion, web scraping & migration scripts
+│   ├── batch_scrape.py
+│   ├── build_village_db.py
+│   ├── check_all_sources.py
+│   ├── check_db.py
+│   ├── check_status.py
+│   ├── consolidate_villages.py
+│   ├── create_simple_village_db.py
+│   ├── export_simple_json.py
+│   ├── fast_scrape.py
+│   ├── final_merge.py
+│   ├── fix_district_names.py
+│   ├── generate_tn_database.py
+│   ├── load_survey_numbers.py
+│   ├── populate_all_villages.py
+│   ├── retry_empty.py
+│   ├── retry_failed.py
+│   ├── scrape_all_tn_villages.py
+│   └── _merge_villages.py
+│
+├── docs/                         # Documentation, design specs, and audit reports
+│   ├── AUDIT_REPORT.md          # Comprehensive audit and verification report
+│   ├── DATA_SOURCES.md          # Official statutory registries documentation
+│   ├── DESIGN.md                # System design & architecture specification
+│   └── TODO.md                  # Development tasks & run notes
+│
+├── tests/                        # Automated unit and E2E test suites
+│   ├── e2e/
+│   │   └── landguard.spec.js    # Playwright browser end-to-end tests
+│   └── unit/
+│       ├── api.test.js          # API route tests
+│       ├── legalDataVerification.test.js # Legal data verification tests
+│       ├── riskEngine.test.js   # Risk calculation engine tests
+│       └── security.test.js     # Path traversal & HTTP security tests
+│
+├── .env.example                  # Environment configuration template
+├── .gitignore                    # Git ignore file
+├── package.json                  # NPM project metadata & dependencies
+├── package-lock.json             # NPM lockfile
+├── playwright.config.js          # Playwright test runner configuration
+├── README.md                     # Project overview and documentation
+└── server.js                     # Root entry point alias (convenient root launch)
+```
+
+---
+
 ## Prerequisites
 
 - **Node.js**: v18.0.0 or higher (Tested on Node.js v24 LTS)

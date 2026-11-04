@@ -1,7 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert');
 const http = require('http');
-const server = require('../../server');
+const server = require('../../backend/server');
 
 const TEST_PORT = 8790;
 let testServer = null;

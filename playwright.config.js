@@ -16,7 +16,7 @@ module.exports = defineConfig({
     headless: true
   },
   webServer: {
-    command: 'node server.js',
+    command: 'node backend/server.js',
     url: 'http://127.0.0.1:8765/api/health',
     reuseExistingServer: true,
     timeout: 15000

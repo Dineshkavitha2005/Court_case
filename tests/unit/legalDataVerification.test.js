@@ -13,9 +13,9 @@
 const test = require('node:test');
 const assert = require('node:assert');
 const http = require('http');
-const server = require('../../server');
-const { RecordClassification, getDataSourceStatus } = require('../../src/services/dataSourceStatus');
-const { searchLandParcel } = require('../../src/services/legalDataService');
+const server = require('../../backend/server');
+const { RecordClassification, getDataSourceStatus } = require('../../backend/services/dataSourceStatus');
+const { searchLandParcel } = require('../../backend/services/legalDataService');
 
 const VERIFY_TEST_PORT = 8792;
 let verifyServer = null;
