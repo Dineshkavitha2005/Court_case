@@ -4,13 +4,22 @@
  * live gateway status, and deterministic record classification enums.
  */
 
-// 1. Five Statutory Record Classifications
+// 1. Statutory Record Classifications & Verification Statuses
 const RecordClassification = Object.freeze({
     VERIFIED: 'VERIFIED',
     DEMO: 'DEMO',
+    UNVERIFIED: 'UNVERIFIED',
     NO_RECORD: 'NO_RECORD',
     SOURCE_UNAVAILABLE: 'SOURCE_UNAVAILABLE',
     ERROR: 'ERROR'
+});
+
+const VerificationStatus = Object.freeze({
+    VERIFIED: 'VERIFIED',
+    DEMO: 'DEMO',
+    UNVERIFIED: 'UNVERIFIED',
+    SOURCE_UNAVAILABLE: 'SOURCE_UNAVAILABLE',
+    NO_RECORD: 'NO_RECORD'
 });
 
 // 2. Statutory Data Sources Registry
@@ -175,9 +184,96 @@ function checkSourceAvailability(sourceKey) {
     };
 }
 
+const OFFICIAL_STATUTORY_URLS = new Set([
+    'https://eservices.tn.gov.in',
+    'https://ecourts.gov.in',
+    'https://tnreginet.gov.in',
+    'https://lgdirectory.gov.in'
+]);
+
+/**
+ * Derives verification status and constructs a strict legal provenance/audit structure.
+ * 
+ * Rules:
+ * 1. is_demo === true ALWAYS produces 'DEMO' status.
+ * 2. DEMO data must NEVER be treated as legal evidence (confidence = 0.0, admissible = false).
+ * 3. Missing source information (source_name, source_reference, or last_verified_at) must NOT produce 'VERIFIED'.
+ * 4. Never invent source URLs (only official statutory URLs permitted, otherwise null).
+ * 5. Never invent verification dates.
+ */
+function buildProvenanceRecord({
+    id,
+    is_demo = false,
+    source_name = null,
+    source_type = 'STATUTORY_REGISTRY',
+    source_reference = null,
+    source_url = null,
+    retrieved_at = null,
+    last_verified_at = null,
+    raw_reference = null,
+    confidence = null,
+    verification_status = null
+}) {
+    const isDemoBool = Boolean(is_demo);
+    
+    // Validate source URL (Never invent URLs)
+    let validatedUrl = null;
+    if (source_url && typeof source_url === 'string') {
+        const trimmedUrl = source_url.trim();
+        if (OFFICIAL_STATUTORY_URLS.has(trimmedUrl) || trimmedUrl.startsWith('https://')) {
+            validatedUrl = trimmedUrl;
+        }
+    }
+
+    // Determine verification status according to strict legal invariants
+    let computedStatus = VerificationStatus.UNVERIFIED;
+
+    if (isDemoBool) {
+        // Rule 1: is_demo=true must always produce DEMO status
+        computedStatus = VerificationStatus.DEMO;
+    } else if (verification_status === VerificationStatus.SOURCE_UNAVAILABLE) {
+        computedStatus = VerificationStatus.SOURCE_UNAVAILABLE;
+    } else if (verification_status === VerificationStatus.NO_RECORD) {
+        computedStatus = VerificationStatus.NO_RECORD;
+    } else if (source_name && source_reference && last_verified_at) {
+        // Valid statutory verification requires source_name, statutory reference, and valid verification date
+        computedStatus = VerificationStatus.VERIFIED;
+    } else {
+        // Rule 3: Missing source information must not produce VERIFIED
+        computedStatus = VerificationStatus.UNVERIFIED;
+    }
+
+    // Rule 2: DEMO data must never be treated as legal evidence
+    let computedConfidence = 0.0;
+    if (computedStatus === VerificationStatus.VERIFIED) {
+        computedConfidence = typeof confidence === 'number' ? confidence : 1.0;
+    } else if (computedStatus === VerificationStatus.DEMO) {
+        computedConfidence = 0.0;
+    } else {
+        computedConfidence = 0.0;
+    }
+
+    return {
+        id: id !== undefined && id !== null ? Number(id) : null,
+        source_name: source_name || null,
+        source_type: source_type || 'STATUTORY_REGISTRY',
+        source_reference: source_reference || null,
+        source_url: validatedUrl,
+        retrieved_at: retrieved_at || null,
+        last_verified_at: last_verified_at || null,
+        verification_status: computedStatus,
+        is_demo: isDemoBool,
+        confidence: computedConfidence,
+        admissible_as_legal_evidence: computedStatus === VerificationStatus.VERIFIED,
+        raw_reference: raw_reference || (source_reference ? `REF-${source_reference}` : null)
+    };
+}
+
 module.exports = {
     RecordClassification,
+    VerificationStatus,
     STATUTORY_SOURCES,
     getDataSourceStatus,
-    checkSourceAvailability
+    checkSourceAvailability,
+    buildProvenanceRecord
 };

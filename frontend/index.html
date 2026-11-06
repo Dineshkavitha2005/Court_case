@@ -9,9 +9,7 @@
         content="Verify land litigation risks, pending court cases, and encumbrances across Tamil Nadu by District, Taluk, Village, and Survey Number.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <!-- Leaflet GIS Map Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" crossorigin="anonymous" />
@@ -24,8 +22,6 @@
 </head>
 
 <body>
-    <!-- Background glow particles -->
-    <div class="bg-particles" id="bgParticles"></div>
 
     <!-- Top Navigation -->
     <nav class="navbar" id="navbar">
@@ -71,7 +67,7 @@
                 <span data-i18n="hero_badge">Tamil Nadu Land Due Diligence Platform</span>
             </div>
             <h1 class="hero-title">
-                <span data-i18n="hero_title_1">Verify Land</span> <span class="gradient-text" data-i18n="hero_title_2">Litigation Risk</span> <span data-i18n="hero_title_3">Before You Invest</span>
+                <span data-i18n="hero_title_1">Verify Land</span> <span class="hero-title-accent" data-i18n="hero_title_2">Litigation Risk</span> <span data-i18n="hero_title_3">Before You Invest</span>
             </h1>
             <p class="hero-subtitle" data-i18n="hero_subtitle">
                 Systematic statutory due diligence across Tamil Nadu. Search by District, Taluk, Village, and Survey Number to uncover recorded court suits, interim stay orders, and encumbrances.
@@ -155,7 +151,12 @@
             <div class="voice-status-banner" id="voiceStatusBanner" style="display: none;">
                 <div class="voice-pulse-ring"></div>
                 <span class="voice-status-text" id="voiceStatusText">Listening for Tamil or English search details...</span>
-                <button type="button" class="voice-cancel-btn" id="voiceCancelBtn" aria-label="Cancel Voice">✕</button>
+                <button type="button" class="voice-cancel-btn" id="voiceCancelBtn" aria-label="Cancel Voice">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
             </div>
 
             <!-- Validation Error Alert Container -->
@@ -282,7 +283,7 @@
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-content">
             <div class="loading-spinner">
-                <l-quantum size="50" speed="1.75" color="#a78bfa"></l-quantum>
+                <l-quantum size="48" speed="1.75" color="#0f172a"></l-quantum>
             </div>
             <h3 class="loading-title" data-i18n="loading_title">Querying Registry Records</h3>
             <p class="loading-text" id="loadingText" data-i18n="loading_step_1">Querying Tamil Nadu revenue and court databases...</p>
@@ -374,9 +375,9 @@
                                         stroke-dashoffset="251.2" />
                                     <defs>
                                         <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%">
-                                            <stop offset="0%" style="stop-color:#10b981" />
-                                            <stop offset="50%" style="stop-color:#f59e0b" />
-                                            <stop offset="100%" style="stop-color:#ef4444" />
+                                            <stop offset="0%" style="stop-color:#2e7d32" />
+                                            <stop offset="50%" style="stop-color:#92400e" />
+                                            <stop offset="100%" style="stop-color:#c4242a" />
                                         </linearGradient>
                                     </defs>
                                 </svg>
@@ -616,7 +617,12 @@
                         <span class="chat-status"><span class="status-dot"></span>Context-Bound Verified</span>
                     </div>
                 </div>
-                <button class="chat-close-btn" id="chatCloseBtn" aria-label="Close Chat">✕</button>
+                <button class="chat-close-btn" id="chatCloseBtn" aria-label="Close Chat">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
             </div>
 
             <div class="chat-body" id="chatBody">
