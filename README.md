@@ -239,7 +239,6 @@ Returns available survey numbers for suggestions.
 Context-bound legal query analysis using verified record facts.
 
 ---
-
 ## Limitations & Legal Notice
 
 1. **Preliminary Due Diligence Only**: LandGuard is designed solely for informational research and preliminary due diligence. It does **not** constitute legal advice, title insurance, or a formal legal opinion.
@@ -247,7 +246,6 @@ Context-bound legal query analysis using verified record facts.
 3. **Official Verification**: Always obtain a signed 30-year Encumbrance Certificate (EC) from [TNREGINET](https://tnreginet.gov.in), verified Patta/Chitta and FMB sketches from [eservices.tn.gov.in](https://eservices.tn.gov.in), and consult a certified advocate enrolled with the Bar Council of Tamil Nadu.
 
 ---
-
 ## Deployment Instructions
 
 1. **Production Process Manager (PM2)**:
