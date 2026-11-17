@@ -423,5 +423,8 @@ db.prepare(`
     )
 `).run(parcelId4);
 
+const { runMigrations } = require('./migrate');
+runMigrations(db);
+
 db.close();
 console.log('Database initialization complete! landguard.db is ready.');

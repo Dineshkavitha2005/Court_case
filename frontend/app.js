@@ -6,7 +6,12 @@
  */
 
 let mapInstance = null;
+let mapTileLayer = null;
+let currentMapLayerType = 'street';
 let activeRecord = null;
+let currentCourtFilter = 'all';
+let currentEncFilter = 'all';
+let latestAiAnalysisText = '';
 let currentLanguage = localStorage.getItem('landguard-language') || 'en';
 let currentTheme = localStorage.getItem('landguard-theme') || 'dark';
 let speechRecognition = null;
@@ -19,6 +24,7 @@ const TRANSLATIONS = {
         nav_search: "தேடல்",
         nav_features: "அம்சங்கள்",
         nav_about: "பற்றி",
+        nav_gateway_status: "TN Gateway நேரலை",
         hero_badge: "தமிழ்நாடு நில சரிபார்ப்பு தளம்",
         hero_title_1: "நிலத்தை சரிபார்த்து",
         hero_title_2: "வழக்கு அபாயம்",
@@ -49,6 +55,7 @@ const TRANSLATIONS = {
         loading_step_1: "தமிழ்நாடு வருவாய் மற்றும் நீதிமன்ற பதிவுகள் ஆய்வு செய்யப்படுகின்றன...",
         report_title: "நில சட்ட சரிபார்ப்பு அறிக்கை",
         btn_pdf: "அறிக்கை பதிவிறக்கம்",
+        btn_share: "அறிக்கையை நகலெடு",
         btn_new_search: "புதிய தேடல்",
         card_owner: "பதிவு செய்யப்பட்ட உரிமையாளர்",
         card_land: "வருவாய் மற்றும் நில விவரங்கள்",
@@ -69,13 +76,17 @@ const TRANSLATIONS = {
         feat_3_title: "போலி தரவு இல்லை என்ற உத்தரவாதம்",
         feat_3_desc: "நாங்கள் ஒருபோதும் கற்பனையான வழக்குகள் அல்லது உரிமையாளர்களை உருவாக்க மாட்டோம்.",
         about_title: "LandGuard பற்றி",
-        about_desc_1: "தமிழ்நாடு நில வாங்குபவர்கள், வழக்கறிஞர்கள், மற்றும் நிதி நிறுவனங்களுக்கு நம்பகமான முதற்கட்ட ஆய்வு தகவல்களை வழங்குவதற்காக LandGuard உருவாக்கப்பட்டுள்ளது."
+        about_desc_1: "தமிழ்நாடு நில வாங்குபவர்கள், வழக்கறிஞர்கள், மற்றும் நிதி நிறுவனங்களுக்கு நம்பகமான முதற்கட்ட ஆய்வு தகவல்களை வழங்குவதற்காக LandGuard உருவாக்கப்பட்டுள்ளது.",
+        toast_copied: "அறிக்கை சுருக்கம் நகலெடுக்கப்பட்டது",
+        toast_cnr_copied: "CNR எண் நகலெடுக்கப்பட்டது",
+        toast_doc_copied: "ஆவண எண் நகலெடுக்கப்பட்டது"
     },
     en: {
         nav_home: "Home",
         nav_search: "Search",
         nav_features: "Features",
         nav_about: "About",
+        nav_gateway_status: "TN Gateway Live",
         hero_badge: "Tamil Nadu Land Due Diligence Platform",
         hero_title_1: "Verify Land",
         hero_title_2: "Litigation Risk",
@@ -106,6 +117,7 @@ const TRANSLATIONS = {
         loading_step_1: "Querying Tamil Nadu revenue and court databases...",
         report_title: "Land Due Diligence Report",
         btn_pdf: "Download Summary",
+        btn_share: "Copy Abstract",
         btn_new_search: "New Search",
         card_owner: "Recorded Ownership",
         card_land: "Revenue & Land Details",
@@ -126,7 +138,10 @@ const TRANSLATIONS = {
         feat_3_title: "Zero Fabrication Guarantee",
         feat_3_desc: "We never invent court cases, owners, or risk values. When unindexed, we return an honest 'No verified record found' status.",
         about_title: "About LandGuard",
-        about_desc_1: "LandGuard is developed for Tamil Nadu property buyers, advocates, and lending institutions seeking verifiable preliminary due diligence."
+        about_desc_1: "LandGuard is developed for Tamil Nadu property buyers, advocates, and lending institutions seeking verifiable preliminary due diligence.",
+        toast_copied: "Report abstract copied to clipboard",
+        toast_cnr_copied: "CNR number copied to clipboard",
+        toast_doc_copied: "Document number copied to clipboard"
     }
 };
 
@@ -146,6 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initVoiceRecognition();
     initChatBot();
     initSampleChips();
+    initMobileMenu();
+    initClearButtons();
+    initActionsBar();
+    initFilterTabs();
 });
 
 // ============================================
@@ -241,6 +260,7 @@ async function initLocationHierarchy() {
     distSelect.addEventListener('change', async () => {
         const selectedDist = distSelect.value;
         hideAlert();
+        distSelect.classList.remove('is-invalid');
 
         talukSelect.innerHTML = `<option value="" disabled selected>${t('opt_select_taluk')}</option>`;
         talukSelect.disabled = true;
@@ -248,6 +268,7 @@ async function initLocationHierarchy() {
         villageInput.disabled = true;
         surveyInput.value = '';
         villageSuggestions.classList.remove('active');
+        updateClearButtons();
 
         if (!selectedDist) return;
 
@@ -272,16 +293,22 @@ async function initLocationHierarchy() {
     // Taluk Change Listener
     talukSelect.addEventListener('change', () => {
         hideAlert();
+        talukSelect.classList.remove('is-invalid');
         villageInput.value = '';
         villageInput.disabled = false;
         surveyInput.value = '';
+        updateClearButtons();
         villageInput.focus();
     });
 
     // Village Autocomplete Search (Debounced API call)
     let debounceTimer = null;
+    const villageSpinner = document.getElementById('villageSpinner');
+
     villageInput.addEventListener('input', () => {
         clearTimeout(debounceTimer);
+        villageInput.classList.remove('is-invalid');
+        updateClearButtons();
         const query = villageInput.value.trim();
         const dist = distSelect.value;
         const taluk = talukSelect.value;
@@ -289,23 +316,41 @@ async function initLocationHierarchy() {
         if (query.length < 1) {
             villageSuggestions.innerHTML = '';
             villageSuggestions.classList.remove('active');
+            if (villageSpinner) villageSpinner.style.display = 'none';
             return;
         }
+
+        if (villageSpinner) villageSpinner.style.display = 'block';
 
         debounceTimer = setTimeout(async () => {
             try {
                 const res = await fetch(`/api/villages?district=${encodeURIComponent(dist)}&taluk=${encodeURIComponent(taluk)}&q=${encodeURIComponent(query)}&limit=15`);
                 const data = await res.json();
                 villageSuggestions.innerHTML = '';
+                if (villageSpinner) villageSpinner.style.display = 'none';
 
                 if (data.status === 'success' && data.results && data.results.length > 0) {
                     data.results.forEach(v => {
                         const item = document.createElement('div');
                         item.classList.add('suggestion-item');
-                        item.textContent = v.name;
+
+                        // Highlight matched query in suggestion
+                        const lowerName = v.name.toLowerCase();
+                        const lowerQuery = query.toLowerCase();
+                        const idx = lowerName.indexOf(lowerQuery);
+                        if (idx !== -1) {
+                            const before = escapeHtml(v.name.substring(0, idx));
+                            const match = escapeHtml(v.name.substring(idx, idx + query.length));
+                            const after = escapeHtml(v.name.substring(idx + query.length));
+                            item.innerHTML = `${before}<strong class="match-highlight">${match}</strong>${after}`;
+                        } else {
+                            item.textContent = v.name;
+                        }
+
                         item.addEventListener('click', () => {
                             villageInput.value = v.name;
                             villageSuggestions.classList.remove('active');
+                            updateClearButtons();
                             surveyInput.focus();
                             loadSurveySuggestions(v.name);
                         });
@@ -316,23 +361,76 @@ async function initLocationHierarchy() {
                     villageSuggestions.classList.remove('active');
                 }
             } catch (err) {
+                if (villageSpinner) villageSpinner.style.display = 'none';
                 console.error('Village search failed:', err);
             }
         }, 180);
     });
 
-    // Survey Suggestions on focus
+    // Keyboard navigation in village autocomplete
+    handleKeyboardSuggestions(villageInput, villageSuggestions, (val) => {
+        villageInput.value = val;
+        updateClearButtons();
+        surveyInput.focus();
+        loadSurveySuggestions(val);
+    });
+
+    // Survey Suggestions on focus and input
     surveyInput.addEventListener('focus', () => {
         const v = villageInput.value.trim();
         if (v) loadSurveySuggestions(v);
     });
 
+    surveyInput.addEventListener('input', () => {
+        surveyInput.classList.remove('is-invalid');
+        updateClearButtons();
+    });
+
+    // Keyboard navigation in survey autocomplete
+    handleKeyboardSuggestions(surveyInput, surveySuggestions, (val) => {
+        surveyInput.value = val;
+        updateClearButtons();
+    });
+
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('#villageInput') && !e.target.closest('#villageSuggestions')) {
+        if (!e.target.closest('#villageInput') && !e.target.closest('#villageSuggestions') && !e.target.closest('#villageClearBtn')) {
             villageSuggestions.classList.remove('active');
         }
-        if (!e.target.closest('#surveyInput') && !e.target.closest('#surveySuggestions')) {
+        if (!e.target.closest('#surveyInput') && !e.target.closest('#surveySuggestions') && !e.target.closest('#surveyClearBtn')) {
             surveySuggestions.classList.remove('active');
+        }
+    });
+}
+
+function handleKeyboardSuggestions(inputEl, dropdownEl, onSelect) {
+    inputEl.addEventListener('keydown', (e) => {
+        if (!dropdownEl.classList.contains('active')) return;
+        const items = Array.from(dropdownEl.querySelectorAll('.suggestion-item'));
+        if (items.length === 0) return;
+
+        let currentIndex = items.findIndex(it => it.classList.contains('highlighted'));
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIndex = currentIndex < items.length - 1 ? currentIndex + 1 : 0;
+            items.forEach(it => it.classList.remove('highlighted'));
+            items[nextIndex].classList.add('highlighted');
+            items[nextIndex].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = currentIndex > 0 ? currentIndex - 1 : items.length - 1;
+            items.forEach(it => it.classList.remove('highlighted'));
+            items[prevIndex].classList.add('highlighted');
+            items[prevIndex].scrollIntoView({ block: 'nearest' });
+        } else if (e.key === 'Enter') {
+            if (currentIndex !== -1 && items[currentIndex]) {
+                e.preventDefault();
+                const text = items[currentIndex].textContent.replace(/^Survey\s+/, '').trim();
+                onSelect(text);
+                dropdownEl.classList.remove('active');
+            }
+        } else if (e.key === 'Escape') {
+            dropdownEl.classList.remove('active');
         }
     });
 }
@@ -366,10 +464,11 @@ async function loadSurveySuggestions(villageName) {
             data.results.forEach(sn => {
                 const item = document.createElement('div');
                 item.classList.add('suggestion-item');
-                item.textContent = `Survey ${sn}`;
+                item.innerHTML = `Survey <strong class="match-highlight">${escapeHtml(sn)}</strong>`;
                 item.addEventListener('click', () => {
                     surveyInput.value = sn;
                     surveySuggestions.classList.remove('active');
+                    updateClearButtons();
                 });
                 surveySuggestions.appendChild(item);
             });
@@ -583,6 +682,22 @@ function renderReport(record) {
     noRecordCard.style.display = 'none';
     verifiedContainer.style.display = 'block';
 
+    // Reset filters
+    currentCourtFilter = 'all';
+    currentEncFilter = 'all';
+
+    const courtFilterTabs = document.getElementById('courtFilterTabs');
+    if (courtFilterTabs) {
+        courtFilterTabs.style.display = (record.courtCases && record.courtCases.length > 0) ? 'flex' : 'none';
+        courtFilterTabs.querySelectorAll('.tab-chip').forEach(c => c.classList.toggle('active', c.getAttribute('data-filter') === 'all'));
+    }
+
+    const encFilterTabs = document.getElementById('encFilterTabs');
+    if (encFilterTabs) {
+        encFilterTabs.style.display = (record.encumbrances && record.encumbrances.length > 0) ? 'flex' : 'none';
+        encFilterTabs.querySelectorAll('.tab-chip').forEach(c => c.classList.toggle('active', c.getAttribute('data-filter') === 'all'));
+    }
+
     // Demo Banner
     if (record.is_demo) {
         demoBanner.style.display = 'flex';
@@ -650,16 +765,50 @@ function renderRiskCard(risk) {
         risk.factors.forEach(f => {
             const el = document.createElement('div');
             el.classList.add('risk-factor-item');
+
+            let jumpBtnHtml = '';
+            const combined = (f.name + ' ' + f.description).toLowerCase();
+            if (combined.includes('suit') || combined.includes('injunction') || combined.includes('stay') || combined.includes('lawsuit')) {
+                jumpBtnHtml = `
+                    <button type="button" class="factor-jump-btn" data-target="courtCard" title="Jump to court proceedings card">
+                        <span>View Lawsuit Details</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                `;
+            } else if (combined.includes('mortgage') || combined.includes('encumbrance') || combined.includes('attachment') || combined.includes('hypothec')) {
+                jumpBtnHtml = `
+                    <button type="button" class="factor-jump-btn" data-target="encCard" title="Jump to encumbrances card">
+                        <span>View Encumbrance Record</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                `;
+            }
+
             el.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <strong style="color: var(--text-primary); font-size: 0.9rem;">${f.name}</strong>
+                    <strong style="color: var(--text-primary); font-size: 0.9rem;">${escapeHtml(f.name)}</strong>
                     <span class="status-badge" style="background: ${f.severity === 'danger' ? 'rgba(239,68,68,0.2)' : f.severity === 'warning' ? 'rgba(245,158,11,0.2)' : 'rgba(16,185,129,0.2)'}; color: ${f.severity === 'danger' ? '#ef4444' : f.severity === 'warning' ? '#f59e0b' : '#10b981'}; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700;">
                         ${f.weight > 0 ? '+' + f.weight + ' pts' : '0 pts'}
                     </span>
                 </div>
-                <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">${f.description}</p>
+                <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">${escapeHtml(f.description)}</p>
+                ${jumpBtnHtml}
             `;
             riskFactors.appendChild(el);
+        });
+
+        // Wire jump buttons to smooth-scroll
+        riskFactors.querySelectorAll('.factor-jump-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    targetEl.classList.remove('target-highlight');
+                    void targetEl.offsetWidth;
+                    targetEl.classList.add('target-highlight');
+                }
+            });
         });
     } else {
         riskFactors.innerHTML = `<p style="color: var(--text-muted); font-size: 0.85rem;">No adverse litigation or encumbrance risk factors registered in this record.</p>`;
@@ -669,10 +818,16 @@ function renderRiskCard(risk) {
 function renderOwnerDetails(owner) {
     const container = document.getElementById('ownerDetails');
     if (!owner) return;
+    const statusClass = owner.verification_status === 'VERIFIED' ? 'status-badge clear' : 'status-badge pending';
     container.innerHTML = `
-        <div class="detail-row"><span class="detail-label">Titleholder Name</span><span class="detail-value font-bold">${owner.name}</span></div>
-        <div class="detail-row"><span class="detail-label">Father / Spouse Name</span><span class="detail-value">${owner.father_name}</span></div>
-        <div class="detail-row"><span class="detail-label">Deed Registration Date</span><span class="detail-value">${owner.registration_date}</span></div>
+        <div class="detail-row"><span class="detail-label">Titleholder Name</span><span class="detail-value font-bold">${escapeHtml(owner.name)}</span></div>
+        <div class="detail-row"><span class="detail-label">Father / Spouse Name</span><span class="detail-value">${escapeHtml(owner.father_name)}</span></div>
+        <div class="detail-row"><span class="detail-label">Deed Registration Date</span><span class="detail-value mono">${escapeHtml(owner.registration_date)}</span></div>
+        <div class="detail-row"><span class="detail-label">Statutory Source</span><span class="detail-value provenance-source">${escapeHtml(owner.source_name || 'Tamil Nadu Land Records Registry (e-Services)')}</span></div>
+        <div class="detail-row"><span class="detail-label">Source Reference</span><span class="detail-value mono">${escapeHtml(owner.source_reference || 'N/A')}</span></div>
+        <div class="detail-row"><span class="detail-label">Verification Date</span><span class="detail-value provenance-date mono">${escapeHtml(owner.last_verified_at || 'Unverified')}</span></div>
+        <div class="detail-row"><span class="detail-label">Verification Status</span><span class="detail-value"><span class="${statusClass}">${escapeHtml(owner.verification_status || 'DEMO')}</span></span></div>
+        ${owner.is_demo ? '<div class="detail-row" style="border: none;"><span class="detail-label" style="color: var(--warning-ink);">Legal Evidence Notice</span><span class="detail-value" style="color: var(--warning-ink); font-size: 11px;">[DEMO RECORD &bull; Not Admissible as Legal Evidence]</span></div>' : ''}
     `;
 }
 
@@ -680,12 +835,12 @@ function renderLandDetails(land) {
     const container = document.getElementById('landDetails');
     if (!land) return;
     container.innerHTML = `
-        <div class="detail-row"><span class="detail-label">Survey Number</span><span class="detail-value font-bold">${land.surveyNo}</span></div>
-        <div class="detail-row"><span class="detail-label">Subdivision</span><span class="detail-value">${land.subdivision || 'N/A'}</span></div>
-        <div class="detail-row"><span class="detail-label">Total Extent / Area</span><span class="detail-value">${land.extent}</span></div>
-        <div class="detail-row"><span class="detail-label">Revenue Classification</span><span class="detail-value">${land.classification}</span></div>
-        <div class="detail-row"><span class="detail-label">Patta Passbook No.</span><span class="detail-value">${land.passbook}</span></div>
-        <div class="detail-row"><span class="detail-label">Guideline / Market Estimate</span><span class="detail-value">${land.marketValue}</span></div>
+        <div class="detail-row"><span class="detail-label">Survey Number</span><span class="detail-value font-bold mono">${escapeHtml(land.surveyNo)}</span></div>
+        <div class="detail-row"><span class="detail-label">Subdivision</span><span class="detail-value mono">${escapeHtml(land.subdivision || 'N/A')}</span></div>
+        <div class="detail-row"><span class="detail-label">Total Extent / Area</span><span class="detail-value">${escapeHtml(land.extent)}</span></div>
+        <div class="detail-row"><span class="detail-label">Revenue Classification</span><span class="detail-value">${escapeHtml(land.classification)}</span></div>
+        <div class="detail-row"><span class="detail-label">Patta Passbook No.</span><span class="detail-value mono">${escapeHtml(land.passbook)}</span></div>
+        <div class="detail-row"><span class="detail-label">Guideline / Market Estimate</span><span class="detail-value mono">${escapeHtml(land.marketValue)}</span></div>
     `;
 }
 
@@ -693,71 +848,165 @@ function renderCourtCases(cases) {
     const container = document.getElementById('courtCases');
     if (!cases || cases.length === 0) {
         container.innerHTML = `
-            <div style="padding: 16px; text-align: center; color: var(--success);">
-                <strong style="display: block; margin-bottom: 4px;">✔ 0 Active Lawsuits Recorded</strong>
-                <span style="font-size: 0.85rem; color: var(--text-muted);">No pending original suits or title litigation registered against this parcel in the current docket.</span>
+            <div style="padding: 16px; text-align: center; color: var(--positive-ink);">
+                <strong style="display: block; margin-bottom: 4px;">0 Active Lawsuits Recorded</strong>
+                <span style="font-size: 0.85rem; color: var(--muted);">No pending original suits or title litigation registered against this parcel in the current docket.</span>
             </div>
         `;
         return;
     }
 
-    container.innerHTML = cases.map(c => `
-        <div class="court-case-item" style="border: 1px solid var(--border-glass); border-radius: var(--radius-xs); padding: 14px; margin-bottom: 12px; background: rgba(255,255,255,0.02);">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-                <div>
-                    <span style="font-size: 1rem; font-weight: 700; color: #ef4444;">${c.case_number}</span>
-                    <span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 8px;">CNR: ${c.cnr_number || 'N/A'}</span>
-                </div>
-                <span class="status-badge" style="background: rgba(239,68,68,0.2); color: #ef4444; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">
-                    ${c.current_status}
-                </span>
+    const filtered = currentCourtFilter === 'stay' ? cases.filter(c => c.has_stay_injunction) : cases;
+
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div style="padding: 16px; text-align: center; color: var(--muted);">
+                <strong style="display: block; margin-bottom: 4px;">No Injunctions in Filter</strong>
+                <span style="font-size: 0.85rem;">None of the recorded suits currently carry an active interim injunction or stay order.</span>
             </div>
-            <div style="font-size: 0.85rem; line-height: 1.5; color: var(--text-secondary);">
-                <div><strong>Court:</strong> ${c.court_name}</div>
-                <div><strong>Type:</strong> ${c.case_type} | <strong>Filing Date:</strong> ${c.filing_date}</div>
-                <div><strong>Parties:</strong> ${c.petitioner} <em>vs.</em> ${c.respondent}</div>
-                ${c.has_stay_injunction ? '<div style="color: #ef4444; font-weight: 700; margin-top: 4px;">⚠️ Active Interim Injunction / Stay Order Restraining Transfer</div>' : ''}
-                <div style="margin-top: 6px; font-style: italic; color: var(--text-muted);">${c.case_summary || ''}</div>
+        `;
+        return;
+    }
+
+    container.innerHTML = filtered.map(c => {
+        const statusBadgeClass = c.verification_status === 'VERIFIED' ? 'status-badge clear' : 'status-badge pending';
+        const cnrBtn = c.cnr_number ? `
+            <button type="button" class="copy-chip-btn copy-cnr-btn" data-cnr="${escapeHtml(c.cnr_number)}" title="Copy CNR Number">
+                Copy CNR
+            </button>
+        ` : '';
+
+        return `
+        <div class="court-case-item">
+            <div class="case-header">
+                <div>
+                    <span class="case-number">${escapeHtml(c.case_number)}</span>
+                    <span style="font-size: 0.8rem; color: var(--faint); margin-left: 8px;">CNR: <span class="mono">${escapeHtml(c.cnr_number || 'N/A')}</span>${cnrBtn}</span>
+                </div>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <span class="${statusBadgeClass}">${escapeHtml(c.verification_status || 'DEMO')}</span>
+                    <span class="status-badge active">${escapeHtml(c.current_status)}</span>
+                </div>
+            </div>
+            <div class="case-details">
+                <div class="case-detail"><span class="case-detail-label">Court</span><span>${escapeHtml(c.court_name)}</span></div>
+                <div class="case-detail"><span class="case-detail-label">Type & Date</span><span>${escapeHtml(c.case_type)} &bull; Filed: <span class="mono">${escapeHtml(c.filing_date)}</span></span></div>
+                <div class="case-detail"><span class="case-detail-label">Parties</span><span>${escapeHtml(c.petitioner)} <em>vs.</em> ${escapeHtml(c.respondent)}</span></div>
+                <div class="case-detail"><span class="case-detail-label">Source</span><span class="provenance-source">${escapeHtml(c.source_name || 'eCourts Services (NJDG)')} (<span class="mono">${escapeHtml(c.source_reference || c.case_number)}</span>)</span></div>
+                <div class="case-detail"><span class="case-detail-label">Verified At</span><span class="provenance-date mono">${escapeHtml(c.last_verified_at || 'Unverified')}</span></div>
+                ${c.has_stay_injunction ? '<div style="color: var(--negative-ink); font-weight: 600; margin-top: 4px;">Active Interim Injunction / Stay Order Restraining Transfer</div>' : ''}
+                ${c.is_demo ? '<div style="font-size: 11px; color: var(--warning-ink); margin-top: 2px;">[DEMO RECORD &mdash; Sample Benchmark &bull; Not Admissible as Legal Evidence]</div>' : ''}
+                <div style="margin-top: 6px; font-style: italic; color: var(--muted);">${escapeHtml(c.case_summary || '')}</div>
                 ${c.history && c.history.length > 0 ? `
-                    <div style="margin-top: 8px; border-top: 1px dotted var(--border-glass); padding-top: 6px;">
-                        <span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">Recorded Proceedings (${c.history.length} orders):</span>
-                        <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 0.8rem;">
-                            ${c.history.map(h => `<li><strong>${h.hearing_date}:</strong> ${h.order_summary} (Next: ${h.next_hearing_date || 'N/A'})</li>`).join('')}
+                    <div style="margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 6px;">
+                        <span style="font-size: 0.75rem; font-weight: 600; color: var(--faint);">Recorded Proceedings (${c.history.length} orders):</span>
+                        <ul style="margin: 4px 0 0 16px; padding: 0; font-size: 0.8rem; color: var(--muted);">
+                            ${c.history.map(h => `<li><strong class="mono">${escapeHtml(h.hearing_date)}:</strong> ${escapeHtml(h.order_summary)} (Next: <span class="mono">${escapeHtml(h.next_hearing_date || 'N/A')}</span>)</li>`).join('')}
                         </ul>
                     </div>
                 ` : ''}
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
+
+    container.querySelectorAll('.copy-cnr-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const cnr = btn.getAttribute('data-cnr');
+            if (cnr) copyToClipboard(cnr, t('toast_cnr_copied'));
+        });
+    });
 }
 
 function renderEncumbrances(encList) {
     const container = document.getElementById('encDetails');
     if (!encList || encList.length === 0) {
         container.innerHTML = `
-            <div style="padding: 16px; text-align: center; color: var(--success);">
-                <strong style="display: block; margin-bottom: 4px;">✔ Clear Encumbrance Certificate</strong>
-                <span style="font-size: 0.85rem; color: var(--text-muted);">No adverse registered mortgage, lien, or court attachment found in this record.</span>
+            <div style="padding: 16px; text-align: center; color: var(--positive-ink);">
+                <strong style="display: block; margin-bottom: 4px;">Clear Encumbrance Certificate</strong>
+                <span style="font-size: 0.85rem; color: var(--muted);">No adverse registered mortgage, lien, or court attachment found in this record.</span>
             </div>
         `;
         return;
     }
 
-    container.innerHTML = encList.map(e => `
-        <div style="border: 1px solid var(--border-glass); border-radius: var(--radius-xs); padding: 12px; margin-bottom: 10px; background: rgba(255,255,255,0.02);">
-            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                <strong style="color: var(--text-primary); font-size: 0.9rem;">${e.nature_of_deed}</strong>
-                <span class="status-badge" style="background: rgba(245,158,11,0.2); color: #f59e0b; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">
-                    ${e.status}
-                </span>
+    const filtered = currentEncFilter === 'mortgage'
+        ? encList.filter(e => /mortgage|hypothec|loan/i.test(e.nature_of_deed || ''))
+        : encList;
+
+    if (filtered.length === 0) {
+        container.innerHTML = `
+            <div style="padding: 16px; text-align: center; color: var(--muted);">
+                <strong style="display: block; margin-bottom: 4px;">No Mortgages in Filter</strong>
+                <span style="font-size: 0.85rem;">No active bank mortgages recorded in this encumbrance certificate.</span>
             </div>
-            <div style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
-                <div><strong>Document No:</strong> ${e.document_number || 'N/A'} | <strong>SRO:</strong> ${e.sro_office || 'N/A'}</div>
-                <div><strong>Parties:</strong> Executant: ${e.executant || 'N/A'} | Claimant: ${e.claimant || 'N/A'}</div>
-                ${e.mortgage_amount_inr ? `<div><strong>Registered Amount:</strong> ${e.mortgage_amount_inr}</div>` : ''}
+        `;
+        return;
+    }
+
+    container.innerHTML = filtered.map(e => {
+        const statusBadgeClass = e.verification_status === 'VERIFIED' ? 'status-badge clear' : 'status-badge pending';
+        const docBtn = e.document_number ? `
+            <button type="button" class="copy-chip-btn copy-doc-btn" data-doc="${escapeHtml(e.document_number)}" title="Copy Document Number">
+                Copy Doc
+            </button>
+        ` : '';
+
+        return `
+        <div class="encumbrance-item">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                <strong style="color: var(--text); font-size: 0.9rem;">${escapeHtml(e.nature_of_deed)}</strong>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <span class="${statusBadgeClass}">${escapeHtml(e.verification_status || 'DEMO')}</span>
+                    <span class="status-badge pending">${escapeHtml(e.status)}</span>
+                </div>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--muted); line-height: 1.45;">
+                <div><span class="case-detail-label">Document:</span> <span class="mono">${escapeHtml(e.document_number || 'N/A')}</span>${docBtn} &bull; <strong>SRO:</strong> ${escapeHtml(e.sro_office || 'N/A')}</div>
+                <div><span class="case-detail-label">Parties:</span> Executant: ${escapeHtml(e.executant || 'N/A')} &bull; Claimant: ${escapeHtml(e.claimant || 'N/A')}</div>
+                ${e.mortgage_amount_inr ? `<div><span class="case-detail-label">Amount:</span> <span class="mono">${escapeHtml(e.mortgage_amount_inr)}</span></div>` : ''}
+                <div><span class="case-detail-label">Source:</span> <span class="provenance-source">${escapeHtml(e.source_name || 'TNREGINET')}</span> &bull; <strong>Verified At:</strong> <span class="provenance-date mono">${escapeHtml(e.last_verified_at || 'Unverified')}</span></div>
+                ${e.is_demo ? '<div style="font-size: 11px; color: var(--warning-ink); margin-top: 2px;">[DEMO RECORD &mdash; Sample Benchmark &bull; Not Admissible as Legal Evidence]</div>' : ''}
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
+
+    container.querySelectorAll('.copy-doc-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const doc = btn.getAttribute('data-doc');
+            if (doc) copyToClipboard(doc, t('toast_doc_copied'));
+        });
+    });
+}
+
+function setMapTileLayer(type) {
+    if (!mapInstance) return;
+    if (mapTileLayer) {
+        mapInstance.removeLayer(mapTileLayer);
+    }
+    currentMapLayerType = type;
+    if (type === 'satellite') {
+        mapTileLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: '&copy; Esri &mdash; Earthstar Geographics',
+            maxZoom: 18
+        });
+    } else {
+        mapTileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+            maxZoom: 18
+        });
+    }
+    mapTileLayer.addTo(mapInstance);
+
+    const btnStreet = document.getElementById('btnStreetLayer');
+    const btnSat = document.getElementById('btnSatelliteLayer');
+    if (btnStreet && btnSat) {
+        btnStreet.classList.toggle('active', type === 'street');
+        btnSat.classList.toggle('active', type === 'satellite');
+    }
 }
 
 function renderApproximateMap(record) {
@@ -767,6 +1016,7 @@ function renderApproximateMap(record) {
     if (mapInstance) {
         mapInstance.remove();
         mapInstance = null;
+        mapTileLayer = null;
     }
     mapContainer.innerHTML = '';
 
@@ -781,10 +1031,7 @@ function renderApproximateMap(record) {
             scrollWheelZoom: false
         });
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            maxZoom: 18
-        }).addTo(mapInstance);
+        setMapTileLayer(currentMapLayerType || 'street');
 
         const circle = L.circle([lat, lng], {
             color: record.risk.color,
@@ -795,9 +1042,9 @@ function renderApproximateMap(record) {
 
         circle.bindPopup(`
             <div style="font-family: var(--font-body); font-size: 0.85rem; padding: 4px;">
-                <strong>${record.location.village}</strong> (Approximate Centroid)<br>
-                <span>Survey Plot: ${record.location.surveyNumber}</span><br>
-                <span>Risk Level: <strong>${record.risk.level}</strong></span>
+                <strong>${escapeHtml(record.location.village)}</strong> (Approximate Centroid)<br>
+                <span>Survey Plot: ${escapeHtml(record.location.surveyNumber)}</span><br>
+                <span>Risk Level: <strong>${escapeHtml(record.risk.level)}</strong></span>
             </div>
         `);
 
@@ -828,14 +1075,17 @@ async function renderAiAnalystNotes(record) {
         const data = await res.json();
         if (data.status === 'success' && data.response) {
             badge.textContent = data.source === 'gemini_llm' ? 'Gemini AI Verified' : 'Context-Bound Legal Reasoning';
+            latestAiAnalysisText = data.response;
             container.innerHTML = `
-                <div style="line-height: 1.6; font-size: 0.95rem; color: var(--text-secondary); white-space: pre-line;">
-                    ${data.response}
+                <div class="ai-analysis-formatted" style="line-height: 1.6; font-size: 0.95rem; color: var(--text-secondary);">
+                    ${formatMarkdown(data.response)}
                 </div>
             `;
         }
     } catch (err) {
-        container.innerHTML = `<div style="color: var(--text-muted);">Due diligence notes based on verified records: Title registered under ${record.parcel.owner.name} with ${record.courtCases.length} court proceedings recorded.</div>`;
+        const fallback = `Due diligence notes based on verified records: Title registered under ${record.parcel.owner.name} with ${record.courtCases.length} court proceedings recorded.`;
+        latestAiAnalysisText = fallback;
+        container.innerHTML = `<div style="color: var(--text-muted);">${escapeHtml(fallback)}</div>`;
     }
 }
 
@@ -843,27 +1093,40 @@ function renderSourcesList(record) {
     const container = document.getElementById('sourcesList');
     if (!container) return;
 
+    const ownerSrc = record.parcel && record.parcel.owner ? record.parcel.owner : {};
+    const firstCase = (record.courtCases && record.courtCases[0]) || {};
+    const firstEnc = (record.encumbrances && record.encumbrances[0]) || {};
+
     container.innerHTML = `
         <div class="source-item">
             <div>
                 <span class="source-name">1. Statutory Land Revenue Registry</span>
-                <div class="source-meta">Source: ${record.parcel.source.name} (${record.parcel.source.url})</div>
+                <div class="source-meta">
+                    Source: <span class="provenance-source">${ownerSrc.source_name || (record.parcel && record.parcel.source && record.parcel.source.name) || 'Tamil Nadu Land Records Registry (e-Services)'}</span> &bull; Ref: <span class="mono">${ownerSrc.source_reference || 'N/A'}</span>
+                    <br>Retrieved: <span class="mono">${ownerSrc.retrieved_at ? ownerSrc.retrieved_at.split('T')[0] : 'N/A'}</span> &bull; Verified: <span class="provenance-date mono">${ownerSrc.last_verified_at || 'Unverified'}</span>
+                </div>
             </div>
-            <span class="status-badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-size: 0.75rem;">Verified ${record.parcel.source.last_verified_at || 'Recent'}</span>
+            <span class="status-badge ${ownerSrc.verification_status === 'VERIFIED' ? 'clear' : 'pending'}">${ownerSrc.verification_status || 'DEMO'}</span>
         </div>
         <div class="source-item">
             <div>
                 <span class="source-name">2. Judicial Case Status Portal</span>
-                <div class="source-meta">Source: eCourts Services / NJDG (https://ecourts.gov.in)</div>
+                <div class="source-meta">
+                    Source: <span class="provenance-source">${firstCase.source_name || 'eCourts Services (NJDG)'}</span> &bull; Ref: <span class="mono">${firstCase.source_reference || 'N/A'}</span>
+                    <br>Retrieved: <span class="mono">${firstCase.retrieved_at ? firstCase.retrieved_at.split('T')[0] : 'N/A'}</span> &bull; Verified: <span class="provenance-date mono">${firstCase.last_verified_at || 'Unverified'}</span>
+                </div>
             </div>
-            <span class="status-badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-size: 0.75rem;">Indexed Public Docket</span>
+            <span class="status-badge ${firstCase.verification_status === 'VERIFIED' ? 'clear' : 'pending'}">${firstCase.verification_status || 'DEMO'}</span>
         </div>
         <div class="source-item">
             <div>
                 <span class="source-name">3. Encumbrance & Registration Records</span>
-                <div class="source-meta">Source: Inspector General of Registration, Tamil Nadu (https://tnreginet.gov.in)</div>
+                <div class="source-meta">
+                    Source: <span class="provenance-source">${firstEnc.source_name || 'TNREGINET'}</span> &bull; Ref: <span class="mono">${firstEnc.source_reference || 'N/A'}</span>
+                    <br>Retrieved: <span class="mono">${firstEnc.retrieved_at ? firstEnc.retrieved_at.split('T')[0] : 'N/A'}</span> &bull; Verified: <span class="provenance-date mono">${firstEnc.last_verified_at || 'Unverified'}</span>
+                </div>
             </div>
-            <span class="status-badge" style="background: rgba(16,185,129,0.15); color: #10b981; font-size: 0.75rem;">SRO Registered Book</span>
+            <span class="status-badge ${firstEnc.verification_status === 'VERIFIED' ? 'clear' : 'pending'}">${firstEnc.verification_status || 'DEMO'}</span>
         </div>
     `;
 }
@@ -955,7 +1218,7 @@ function initVoiceRecognition() {
 
     function stopVoice() {
         if (speechRecognition && isRecording) {
-            try { speechRecognition.stop(); } catch (_) {}
+            try { speechRecognition.stop(); } catch (_) { }
         }
         isRecording = false;
         voiceBtn.classList.remove('recording');
@@ -992,8 +1255,8 @@ function parseVoiceTranscript(text) {
 
     // Try to match District from cachedDistricts
     const distSelect = document.getElementById('districtSelect');
-    const matchedDist = cachedDistricts.find(d => 
-        clean.includes(d.name.toLowerCase()) || 
+    const matchedDist = cachedDistricts.find(d =>
+        clean.includes(d.name.toLowerCase()) ||
         (d.name_ta && text.includes(d.name_ta))
     );
 
@@ -1015,6 +1278,7 @@ function parseVoiceTranscript(text) {
 function initChatBot() {
     const chatToggleBtn = document.getElementById('chatToggleBtn');
     const chatCloseBtn = document.getElementById('chatCloseBtn');
+    const chatExpandBtn = document.getElementById('chatExpandBtn');
     const chatWindow = document.getElementById('chatWindow');
     const chatForm = document.getElementById('chatInputArea');
     const chatInput = document.getElementById('chatInput');
@@ -1034,6 +1298,26 @@ function initChatBot() {
         chatWindow.classList.remove('active');
         chatToggleBtn.querySelector('.chat-icon-open').style.display = '';
         chatToggleBtn.querySelector('.chat-icon-close').style.display = 'none';
+    });
+
+    if (chatExpandBtn) {
+        chatExpandBtn.addEventListener('click', () => {
+            chatWindow.classList.toggle('expanded');
+            const isExpanded = chatWindow.classList.contains('expanded');
+            const expandIcon = chatExpandBtn.querySelector('.expand-icon');
+            const collapseIcon = chatExpandBtn.querySelector('.collapse-icon');
+            if (expandIcon) expandIcon.style.display = isExpanded ? 'none' : '';
+            if (collapseIcon) collapseIcon.style.display = isExpanded ? '' : 'none';
+            chatExpandBtn.setAttribute('title', isExpanded ? 'Collapse Window' : 'Expand Window');
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && chatWindow.classList.contains('active')) {
+            chatWindow.classList.remove('active');
+            chatToggleBtn.querySelector('.chat-icon-open').style.display = '';
+            chatToggleBtn.querySelector('.chat-icon-close').style.display = 'none';
+        }
     });
 
     chatForm.addEventListener('submit', async (e) => {
@@ -1101,8 +1385,29 @@ function appendChatMessage(text, sender) {
     msg.classList.add('chat-msg', sender === 'user' ? 'user-msg' : 'bot-msg');
     const bubble = document.createElement('div');
     bubble.classList.add('msg-bubble');
-    bubble.style.whiteSpace = 'pre-line';
-    bubble.textContent = text;
+
+    if (sender === 'bot') {
+        bubble.innerHTML = formatMarkdown(text);
+
+        const copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'msg-copy-btn';
+        copyBtn.setAttribute('title', 'Copy response');
+        copyBtn.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span>Copy</span>
+        `;
+        copyBtn.addEventListener('click', () => {
+            copyToClipboard(text, 'Response copied to clipboard');
+        });
+        bubble.appendChild(copyBtn);
+    } else {
+        bubble.textContent = text;
+    }
+
     msg.appendChild(bubble);
     chatBody.appendChild(msg);
     chatBody.scrollTop = chatBody.scrollHeight;
@@ -1112,8 +1417,306 @@ function appendTypingIndicator() {
     const chatBody = document.getElementById('chatBody');
     const msg = document.createElement('div');
     msg.classList.add('chat-msg', 'bot-msg');
-    msg.innerHTML = `<div class="msg-bubble" style="font-style: italic; color: var(--text-muted);">${currentLanguage === 'ta' ? 'ஆய்வு செய்யப்படுகிறது...' : 'Analyzing verified record...'}</div>`;
+    msg.innerHTML = `
+        <div class="msg-bubble" style="display: flex; align-items: center; gap: 6px;">
+            <span class="typing-dot" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: typingDot 1.4s infinite;"></span>
+            <span class="typing-dot" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: typingDot 1.4s 0.2s infinite;"></span>
+            <span class="typing-dot" style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); animation: typingDot 1.4s 0.4s infinite;"></span>
+            <span style="font-size: 0.8rem; color: var(--text-muted); margin-left: 6px;">${currentLanguage === 'ta' ? 'ஆய்வு செய்யப்படுகிறது...' : 'Analyzing verified record...'}</span>
+        </div>
+    `;
     chatBody.appendChild(msg);
     chatBody.scrollTop = chatBody.scrollHeight;
     return msg;
+}
+
+// ============================================
+// Enhanced UI/UX Helper Implementations
+// ============================================
+
+function initClearButtons() {
+    const villageInput = document.getElementById('villageInput');
+    const villageClearBtn = document.getElementById('villageClearBtn');
+    const surveyInput = document.getElementById('surveyInput');
+    const surveyClearBtn = document.getElementById('surveyClearBtn');
+    const villageSuggestions = document.getElementById('villageSuggestions');
+    const surveySuggestions = document.getElementById('surveySuggestions');
+
+    if (villageClearBtn && villageInput) {
+        villageClearBtn.addEventListener('click', () => {
+            villageInput.value = '';
+            if (villageSuggestions) villageSuggestions.classList.remove('active');
+            updateClearButtons();
+            villageInput.focus();
+        });
+    }
+
+    if (surveyClearBtn && surveyInput) {
+        surveyClearBtn.addEventListener('click', () => {
+            surveyInput.value = '';
+            if (surveySuggestions) surveySuggestions.classList.remove('active');
+            updateClearButtons();
+            surveyInput.focus();
+        });
+    }
+}
+
+function updateClearButtons() {
+    const villageInput = document.getElementById('villageInput');
+    const villageClearBtn = document.getElementById('villageClearBtn');
+    const surveyInput = document.getElementById('surveyInput');
+    const surveyClearBtn = document.getElementById('surveyClearBtn');
+
+    if (villageClearBtn && villageInput) {
+        villageClearBtn.style.display = villageInput.value ? 'flex' : 'none';
+    }
+    if (surveyClearBtn && surveyInput) {
+        surveyClearBtn.style.display = surveyInput.value ? 'flex' : 'none';
+    }
+}
+
+function initMobileMenu() {
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    const navDrawer = document.getElementById('mobileNavDrawer');
+    if (!menuToggle || !navDrawer) return;
+
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navDrawer.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navDrawer.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('#mobileNavDrawer') && !e.target.closest('#mobileMenuToggle')) {
+            navDrawer.classList.remove('active');
+            menuToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
+function initActionsBar() {
+    const pdfBtn = document.getElementById('pdfBtn');
+    const shareBtn = document.getElementById('shareBtn');
+    const copyAiBtn = document.getElementById('copyAiAnalysisBtn');
+    const formulaToggle = document.getElementById('riskFormulaToggle');
+    const formulaBox = document.getElementById('riskFormulaDetails');
+
+    if (pdfBtn) {
+        pdfBtn.addEventListener('click', () => {
+            window.print();
+        });
+    }
+
+    if (shareBtn) {
+        shareBtn.addEventListener('click', () => {
+            if (!activeRecord) return;
+            const loc = activeRecord.location || {};
+            const risk = activeRecord.risk || {};
+            const owner = activeRecord.parcel && activeRecord.parcel.owner ? activeRecord.parcel.owner : {};
+            const courtCount = (activeRecord.courtCases || []).length;
+            const encCount = (activeRecord.encumbrances || []).length;
+
+            const abstractText = [
+                `LANDGUARD STATUTORY DUE DILIGENCE ABSTRACT`,
+                `-------------------------------------------`,
+                `Location: Survey No. ${loc.surveyNumber}, ${loc.village}, ${loc.taluk}, ${loc.district}`,
+                `Titleholder: ${owner.name || 'N/A'} (Reg: ${owner.registration_date || 'N/A'})`,
+                `Litigation Risk: ${risk.level ? risk.level.toUpperCase() : 'N/A'} (${risk.score || 0}/100)`,
+                `Active Court Proceedings: ${courtCount} recorded`,
+                `Registered Encumbrances: ${encCount} recorded`,
+                `Classification: ${activeRecord.is_demo ? 'DEMO RECORD' : 'VERIFIED STATUTORY AUDIT'}`,
+                `Date: ${new Date().toLocaleDateString('en-IN')}`,
+                `-------------------------------------------`,
+                `Generated via LandGuard Tamil Nadu Land Due Diligence Platform`
+            ].join('\n');
+
+            copyToClipboard(abstractText, t('toast_copied'));
+        });
+    }
+
+    if (copyAiBtn) {
+        copyAiBtn.addEventListener('click', () => {
+            const textToCopy = latestAiAnalysisText || (document.getElementById('aiAnalystDetails') ? document.getElementById('aiAnalystDetails').innerText : '');
+            if (textToCopy) {
+                copyToClipboard(textToCopy, t('toast_copied'));
+            }
+        });
+    }
+
+    if (formulaToggle && formulaBox) {
+        formulaToggle.addEventListener('click', () => {
+            const isVisible = formulaBox.style.display !== 'none';
+            formulaBox.style.display = isVisible ? 'none' : 'block';
+            formulaToggle.setAttribute('aria-expanded', isVisible ? 'false' : 'true');
+        });
+    }
+}
+
+function initFilterTabs() {
+    const courtFilterTabs = document.getElementById('courtFilterTabs');
+    const encFilterTabs = document.getElementById('encFilterTabs');
+    const btnStreet = document.getElementById('btnStreetLayer');
+    const btnSatellite = document.getElementById('btnSatelliteLayer');
+
+    if (courtFilterTabs) {
+        courtFilterTabs.querySelectorAll('.tab-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                courtFilterTabs.querySelectorAll('.tab-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                currentCourtFilter = chip.getAttribute('data-filter') || 'all';
+                if (activeRecord) renderCourtCases(activeRecord.courtCases);
+            });
+        });
+    }
+
+    if (encFilterTabs) {
+        encFilterTabs.querySelectorAll('.tab-chip').forEach(chip => {
+            chip.addEventListener('click', () => {
+                encFilterTabs.querySelectorAll('.tab-chip').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                currentEncFilter = chip.getAttribute('data-filter') || 'all';
+                if (activeRecord) renderEncumbrances(activeRecord.encumbrances);
+            });
+        });
+    }
+
+    if (btnStreet) {
+        btnStreet.addEventListener('click', () => {
+            setMapTileLayer('street');
+        });
+    }
+
+    if (btnSatellite) {
+        btnSatellite.addEventListener('click', () => {
+            setMapTileLayer('satellite');
+        });
+    }
+}
+
+function showToast(message, type = 'info') {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    container.appendChild(toast);
+
+    void toast.offsetWidth;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 250);
+    }, 3200);
+}
+
+function copyToClipboard(text, successMsg) {
+    if (!text) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast(successMsg || t('toast_copied'), 'success');
+        }).catch(() => {
+            fallbackCopy(text, successMsg);
+        });
+    } else {
+        fallbackCopy(text, successMsg);
+    }
+}
+
+function fallbackCopy(text, successMsg) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+        document.execCommand('copy');
+        showToast(successMsg || t('toast_copied'), 'success');
+    } catch (err) {
+        showToast('Unable to copy to clipboard', 'info');
+    }
+    document.body.removeChild(ta);
+}
+
+function formatMarkdown(rawText) {
+    if (!rawText) return '';
+    const safe = escapeHtml(rawText);
+
+    const lines = safe.split(/\r?\n/);
+    let html = '';
+    let inList = false;
+
+    lines.forEach(line => {
+        const trimmed = line.trim();
+        if (!trimmed) {
+            if (inList) {
+                html += '</ul>';
+                inList = false;
+            }
+            return;
+        }
+
+        if (/^###\s+(.+)$/.test(trimmed)) {
+            if (inList) { html += '</ul>'; inList = false; }
+            const headerText = trimmed.replace(/^###\s+/, '');
+            html += `<h5 style="margin: 8px 0 4px 0; font-size: 0.95rem; font-weight: 600; color: var(--text-primary);">${formatInline(headerText)}</h5>`;
+            return;
+        }
+
+        if (/^[*-]\s+(.+)$/.test(trimmed)) {
+            if (!inList) {
+                html += '<ul style="margin: 4px 0 8px 18px; padding: 0;">';
+                inList = true;
+            }
+            const itemText = trimmed.replace(/^[*-]\s+/, '');
+            html += `<li style="margin-bottom: 4px;">${formatInline(itemText)}</li>`;
+            return;
+        }
+
+        if (/^\d+\.\s+(.+)$/.test(trimmed)) {
+            if (inList) { html += '</ul>'; inList = false; }
+            const itemText = trimmed.replace(/^\d+\.\s+/, '');
+            html += `<div style="margin-bottom: 4px;"><span class="mono" style="font-weight: 600; margin-right: 4px;">&bull;</span>${formatInline(itemText)}</div>`;
+            return;
+        }
+
+        if (inList) {
+            html += '</ul>';
+            inList = false;
+        }
+
+        html += `<p style="margin: 0 0 6px 0;">${formatInline(trimmed)}</p>`;
+    });
+
+    if (inList) {
+        html += '</ul>';
+    }
+
+    return html;
+}
+
+function formatInline(str) {
+    return str
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/`([^`]+)`/g, '<code style="font-family: var(--font-mono); font-size: 11px; padding: 1px 4px; background: var(--ground); border: 1px solid var(--border); border-radius: 3px;">$1</code>');
+}
+
+function escapeHtml(text) {
+    if (typeof text !== 'string') return text;
+    return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }

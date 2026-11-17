@@ -23,6 +23,12 @@
 
 <body>
 
+    <!-- Accessibility Skip Link -->
+    <a href="#search-section" class="skip-link">Skip to Search Console</a>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer" role="status" aria-live="polite"></div>
+
     <!-- Top Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
@@ -34,8 +40,12 @@
                     </svg>
                 </div>
                 <span>LandGuard</span>
+                <span class="live-status-pill" title="Connected to Tamil Nadu Land & Judicial Index">
+                    <span class="pulse-beacon"></span>
+                    <span class="status-pill-text">TN Gateway Live</span>
+                </span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link active" data-i18n="nav_home">Home</a>
                 <a href="#search-section" class="nav-link" data-i18n="nav_search">Search</a>
                 <a href="#features" class="nav-link" data-i18n="nav_features">Features</a>
@@ -55,7 +65,21 @@
                 <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language">
                     தமிழ்
                 </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Open Navigation Menu" aria-expanded="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
             </div>
+        </div>
+        <!-- Mobile Navigation Menu Drawer -->
+        <div class="mobile-nav-drawer" id="mobileNavDrawer">
+            <a href="#home" class="mobile-nav-link active" data-i18n="nav_home">Home</a>
+            <a href="#search-section" class="mobile-nav-link" data-i18n="nav_search">Search</a>
+            <a href="#features" class="mobile-nav-link" data-i18n="nav_features">Features</a>
+            <a href="#about" class="mobile-nav-link" data-i18n="nav_about">About</a>
         </div>
     </nav>
 
@@ -149,7 +173,9 @@
 
             <!-- Voice Control Status Banner -->
             <div class="voice-status-banner" id="voiceStatusBanner" style="display: none;">
-                <div class="voice-pulse-ring"></div>
+                <div class="voice-wave" id="voiceWave">
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
                 <span class="voice-status-text" id="voiceStatusText">Listening for Tamil or English search details...</span>
                 <button type="button" class="voice-cancel-btn" id="voiceCancelBtn" aria-label="Cancel Voice">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
@@ -172,7 +198,7 @@
             <form class="search-form" id="searchForm" novalidate>
                 <div class="form-grid-4">
                     <!-- 1. District Selection -->
-                    <div class="form-group">
+                    <div class="form-group" id="groupDistrict">
                         <label for="districtSelect" class="form-label">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
                                 <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
@@ -187,7 +213,7 @@
                     </div>
 
                     <!-- 2. Taluk Selection -->
-                    <div class="form-group">
+                    <div class="form-group" id="groupTaluk">
                         <label for="talukSelect" class="form-label">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -203,7 +229,7 @@
                     </div>
 
                     <!-- 3. Village Autocomplete -->
-                    <div class="form-group">
+                    <div class="form-group" id="groupVillage">
                         <label for="villageInput" class="form-label">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
                                 <circle cx="12" cy="10" r="3" />
@@ -213,13 +239,15 @@
                         </label>
                         <div class="input-wrapper">
                             <input type="text" id="villageInput" placeholder="Type village name..." autocomplete="off" disabled required>
+                            <button type="button" class="input-clear-btn" id="villageClearBtn" aria-label="Clear Village Input" style="display: none;">&times;</button>
+                            <div class="input-spinner" id="villageSpinner" style="display: none;"></div>
                             <div class="input-glow"></div>
                         </div>
                         <div class="suggestions-dropdown" id="villageSuggestions"></div>
                     </div>
 
                     <!-- 4. Survey Number -->
-                    <div class="form-group">
+                    <div class="form-group" id="groupSurvey">
                         <label for="surveyInput" class="form-label">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
                                 <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
@@ -230,6 +258,7 @@
                         </label>
                         <div class="input-wrapper">
                             <input type="text" id="surveyInput" placeholder="e.g., 142/1, 88/2A..." autocomplete="off" required>
+                            <button type="button" class="input-clear-btn" id="surveyClearBtn" aria-label="Clear Survey Number" style="display: none;">&times;</button>
                             <div class="input-glow"></div>
                         </div>
                         <div class="suggestions-dropdown" id="surveySuggestions"></div>
@@ -339,18 +368,28 @@
                 <!-- Result Header -->
                 <div class="result-header">
                     <div class="result-header-left">
+                        <div class="result-status-tag">
+                            <span class="pulse-dot"></span>
+                            <span class="tag-text">Statutory Due Diligence Audit</span>
+                        </div>
                         <h2 class="result-title" data-i18n="report_title">Land Due Diligence Report</h2>
                         <p class="result-meta" id="resultMeta"></p>
                     </div>
                     <div class="result-actions">
-                        <button class="pdf-btn" id="pdfBtn" type="button">
+                        <button class="pdf-btn" id="pdfBtn" type="button" title="Print or save official PDF legal summary">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                                <polyline points="14 2 14 8 20 8" />
-                                <line x1="16" y1="13" x2="8" y2="13" />
-                                <line x1="16" y1="17" x2="8" y2="17" />
+                                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                                <rect x="6" y="14" width="12" height="8"></rect>
                             </svg>
                             <span data-i18n="btn_pdf">Download Summary</span>
+                        </button>
+                        <button class="share-btn" id="shareBtn" type="button" title="Copy report abstract to clipboard">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                            </svg>
+                            <span data-i18n="btn_share">Copy Abstract</span>
                         </button>
                         <button class="new-search-btn" id="newSearchBtn" type="button">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
@@ -388,10 +427,46 @@
                             </div>
                             <div class="risk-level" id="riskLevel">Calculating...</div>
                             <div class="risk-description" id="riskDescription"></div>
+                            <button type="button" class="risk-formula-toggle" id="riskFormulaToggle" aria-expanded="false" aria-controls="riskFormulaDetails">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                                <span>Scoring Methodology</span>
+                            </button>
                         </div>
-                        <div class="risk-factors" id="riskFactors">
-                            <!-- Populated with transparent deterministic factors -->
+                        <div class="risk-breakdown-area">
+                            <div class="risk-factors-header">
+                                <h4 class="risk-factors-title">Contributory Statutory Factors</h4>
+                                <span class="risk-formula-badge">Rule-Based 100% Explainable</span>
+                            </div>
+                            <div class="risk-factors" id="riskFactors">
+                                <!-- Populated with transparent deterministic factors -->
+                            </div>
                         </div>
+                    </div>
+                    <!-- Collapsible Scoring Methodology Explanation -->
+                    <div class="risk-formula-box" id="riskFormulaDetails" style="display: none;">
+                        <div class="formula-grid">
+                            <div class="formula-item">
+                                <span class="formula-weight danger">+35 pts</span>
+                                <span class="formula-text">Active Original Lawsuit (O.S. / Writ / Partition claim)</span>
+                            </div>
+                            <div class="formula-item">
+                                <span class="formula-weight danger">+30 pts</span>
+                                <span class="formula-text">Interim Injunction / Stay Order restraining property transfer</span>
+                            </div>
+                            <div class="formula-item">
+                                <span class="formula-weight warning">+20 pts</span>
+                                <span class="formula-text">Active Registered Bank Mortgage / Hypothecation (TNREGINET)</span>
+                            </div>
+                            <div class="formula-item">
+                                <span class="formula-weight danger">+35 pts</span>
+                                <span class="formula-text">Court Attachment / Execution Proceeding (E.P.)</span>
+                            </div>
+                        </div>
+                        <p class="formula-disclaimer">Cumulative risk score is mathematically bounded between 0 (Clear Title) and 100 (Maximum Litigation Restraint). Zero stochastic guessing.</p>
                     </div>
                 </div>
 
@@ -441,6 +516,10 @@
                                 </svg>
                             </div>
                             <h3 data-i18n="card_map">Approximate Village Location</h3>
+                            <div class="map-controls">
+                                <button type="button" class="map-layer-btn active" id="btnStreetLayer" title="OpenStreetMap Street View">Street</button>
+                                <button type="button" class="map-layer-btn" id="btnSatelliteLayer" title="Esri World Imagery Satellite View">Satellite</button>
+                            </div>
                         </div>
                         <div class="card-body" style="padding: 0; min-height: 250px; position: relative;">
                             <div id="gisMap" style="width: 100%; height: 260px; border-radius: var(--radius-sm); border: 1px solid var(--border-glass); background: #070913; position: relative; overflow: hidden;"></div>
@@ -465,6 +544,10 @@
                                 </svg>
                             </div>
                             <h3 data-i18n="card_court">Verified Court Proceedings</h3>
+                            <div class="card-filter-tabs" id="courtFilterTabs" style="display: none;">
+                                <button type="button" class="tab-chip active" data-filter="all">All Suits</button>
+                                <button type="button" class="tab-chip" data-filter="stay">Injunctions</button>
+                            </div>
                         </div>
                         <div class="card-body" id="courtCases">
                             <!-- Populated dynamically -->
@@ -483,6 +566,10 @@
                                 </svg>
                             </div>
                             <h3 data-i18n="card_encumbrance">Registered Encumbrances</h3>
+                            <div class="card-filter-tabs" id="encFilterTabs" style="display: none;">
+                                <button type="button" class="tab-chip active" data-filter="all">All</button>
+                                <button type="button" class="tab-chip" data-filter="mortgage">Mortgages</button>
+                            </div>
                         </div>
                         <div class="card-body" id="encDetails">
                             <!-- Populated dynamically -->
@@ -500,7 +587,16 @@
                                 </svg>
                             </div>
                             <h3 data-i18n="card_ai">AI Legal Analyst Due Diligence Notes</h3>
-                            <span class="ai-badge" id="aiModelBadge">Verified Reasoning Mode</span>
+                            <div class="ai-header-controls">
+                                <span class="ai-badge" id="aiModelBadge">Verified Reasoning Mode</span>
+                                <button type="button" class="ai-copy-btn" id="copyAiAnalysisBtn" title="Copy AI Analysis" aria-label="Copy AI Analysis">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                    </svg>
+                                    <span>Copy Analysis</span>
+                                </button>
+                            </div>
                         </div>
                         <div class="card-body" id="aiAnalystDetails">
                             <!-- Populated dynamically -->
@@ -617,12 +713,28 @@
                         <span class="chat-status"><span class="status-dot"></span>Context-Bound Verified</span>
                     </div>
                 </div>
-                <button class="chat-close-btn" id="chatCloseBtn" aria-label="Close Chat">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
+                <div class="chat-header-actions">
+                    <button class="chat-expand-btn" id="chatExpandBtn" aria-label="Maximize or minimize chat panel" title="Toggle full height">
+                        <svg class="expand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <polyline points="9 21 3 21 3 15"></polyline>
+                            <line x1="21" y1="3" x2="14" y2="10"></line>
+                            <line x1="3" y1="21" x2="10" y2="14"></line>
+                        </svg>
+                        <svg class="collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="display: none;">
+                            <polyline points="4 14 10 14 10 20"></polyline>
+                            <polyline points="20 10 14 10 14 4"></polyline>
+                            <line x1="14" y1="10" x2="21" y2="3"></line>
+                            <line x1="10" y1="14" x2="3" y2="21"></line>
+                        </svg>
+                    </button>
+                    <button class="chat-close-btn" id="chatCloseBtn" aria-label="Close Chat" title="Close Chat">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <div class="chat-body" id="chatBody">

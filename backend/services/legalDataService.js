@@ -298,7 +298,7 @@ function searchLandParcel({ district, taluk, village, surveyNumber, mode, checkL
             source_reference: c.source_reference || c.cnr_number || c.case_number,
             source_url: c.source_url || "https://ecourts.gov.in",
             retrieved_at: c.retrieved_at || "2026-08-28T09:30:00.000Z",
-            last_verified_at: c.last_verified_at || c.last_updated_at || null,
+            last_verified_at: c.last_verified_at || null,
             raw_reference: c.raw_reference || c.cnr_number || c.case_number
         });
 
@@ -325,7 +325,7 @@ function searchLandParcel({ district, taluk, village, surveyNumber, mode, checkL
             source_reference: e.source_reference || e.document_number,
             source_url: e.source_url || "https://tnreginet.gov.in",
             retrieved_at: e.retrieved_at || "2026-08-22T11:15:00.000Z",
-            last_verified_at: e.last_verified_at || e.registration_date || null,
+            last_verified_at: e.last_verified_at || null,
             raw_reference: e.raw_reference || (e.sro_office ? `${e.sro_office}/${e.document_number}` : e.document_number)
         });
 

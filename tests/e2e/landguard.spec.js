@@ -225,4 +225,50 @@ test.describe('LandGuard Due Diligence E2E Suite', () => {
         expect(searchBtnBox.width).toBeGreaterThan(100);
     });
 
+    test('11. Provenance audit trail: verifies source name, verification dates, and DEMO provenance in DOM', async ({ page }) => {
+        await page.goto('/');
+
+        // Search benchmark parcel 142/1 in Alanthurai, Coimbatore
+        await page.locator('#districtSelect').selectOption({ label: 'Coimbatore' });
+        await page.locator('#talukSelect').selectOption({ label: 'Coimbatore South' });
+        await page.locator('#villageInput').fill('Alanthurai (TP)');
+        await page.locator('#surveyInput').fill('142/1');
+        await page.locator('#searchBtn').click();
+
+        await expect(page.locator('#resultsSection')).toBeVisible({ timeout: 6000 });
+
+        // 1. Verify Ownership Provenance Display
+        const ownerCard = page.locator('#ownerCard');
+        await expect(ownerCard).toBeVisible();
+        await expect(ownerCard.locator('.provenance-source')).toContainText('Tamil Nadu Land Records Registry');
+        await expect(ownerCard.locator('.provenance-date')).toContainText('01-09-2026');
+        await expect(ownerCard).toContainText('DEMO');
+        await expect(ownerCard).toContainText('Not Admissible as Legal Evidence');
+
+        // 2. Verify Court Cases Provenance Display
+        const courtCard = page.locator('#courtCard');
+        await expect(courtCard).toBeVisible();
+        await expect(courtCard.locator('.provenance-source').first()).toContainText('eCourts Services (NJDG)');
+        await expect(courtCard.locator('.provenance-date').first()).toContainText('28-08-2026');
+        await expect(courtCard.locator('.status-badge').first()).toContainText('DEMO');
+        await expect(courtCard).toContainText('Not Admissible as Legal Evidence');
+
+        // 3. Verify Encumbrance Provenance Display
+        const encCard = page.locator('#encCard');
+        await expect(encCard).toBeVisible();
+        await expect(encCard.locator('.provenance-source').first()).toContainText('TNREGINET');
+        await expect(encCard.locator('.provenance-date').first()).toContainText('22-11-2022');
+        await expect(encCard).toContainText('DEMO');
+        await expect(encCard).toContainText('Not Admissible as Legal Evidence');
+
+        // 4. Verify Sources & Audit Trail Card Display
+        const sourcesCard = page.locator('#sourcesCard');
+        await expect(sourcesCard).toBeVisible();
+        await expect(sourcesCard).toContainText('Statutory Land Revenue Registry');
+        await expect(sourcesCard).toContainText('Judicial Case Status Portal');
+        await expect(sourcesCard).toContainText('Encumbrance & Registration Records');
+        const sourcesDates = sourcesCard.locator('.provenance-date');
+        await expect(sourcesDates.first()).toBeVisible();
+    });
+
 });

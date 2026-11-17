@@ -40,16 +40,19 @@ function runMigrations(dbInstance = null) {
         }
 
         // Backfill default provenance for existing benchmark parcels
-        db.exec(`
-            UPDATE land_parcels
-            SET source_type = 'GOVERNMENT_LAND_RECORDS',
-                source_reference = COALESCE(source_reference, patta_passbook_no, survey_number),
-                retrieved_at = COALESCE(retrieved_at, '2026-09-01T10:00:00.000Z'),
-                verification_status = CASE WHEN is_demo = 1 THEN 'DEMO' ELSE 'VERIFIED' END,
-                confidence = CASE WHEN is_demo = 1 THEN 0.0 ELSE 1.0 END,
-                raw_reference = COALESCE(raw_reference, 'TN-REV-' || village_id || '-' || survey_number)
-            WHERE source_reference IS NULL OR verification_status IS NULL
-        `);
+        const pendingParcels = db.prepare("SELECT count(*) as count FROM land_parcels WHERE source_reference IS NULL OR verification_status IS NULL").get().count;
+        if (pendingParcels > 0) {
+            db.exec(`
+                UPDATE land_parcels
+                SET source_type = 'GOVERNMENT_LAND_RECORDS',
+                    source_reference = COALESCE(source_reference, patta_passbook_no, survey_number),
+                    retrieved_at = COALESCE(retrieved_at, '2026-09-01T10:00:00.000Z'),
+                    verification_status = CASE WHEN is_demo = 1 THEN 'DEMO' ELSE 'VERIFIED' END,
+                    confidence = CASE WHEN is_demo = 1 THEN 0.0 ELSE 1.0 END,
+                    raw_reference = COALESCE(raw_reference, 'TN-REV-' || village_id || '-' || survey_number)
+                WHERE source_reference IS NULL OR verification_status IS NULL
+            `);
+        }
     }
 
     // 2. Migrate court_cases
@@ -78,17 +81,20 @@ function runMigrations(dbInstance = null) {
         }
 
         // Backfill default provenance for existing cases
-        db.exec(`
-            UPDATE court_cases
-            SET source_type = 'JUDICIAL_CAUSE_LIST',
-                source_reference = COALESCE(source_reference, cnr_number, case_number),
-                retrieved_at = COALESCE(retrieved_at, '2026-08-28T09:30:00.000Z'),
-                last_verified_at = COALESCE(last_verified_at, last_updated_at, '28-08-2026'),
-                verification_status = CASE WHEN is_demo = 1 THEN 'DEMO' ELSE 'VERIFIED' END,
-                confidence = CASE WHEN is_demo = 1 THEN 0.0 ELSE 1.0 END,
-                raw_reference = COALESCE(raw_reference, cnr_number, case_number)
-            WHERE source_reference IS NULL OR verification_status IS NULL
-        `);
+        const pendingCases = db.prepare("SELECT count(*) as count FROM court_cases WHERE source_reference IS NULL OR verification_status IS NULL").get().count;
+        if (pendingCases > 0) {
+            db.exec(`
+                UPDATE court_cases
+                SET source_type = 'JUDICIAL_CAUSE_LIST',
+                    source_reference = COALESCE(source_reference, cnr_number, case_number),
+                    retrieved_at = COALESCE(retrieved_at, '2026-08-28T09:30:00.000Z'),
+                    last_verified_at = COALESCE(last_verified_at, last_updated_at, '28-08-2026'),
+                    verification_status = CASE WHEN is_demo = 1 THEN 'DEMO' ELSE 'VERIFIED' END,
+                    confidence = CASE WHEN is_demo = 1 THEN 0.0 ELSE 1.0 END,
+                    raw_reference = COALESCE(raw_reference, cnr_number, case_number)
+                WHERE source_reference IS NULL OR verification_status IS NULL
+            `);
+        }
     }
 
     // 3. Migrate encumbrances
@@ -114,17 +120,20 @@ function runMigrations(dbInstance = null) {
         }
 
         // Backfill default provenance for existing encumbrances
-        db.exec(`
-            UPDATE encumbrances
-            SET source_type = 'SUB_REGISTRAR_REGISTRY',
-                source_reference = COALESCE(source_reference, document_number),
-                retrieved_at = COALESCE(retrieved_at, '2026-08-22T11:15:00.000Z'),
-                last_verified_at = COALESCE(last_verified_at, registration_date, '22-11-2022'),
-                verification_status = CASE WHEN is_demo = 1 THEN 'DEMO' ELSE 'VERIFIED' END,
-                confidence = CASE WHEN is_demo = 1 THEN 0.0 ELSE 1.0 END,
-                raw_reference = COALESCE(raw_reference, sro_office || '/' || document_number, document_number)
-            WHERE source_reference IS NULL OR verification_status IS NULL
-        `);
+        const pendingEnc = db.prepare("SELECT count(*) as count FROM encumbrances WHERE source_reference IS NULL OR verification_status IS NULL").get().count;
+        if (pendingEnc > 0) {
+            db.exec(`
+                UPDATE encumbrances
+                SET source_type = 'SUB_REGISTRAR_REGISTRY',
+                    source_reference = COALESCE(source_reference, document_number),
+                    retrieved_at = COALESCE(retrieved_at, '2026-08-22T11:15:00.000Z'),
+                    last_verified_at = COALESCE(last_verified_at, registration_date, '22-11-2022'),
+                    verification_status = CASE WHEN is_demo = 1 THEN 'DEMO' ELSE 'VERIFIED' END,
+                    confidence = CASE WHEN is_demo = 1 THEN 0.0 ELSE 1.0 END,
+                    raw_reference = COALESCE(raw_reference, sro_office || '/' || document_number, document_number)
+                WHERE source_reference IS NULL OR verification_status IS NULL
+            `);
+        }
     }
 
     return true;
