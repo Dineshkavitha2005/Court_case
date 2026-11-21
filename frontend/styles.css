@@ -792,6 +792,33 @@ a {
     flex-shrink: 0;
 }
 
+.voice-review {
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid var(--warning-border);
+    border-radius: var(--radius-control);
+    background: var(--raised);
+    color: var(--text);
+}
+
+.voice-review[hidden] { display: none; }
+.voice-review h3 { margin: 0 0 6px; font-size: var(--fs-body); }
+.voice-review p { margin: 0 0 12px; color: var(--muted); font-size: var(--fs-small); }
+.voice-review-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 12px; }
+.voice-review-field { padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: var(--fs-small); }
+.voice-review-field strong { display: block; margin-top: 3px; color: var(--text); }
+.voice-review-field.missing strong { color: var(--negative-ink); }
+.voice-suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 12px; }
+.voice-suggestion-btn, .voice-confirm-btn, .voice-dismiss-btn { min-height: 36px; padding: 6px 10px; border-radius: var(--radius-sm); cursor: pointer; font: inherit; }
+.voice-suggestion-btn { background: var(--active); border: 1px solid var(--control); color: var(--text); }
+.voice-confirm-btn { background: var(--primary); color: white; border: 1px solid var(--primary); }
+.voice-confirm-btn:disabled { opacity: .55; cursor: not-allowed; }
+.voice-dismiss-btn { margin-left: 8px; background: transparent; border: 1px solid var(--border); color: var(--text); }
+
+@media (max-width: 720px) {
+    .voice-review-grid { grid-template-columns: 1fr 1fr; }
+}
+
 /* 4-Column Form Grid */
 .form-grid-4 {
     display: grid;

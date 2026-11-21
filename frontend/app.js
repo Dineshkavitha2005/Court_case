@@ -16,6 +16,8 @@ let currentLanguage = localStorage.getItem('landguard-language') || 'en';
 let currentTheme = localStorage.getItem('landguard-theme') || 'dark';
 let speechRecognition = null;
 let isRecording = false;
+let voiceRecognitionTimeout = null;
+let voiceDraft = null;
 
 // Complete bilingual translation dictionary
 const TRANSLATIONS = {
@@ -1181,6 +1183,10 @@ function initVoiceRecognition() {
         if (voiceBtn) {
             voiceBtn.title = "Web Speech API is not supported in this browser. Please use Chrome or Edge.";
             voiceBtn.style.opacity = '0.7';
+            voiceBtn.setAttribute('aria-disabled', 'true');
+            voiceBtn.addEventListener('click', () => showAlert(currentLanguage === 'ta'
+                ? 'இந்த பிரவுசரில் குரல் அறிதல் ஆதரிக்கப்படவில்லை. Chrome அல்லது Edge-ஐ முயற்சிக்கவும்.'
+                : 'Voice recognition is not supported in this browser. Please use Chrome or Edge.'));
         }
         return;
     }
@@ -1213,12 +1219,25 @@ function initVoiceRecognition() {
             voiceStatusText.textContent = currentLanguage === 'ta'
                 ? 'பேசுங்கள்... மாவட்டம், தாலுகா, கிராமம், சர்வே எண் கூறவும் (எ.கா: கோயம்புத்தூர் ஆலந்துறை சர்வே 142/1)'
                 : 'Listening... Speak District, Taluk, Village, and Survey Number (e.g. Coimbatore South Alanthurai Survey 142/1)';
+            clearTimeout(voiceRecognitionTimeout);
+            voiceRecognitionTimeout = setTimeout(() => {
+                if (!isRecording) return;
+                stopVoice();
+                showAlert(currentLanguage === 'ta'
+                    ? 'குரல் உள்ளீடு நேரம் முடிந்தது. மீண்டும் முயற்சித்து தெளிவாகப் பேசவும்.'
+                    : 'Voice input timed out. Please try again and speak clearly.');
+            }, 12000);
         } catch (e) {
             console.warn('Speech recognition start failed:', e);
+            showAlert(currentLanguage === 'ta'
+                ? 'குரல் அறிதலைத் தொடங்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.'
+                : 'Could not start voice recognition. Please try again.');
         }
     }
 
     function stopVoice() {
+        clearTimeout(voiceRecognitionTimeout);
+        voiceRecognitionTimeout = null;
         if (speechRecognition && isRecording) {
             try { speechRecognition.stop(); } catch (_) { }
         }
@@ -1228,50 +1247,223 @@ function initVoiceRecognition() {
     }
 
     speechRecognition.onresult = (event) => {
-        const transcript = event.results[0][0].transcript.trim();
+        const transcript = event.results && event.results[0] && event.results[0][0]
+            ? event.results[0][0].transcript.trim()
+            : '';
         stopVoice();
+        if (!transcript) {
+            showAlert(currentLanguage === 'ta' ? 'குரல் உள்ளீடு கேட்கப்படவில்லை. மீண்டும் முயற்சிக்கவும்.' : 'No speech was detected. Please try again.');
+            return;
+        }
         parseVoiceTranscript(transcript);
     };
 
     speechRecognition.onerror = (event) => {
         stopVoice();
-        if (event.error === 'not-allowed') {
+        if (event.error === 'not-allowed' || event.error === 'service-not-allowed') {
             showAlert(currentLanguage === 'ta'
                 ? 'மைக்ரோஃபோன் அனுமதி மறுக்கப்பட்டது. பிரவுசர் அமைப்புகளில் மைக்ரோஃபோனை இயக்கவும்.'
                 : 'Microphone permission denied. Please allow microphone access in your browser settings.');
-        } else if (event.error !== 'no-speech') {
-            showAlert(`Voice recognition error: ${event.error}`);
+        } else if (event.error === 'no-speech') {
+            showAlert(currentLanguage === 'ta' ? 'பேச்சு கேட்கப்படவில்லை. மீண்டும் முயற்சிக்கவும்.' : 'No speech was detected. Please try again.');
+        } else if (event.error === 'network') {
+            showAlert(currentLanguage === 'ta' ? 'குரல் அறிதல் நெட்வொர்க் பிழை. இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயற்சிக்கவும்.' : 'Voice recognition had a network error. Check your connection and try again.');
+        } else if (event.error !== 'aborted') {
+            showAlert(currentLanguage === 'ta' ? 'குரல் அறிதல் பிழை. மீண்டும் முயற்சிக்கவும்.' : 'Voice recognition could not understand that. Please try again.');
         }
     };
 
     speechRecognition.onend = () => {
+        clearTimeout(voiceRecognitionTimeout);
+        voiceRecognitionTimeout = null;
         isRecording = false;
         voiceBtn.classList.remove('recording');
         voiceStatusBanner.style.display = 'none';
     };
 }
 
-function parseVoiceTranscript(text) {
-    const clean = text.toLowerCase();
-    showAlert(`${currentLanguage === 'ta' ? 'கேட்கப்பட்டது' : 'Heard'}: "${text}"`);
-
-    // Try to match District from cachedDistricts
-    const distSelect = document.getElementById('districtSelect');
-    const matchedDist = cachedDistricts.find(d =>
-        clean.includes(d.name.toLowerCase()) ||
-        (d.name_ta && text.includes(d.name_ta))
-    );
-
-    if (matchedDist) {
-        distSelect.value = matchedDist.name;
-        distSelect.dispatchEvent(new Event('change'));
+async function parseVoiceTranscript(text) {
+    const parser = window.LandGuardVoiceParser;
+    if (!parser) {
+        showAlert('Voice parser could not be loaded. Please type the search details.');
+        return;
+    }
+    if (!text || !text.trim()) {
+        showAlert(currentLanguage === 'ta' ? 'காலியான குரல் உள்ளீடு. மீண்டும் முயற்சிக்கவும்.' : 'Empty voice transcript. Please try again.');
+        return;
+    }
+    if (!cachedDistricts.length) {
+        showAlert(currentLanguage === 'ta' ? 'இடத் தரவு இன்னும் ஏற்றப்படுகிறது. சிறிது நேரத்தில் மீண்டும் முயற்சிக்கவும்.' : 'Location data is still loading. Please try voice search again in a moment.');
+        return;
     }
 
-    // Try to extract survey number (e.g., "survey 142/1" or "சர்வே எண் 142")
-    const surveyMatch = text.match(/(?:survey|survey no|சர்வே|சர்வே எண்|எண்)\s*[:.]?\s*([0-9]+(\/[0-9]+[A-Za-z0-9]*)?)/i);
-    if (surveyMatch && surveyMatch[1]) {
-        document.getElementById('surveyInput').value = surveyMatch[1].toUpperCase();
+    voiceDraft = {
+        text,
+        parsed: parser.parseVoiceTranscript(text, { districts: cachedDistricts }),
+        selections: {},
+        candidates: {},
+        error: ''
+    };
+    hideAlert();
+    await resolveVoiceDraft();
+}
+
+function chooseVoiceCandidate(field, candidates) {
+    const chosenName = voiceDraft.selections[field];
+    const explicit = candidates.find(item => item.name === chosenName);
+    return explicit || (candidates.length === 1 ? candidates[0] : null);
+}
+
+async function getVoiceJson(url) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error('Location lookup failed');
+    const data = await response.json();
+    if (data.status !== 'success') throw new Error(data.error || 'Location lookup failed');
+    return data;
+}
+
+async function resolveVoiceDraft() {
+    if (!voiceDraft || !window.LandGuardVoiceParser) return;
+    const parser = window.LandGuardVoiceParser;
+    const transcript = voiceDraft.parsed.normalizedTranscript;
+    try {
+        const districts = parser.findLocationMatches(transcript, cachedDistricts, voiceDraft.parsed.hints.district);
+        voiceDraft.candidates.district = districts;
+        const district = chooseVoiceCandidate('district', districts);
+        voiceDraft.resolved = { district, taluk: null, village: null, surveyNumber: voiceDraft.parsed.surveyNumber };
+        if (!district) return renderVoiceReview();
+
+        const talukData = await getVoiceJson(`/api/taluks?district=${encodeURIComponent(district.name)}`);
+        const taluks = parser.findLocationMatches(transcript, talukData.taluks, voiceDraft.parsed.hints.taluk);
+        voiceDraft.candidates.taluk = taluks;
+        const taluk = chooseVoiceCandidate('taluk', taluks);
+        voiceDraft.resolved.taluk = taluk;
+        if (!taluk) return renderVoiceReview();
+
+        const villageHint = voiceDraft.parsed.hints.village;
+        const villageData = await getVoiceJson(`/api/villages?district=${encodeURIComponent(district.name)}&taluk=${encodeURIComponent(taluk.name)}&q=${encodeURIComponent(villageHint)}&limit=200`);
+        // If no labelled phrase was available, the API returns the scoped catalogue;
+        // matching remains strict and is never inferred from a similar name.
+        const villages = parser.findLocationMatches(transcript, villageData.results, villageHint);
+        voiceDraft.candidates.village = villages;
+        voiceDraft.resolved.village = chooseVoiceCandidate('village', villages);
+        voiceDraft.error = '';
+    } catch (error) {
+        console.warn('Voice location lookup failed:', error);
+        voiceDraft.error = currentLanguage === 'ta'
+            ? 'குரல் இடப் பொருத்தங்களைச் சரிபார்க்க முடியவில்லை. விவரங்களைத் தட்டச்சு செய்து மீண்டும் முயற்சிக்கவும்.'
+            : 'We could not verify voice location matches. Please type the details and try again.';
     }
+    renderVoiceReview();
+}
+
+function voiceFieldLabel(field) {
+    return ({ district: 'District', taluk: 'Taluk', village: 'Village', surveyNumber: 'Survey number' })[field] || field;
+}
+
+function renderVoiceReview() {
+    const panel = document.getElementById('voiceReview');
+    if (!panel || !voiceDraft) return;
+    const { resolved, candidates, parsed } = voiceDraft;
+    panel.replaceChildren();
+    panel.hidden = false;
+
+    const title = document.createElement('h3');
+    title.textContent = currentLanguage === 'ta' ? 'குரல் தேடலை உறுதிப்படுத்தவும்' : 'Confirm voice search details';
+    const intro = document.createElement('p');
+    intro.textContent = `${currentLanguage === 'ta' ? 'கேட்கப்பட்டது' : 'Heard'}: “${parsed.transcript}”`;
+    panel.append(title, intro);
+
+    if (voiceDraft.error) {
+        const error = document.createElement('p');
+        error.setAttribute('role', 'alert');
+        error.textContent = voiceDraft.error;
+        panel.appendChild(error);
+    }
+
+    const grid = document.createElement('div');
+    grid.className = 'voice-review-grid';
+    ['district', 'taluk', 'village', 'surveyNumber'].forEach(field => {
+        const cell = document.createElement('div');
+        const value = resolved && resolved[field];
+        cell.className = `voice-review-field${value ? '' : ' missing'}`;
+        const label = document.createElement('span');
+        label.textContent = voiceFieldLabel(field);
+        const strong = document.createElement('strong');
+        strong.textContent = field === 'surveyNumber' ? (value || 'Not recognized') : (value ? value.name : 'Not recognized');
+        cell.append(label, strong);
+        grid.appendChild(cell);
+    });
+    panel.appendChild(grid);
+
+    ['district', 'taluk', 'village'].forEach(field => {
+        const choices = candidates[field] || [];
+        if (resolved && resolved[field] || choices.length < 2) return;
+        const instruction = document.createElement('p');
+        instruction.textContent = `More than one ${voiceFieldLabel(field).toLowerCase()} matches your speech. Select one to continue:`;
+        const list = document.createElement('div');
+        list.className = 'voice-suggestions';
+        choices.forEach(choice => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'voice-suggestion-btn';
+            button.dataset.voiceField = field;
+            button.dataset.voiceValue = choice.name;
+            button.textContent = choice.name;
+            list.appendChild(button);
+        });
+        panel.append(instruction, list);
+    });
+
+    const complete = resolved && resolved.district && resolved.taluk && resolved.village && resolved.surveyNumber && !voiceDraft.error;
+    const guidance = document.createElement('p');
+    guidance.textContent = complete
+        ? 'Review the verified matches, then explicitly confirm before LandGuard searches.'
+        : 'LandGuard did not guess missing or ambiguous details. Choose a suggestion or complete the form manually.';
+    const confirm = document.createElement('button');
+    confirm.type = 'button';
+    confirm.id = 'voiceConfirmBtn';
+    confirm.className = 'voice-confirm-btn';
+    confirm.disabled = !complete;
+    confirm.textContent = currentLanguage === 'ta' ? 'உறுதிசெய்து தேடவும்' : 'Confirm and search';
+    const dismiss = document.createElement('button');
+    dismiss.type = 'button';
+    dismiss.id = 'voiceDismissBtn';
+    dismiss.className = 'voice-dismiss-btn';
+    dismiss.textContent = currentLanguage === 'ta' ? 'மூடு' : 'Dismiss';
+    panel.append(guidance, confirm, dismiss);
+
+    panel.querySelectorAll('.voice-suggestion-btn').forEach(button => {
+        button.addEventListener('click', async () => {
+            const field = button.dataset.voiceField;
+            voiceDraft.selections[field] = button.dataset.voiceValue;
+            if (field === 'district') delete voiceDraft.selections.taluk;
+            if (field === 'district' || field === 'taluk') delete voiceDraft.selections.village;
+            await resolveVoiceDraft();
+        });
+    });
+    confirm.addEventListener('click', confirmVoiceSearch);
+    dismiss.addEventListener('click', () => { panel.hidden = true; });
+}
+
+function confirmVoiceSearch() {
+    if (!voiceDraft || !voiceDraft.resolved) return;
+    const { district, taluk, village, surveyNumber } = voiceDraft.resolved;
+    if (!district || !taluk || !village || !surveyNumber) return;
+    document.getElementById('districtSelect').value = district.name;
+    const talukSelect = document.getElementById('talukSelect');
+    if (!Array.from(talukSelect.options).some(option => option.value === taluk.name)) {
+        talukSelect.append(new Option(taluk.name, taluk.name));
+    }
+    talukSelect.value = taluk.name;
+    talukSelect.disabled = false;
+    const villageInput = document.getElementById('villageInput');
+    villageInput.disabled = false;
+    villageInput.value = village.name;
+    document.getElementById('surveyInput').value = surveyNumber;
+    updateClearButtons();
+    document.getElementById('voiceReview').hidden = true;
+    executeSearch({ district: district.name, taluk: taluk.name, village: village.name, surveyNumber });
 }
 
 // ============================================

@@ -186,6 +186,94 @@ test.describe('LandGuard Due Diligence E2E Suite', () => {
         }
     });
 
+    test('8a. Voice transcript is parsed, reviewed, and only searched after confirmation', async ({ page }) => {
+        await page.addInitScript(() => {
+            class FakeSpeechRecognition {
+                constructor() { window.__voiceRecognition = this; }
+                start() { this.started = true; }
+                stop() { this.stopped = true; }
+            }
+            window.SpeechRecognition = FakeSpeechRecognition;
+        });
+        await page.goto('/');
+
+        await page.locator('#voiceBtn').click();
+        await expect(page.locator('#voiceStatusBanner')).toBeVisible();
+        await page.evaluate(() => window.__voiceRecognition.onresult({
+            results: [[{ transcript: 'District Coimbatore Taluk Coimbatore South Village Alanthurai Survey one four two slash one' }]]
+        }));
+
+        const review = page.locator('#voiceReview');
+        await expect(review).toBeVisible();
+        await expect(review).toContainText('Coimbatore South');
+        await expect(review).toContainText('Alanthurai (TP)');
+        await expect(review).toContainText('142/1');
+        const confirm = page.locator('#voiceConfirmBtn');
+        await expect(confirm).toBeEnabled();
+        await expect(page.locator('#resultsSection')).toBeHidden();
+
+        await confirm.click();
+        await expect(page.locator('#resultsSection')).toBeVisible({ timeout: 6000 });
+    });
+
+    test('8b. Ambiguous voice location shows choices and does not choose a taluk', async ({ page }) => {
+        await page.addInitScript(() => {
+            class FakeSpeechRecognition {
+                constructor() { window.__voiceRecognition = this; }
+                start() {}
+                stop() {}
+            }
+            window.SpeechRecognition = FakeSpeechRecognition;
+        });
+        await page.goto('/');
+        await page.route('**/api/taluks?district=Coimbatore', route => route.fulfill({
+            contentType: 'application/json',
+            body: JSON.stringify({ status: 'success', taluks: [{ name: 'Coimbatore North' }, { name: 'Coimbatore South' }] })
+        }));
+
+        await page.locator('#voiceBtn').click();
+        await page.evaluate(() => window.__voiceRecognition.onresult({
+            results: [[{ transcript: 'district Coimbatore taluk Coimbatore survey 142 slash 1' }]]
+        }));
+
+        const review = page.locator('#voiceReview');
+        await expect(review).toBeVisible();
+        await expect(review).toContainText('More than one taluk matches');
+        await expect(review.locator('[data-voice-field="taluk"]')).toHaveCount(2);
+        await expect(page.locator('#voiceConfirmBtn')).toBeDisabled();
+    });
+
+    test('8c. Voice network errors give an actionable recovery message', async ({ page }) => {
+        await page.addInitScript(() => {
+            class FakeSpeechRecognition {
+                constructor() { window.__voiceRecognition = this; }
+                start() {}
+                stop() {}
+            }
+            window.SpeechRecognition = FakeSpeechRecognition;
+        });
+        await page.goto('/');
+        await page.locator('#voiceBtn').click();
+        await page.evaluate(() => window.__voiceRecognition.onerror({ error: 'network' }));
+        await expect(page.locator('#validationAlert')).toContainText('network error');
+    });
+
+    test('8d. Denied microphone permission gives browser-settings guidance', async ({ page }) => {
+        await page.addInitScript(() => {
+            class FakeSpeechRecognition {
+                constructor() { window.__voiceRecognition = this; }
+                start() {}
+                stop() {}
+            }
+            window.SpeechRecognition = FakeSpeechRecognition;
+        });
+        await page.goto('/');
+        await page.locator('#voiceBtn').click();
+        await page.evaluate(() => window.__voiceRecognition.onerror({ error: 'not-allowed' }));
+        await expect(page.locator('#validationAlert')).toContainText('Microphone permission denied');
+        await expect(page.locator('#validationAlert')).toContainText('browser settings');
+    });
+
     test('9. API failure handling displays error alert gracefully without crash', async ({ page }) => {
         await page.goto('/');
 

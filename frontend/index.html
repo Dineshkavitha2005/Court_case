@@ -195,6 +195,9 @@
                 <span id="validationAlertMsg"></span>
             </div>
 
+            <!-- Voice results are reviewed here; no voice transcript is searched automatically. -->
+            <section class="voice-review" id="voiceReview" aria-live="polite" aria-label="Voice search review" hidden></section>
+
             <form class="search-form" id="searchForm" novalidate>
                 <div class="form-grid-4">
                     <!-- 1. District Selection -->
@@ -788,6 +791,7 @@
     </footer>
 
     <!-- Scripts (No data.js loaded: clean API-based client) -->
+    <script src="voiceParser.js"></script>
     <script src="app.js"></script>
 </body>
 
