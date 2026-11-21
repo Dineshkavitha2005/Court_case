@@ -14,6 +14,7 @@ const { applySecurityHeaders, resolveSafeStaticPath } = require('./middleware/se
 const { checkRateLimit } = require('./middleware/rateLimiter');
 const { getDistricts, getTaluks, getVillages, getSurveyNumbers, searchLandParcel, getDataSourceStatus, RecordClassification } = require('./services/legalDataService');
 const { analyzeQuery } = require('./services/aiService');
+const { storeAnalysisContext, getAnalysisContext } = require('./services/analysisContextStore');
 
 // Configuration
 const PORT = process.env.PORT || 8765;
@@ -228,6 +229,10 @@ const server = http.createServer(async (req, res) => {
                 checkLive: Boolean(payload.checkLive)
             });
 
+            // The analyst never trusts a browser-posted legal record. Keep the
+            // exact backend result briefly and hand the browser an opaque ID.
+            result.analysis_context_id = storeAnalysisContext(result);
+
             sendJson(res, 200, result);
             return;
         }
@@ -257,12 +262,13 @@ const server = http.createServer(async (req, res) => {
                 return;
             }
 
-            const { query, record, language } = payload;
+            const { query, analysis_context_id: analysisContextId, language } = payload;
             if (!query || typeof query !== 'string' || query.trim().length === 0) {
                 sendJson(res, 400, { status: "error", error: "Query string is required." });
                 return;
             }
 
+            const record = getAnalysisContext(analysisContextId);
             const analysis = await analyzeQuery(query.trim(), record, language || 'en');
             sendJson(res, 200, {
                 status: "success",

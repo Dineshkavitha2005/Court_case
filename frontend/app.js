@@ -1068,7 +1068,7 @@ async function renderAiAnalystNotes(record) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 query: "Summarize legal risk and title findings for preliminary due diligence",
-                record: record,
+                analysis_context_id: record.analysis_context_id,
                 language: currentLanguage
             })
         });
@@ -1083,7 +1083,9 @@ async function renderAiAnalystNotes(record) {
             `;
         }
     } catch (err) {
-        const fallback = `Due diligence notes based on verified records: Title registered under ${record.parcel.owner.name} with ${record.courtCases.length} court proceedings recorded.`;
+        const fallback = record.is_demo
+            ? 'This is demonstration data and must not be treated as an actual legal record.'
+            : 'No verified legal record is available for analysis.';
         latestAiAnalysisText = fallback;
         container.innerHTML = `<div style="color: var(--text-muted);">${escapeHtml(fallback)}</div>`;
     }
